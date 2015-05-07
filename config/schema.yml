@@ -1,0 +1,235 @@
+---
+propel: 
+  _attributes: 
+    package: lib.model
+  dosen: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    npk: 
+      type: VARCHAR
+      size: 20
+      required: true
+      index: unique
+    nama: 
+      type: VARCHAR
+      size: 45
+      required: true
+    alamat: 
+      type: LONGVARCHAR
+    tgl_lahir: 
+      type: DATE
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+  fakultas: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    nama: 
+      type: VARCHAR
+      size: 45
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+  jadwal: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    hari: 
+      type: VARCHAR
+      size: 45
+    Jam_id: 
+      type: INTEGER
+      required: true
+      foreignTable: jam
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    _indexes: 
+      fk_Jadwal_Jam1_idx: 
+        - Jam_id
+  jam: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    jam: 
+      type: VARCHAR
+      size: 45
+  jurusan: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    nama: 
+      type: VARCHAR
+      size: 45
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+    Fakultas_id: 
+      type: INTEGER
+      required: true
+      foreignTable: fakultas
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    _indexes: 
+      fk_Jurusan_Fakultas_idx: 
+        - Fakultas_id
+  kelasparalel: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    nama: 
+      type: VARCHAR
+      size: 45
+    status: 
+      type: 
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+    MataKuliah_id: 
+      type: INTEGER
+      required: true
+      foreignTable: matakuliah
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    _indexes: 
+      fk_KelasParalel_MataKuliah1_idx: 
+        - MataKuliah_id
+  kelasparalel_has_jadwal: 
+    KelasParalel_id: 
+      type: INTEGER
+      required: true
+      primaryKey: true
+      foreignTable: kelasparalel
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    Jadwal_id: 
+      type: INTEGER
+      required: true
+      primaryKey: true
+      foreignTable: jadwal
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+    _indexes: 
+      fk_KelasParalel_has_Jadwal_Jadwal1_idx: 
+        - Jadwal_id
+      fk_KelasParalel_has_Jadwal_KelasParalel1_idx: 
+        - KelasParalel_id
+  mahasiswa: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    nrp: 
+      type: VARCHAR
+      size: 10
+      required: true
+      index: unique
+    nama: 
+      type: VARCHAR
+      size: 45
+      required: true
+    alamat: 
+      type: LONGVARCHAR
+    tgl_lahir: 
+      type: DATE
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+  mahasiswa_has_kelasparalel: 
+    Mahasiswa_id: 
+      type: INTEGER
+      required: true
+      primaryKey: true
+      foreignTable: mahasiswa
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    KelasParalel_id: 
+      type: INTEGER
+      required: true
+      primaryKey: true
+      foreignTable: kelasparalel
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+    _indexes: 
+      fk_Mahasiswa_has_KelasParalel_KelasParalel1_idx: 
+        - KelasParalel_id
+      fk_Mahasiswa_has_KelasParalel_Mahasiswa1_idx: 
+        - Mahasiswa_id
+  matakuliah: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    kodeMk: 
+      type: VARCHAR
+      size: 45
+    nama: 
+      type: VARCHAR
+      size: 45
+    sks: 
+      type: INTEGER
+    created_at: 
+      type: TIMESTAMP
+    updated_at: 
+      type: TIMESTAMP
+    Jurusan_id: 
+      type: INTEGER
+      required: true
+      foreignTable: jurusan
+      foreignReference: id
+      onDelete: RESTRICT
+      onUpdate: RESTRICT
+    _indexes: 
+      fk_MataKuliah_Jurusan1_idx: 
+        - Jurusan_id

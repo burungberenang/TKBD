@@ -1,2 +1,4 @@
 data/symfony/*
 lib/symfony/*
+config/propel.ini
+config/database.yml

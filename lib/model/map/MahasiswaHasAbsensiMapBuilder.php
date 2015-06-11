@@ -32,6 +32,8 @@ class MahasiswaHasAbsensiMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('mahasiswa_has_absensi_SEQ');
+
 		$tMap->addForeignKey('MAHASISWA_ID', 'MahasiswaId', 'int', CreoleTypes::INTEGER, 'mahasiswa', 'ID', true, null);
 
 		$tMap->addForeignKey('ABSENSI_ID', 'AbsensiId', 'int', CreoleTypes::INTEGER, 'absensi', 'ID', true, null);

@@ -108,7 +108,9 @@ abstract class BaseMahasiswaHasKelasparalel extends BaseObject  implements Persi
 	public function setMahasiswaId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -126,7 +128,9 @@ abstract class BaseMahasiswaHasKelasparalel extends BaseObject  implements Persi
 	public function setKelasparalelId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -178,7 +182,9 @@ abstract class BaseMahasiswaHasKelasparalel extends BaseObject  implements Persi
 	public function setId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 

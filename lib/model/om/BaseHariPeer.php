@@ -245,7 +245,6 @@ abstract class BaseHariPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += HariPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(HariPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -276,7 +275,7 @@ abstract class BaseHariPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += HariPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -284,25 +283,6 @@ abstract class BaseHariPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = HariPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Jadwal.php';
-
-						$c = new Criteria();
-			
-			$c->add(JadwalPeer::HARI_ID, $obj->getId());
-			$affectedRows += JadwalPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

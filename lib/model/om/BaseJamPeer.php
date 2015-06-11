@@ -245,7 +245,6 @@ abstract class BaseJamPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += JamPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(JamPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -276,7 +275,7 @@ abstract class BaseJamPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += JamPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -284,25 +283,6 @@ abstract class BaseJamPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = JamPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Jadwal.php';
-
-						$c = new Criteria();
-			
-			$c->add(JadwalPeer::JAM_ID, $obj->getId());
-			$affectedRows += JadwalPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

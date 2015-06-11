@@ -13,7 +13,7 @@ abstract class BaseAbsensiPeer {
 	const CLASS_DEFAULT = 'lib.model.Absensi';
 
 	
-	const NUM_COLUMNS = 9;
+	const NUM_COLUMNS = 10;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -38,6 +38,9 @@ abstract class BaseAbsensiPeer {
 	const SKS_NYATA = 'absensi.SKS_NYATA';
 
 	
+	const STATUS = 'absensi.STATUS';
+
+	
 	const JAM_HADIR_DOSEN = 'absensi.JAM_HADIR_DOSEN';
 
 	
@@ -52,18 +55,18 @@ abstract class BaseAbsensiPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'DosenId', 'Materi', 'MingguKe', 'Tanggal', 'SksNyata', 'JamHadirDosen', 'JamKeluarDosen', 'KelasparalelId', ),
-		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID, AbsensiPeer::DOSEN_ID, AbsensiPeer::MATERI, AbsensiPeer::MINGGU_KE, AbsensiPeer::TANGGAL, AbsensiPeer::SKS_NYATA, AbsensiPeer::JAM_HADIR_DOSEN, AbsensiPeer::JAM_KELUAR_DOSEN, AbsensiPeer::KELASPARALEL_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'dosen_id', 'materi', 'minggu_ke', 'tanggal', 'sks_nyata', 'jam_hadir_dosen', 'jam_keluar_dosen', 'KelasParalel_id', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'DosenId', 'Materi', 'MingguKe', 'Tanggal', 'SksNyata', 'Status', 'JamHadirDosen', 'JamKeluarDosen', 'KelasparalelId', ),
+		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID, AbsensiPeer::DOSEN_ID, AbsensiPeer::MATERI, AbsensiPeer::MINGGU_KE, AbsensiPeer::TANGGAL, AbsensiPeer::SKS_NYATA, AbsensiPeer::STATUS, AbsensiPeer::JAM_HADIR_DOSEN, AbsensiPeer::JAM_KELUAR_DOSEN, AbsensiPeer::KELASPARALEL_ID, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'dosen_id', 'materi', 'minggu_ke', 'tanggal', 'sks_nyata', 'status', 'jam_hadir_dosen', 'jam_keluar_dosen', 'KelasParalel_id', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'DosenId' => 1, 'Materi' => 2, 'MingguKe' => 3, 'Tanggal' => 4, 'SksNyata' => 5, 'JamHadirDosen' => 6, 'JamKeluarDosen' => 7, 'KelasparalelId' => 8, ),
-		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID => 0, AbsensiPeer::DOSEN_ID => 1, AbsensiPeer::MATERI => 2, AbsensiPeer::MINGGU_KE => 3, AbsensiPeer::TANGGAL => 4, AbsensiPeer::SKS_NYATA => 5, AbsensiPeer::JAM_HADIR_DOSEN => 6, AbsensiPeer::JAM_KELUAR_DOSEN => 7, AbsensiPeer::KELASPARALEL_ID => 8, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'dosen_id' => 1, 'materi' => 2, 'minggu_ke' => 3, 'tanggal' => 4, 'sks_nyata' => 5, 'jam_hadir_dosen' => 6, 'jam_keluar_dosen' => 7, 'KelasParalel_id' => 8, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'DosenId' => 1, 'Materi' => 2, 'MingguKe' => 3, 'Tanggal' => 4, 'SksNyata' => 5, 'Status' => 6, 'JamHadirDosen' => 7, 'JamKeluarDosen' => 8, 'KelasparalelId' => 9, ),
+		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID => 0, AbsensiPeer::DOSEN_ID => 1, AbsensiPeer::MATERI => 2, AbsensiPeer::MINGGU_KE => 3, AbsensiPeer::TANGGAL => 4, AbsensiPeer::SKS_NYATA => 5, AbsensiPeer::STATUS => 6, AbsensiPeer::JAM_HADIR_DOSEN => 7, AbsensiPeer::JAM_KELUAR_DOSEN => 8, AbsensiPeer::KELASPARALEL_ID => 9, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'dosen_id' => 1, 'materi' => 2, 'minggu_ke' => 3, 'tanggal' => 4, 'sks_nyata' => 5, 'status' => 6, 'jam_hadir_dosen' => 7, 'jam_keluar_dosen' => 8, 'KelasParalel_id' => 9, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
 	);
 
 	
@@ -128,6 +131,8 @@ abstract class BaseAbsensiPeer {
 		$criteria->addSelectColumn(AbsensiPeer::TANGGAL);
 
 		$criteria->addSelectColumn(AbsensiPeer::SKS_NYATA);
+
+		$criteria->addSelectColumn(AbsensiPeer::STATUS);
 
 		$criteria->addSelectColumn(AbsensiPeer::JAM_HADIR_DOSEN);
 
@@ -716,7 +721,6 @@ abstract class BaseAbsensiPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += AbsensiPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(AbsensiPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -747,7 +751,7 @@ abstract class BaseAbsensiPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += AbsensiPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -755,25 +759,6 @@ abstract class BaseAbsensiPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = AbsensiPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/MahasiswaHasAbsensi.php';
-
-						$c = new Criteria();
-			
-			$c->add(MahasiswaHasAbsensiPeer::ABSENSI_ID, $obj->getId());
-			$affectedRows += MahasiswaHasAbsensiPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

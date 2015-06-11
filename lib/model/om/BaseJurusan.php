@@ -37,6 +37,12 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	protected $lastMatakuliahCriteria = null;
 
 	
+	protected $collMahasiswas;
+
+	
+	protected $lastMahasiswaCriteria = null;
+
+	
 	protected $alreadyInSave = false;
 
 	
@@ -111,7 +117,9 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	public function setId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -125,7 +133,9 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	public function setNama($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
+		
+		
+		if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
@@ -173,7 +183,9 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	public function setFakultasId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -301,6 +313,14 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collMahasiswas !== null) {
+				foreach($this->collMahasiswas as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -352,6 +372,14 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 
 				if ($this->collMatakuliahs !== null) {
 					foreach($this->collMatakuliahs as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collMahasiswas !== null) {
+					foreach($this->collMahasiswas as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -506,6 +534,10 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 				$copyObj->addMatakuliah($relObj->copy($deepCopy));
 			}
 
+			foreach($this->getMahasiswas() as $relObj) {
+				$copyObj->addMahasiswa($relObj->copy($deepCopy));
+			}
+
 		} 
 
 		$copyObj->setNew(true);
@@ -627,6 +659,76 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	public function addMatakuliah(Matakuliah $l)
 	{
 		$this->collMatakuliahs[] = $l;
+		$l->setJurusan($this);
+	}
+
+	
+	public function initMahasiswas()
+	{
+		if ($this->collMahasiswas === null) {
+			$this->collMahasiswas = array();
+		}
+	}
+
+	
+	public function getMahasiswas($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMahasiswaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMahasiswas === null) {
+			if ($this->isNew()) {
+			   $this->collMahasiswas = array();
+			} else {
+
+				$criteria->add(MahasiswaPeer::JURUSAN_ID, $this->getId());
+
+				MahasiswaPeer::addSelectColumns($criteria);
+				$this->collMahasiswas = MahasiswaPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(MahasiswaPeer::JURUSAN_ID, $this->getId());
+
+				MahasiswaPeer::addSelectColumns($criteria);
+				if (!isset($this->lastMahasiswaCriteria) || !$this->lastMahasiswaCriteria->equals($criteria)) {
+					$this->collMahasiswas = MahasiswaPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastMahasiswaCriteria = $criteria;
+		return $this->collMahasiswas;
+	}
+
+	
+	public function countMahasiswas($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseMahasiswaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(MahasiswaPeer::JURUSAN_ID, $this->getId());
+
+		return MahasiswaPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addMahasiswa(Mahasiswa $l)
+	{
+		$this->collMahasiswas[] = $l;
 		$l->setJurusan($this);
 	}
 

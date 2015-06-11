@@ -33,6 +33,10 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 
 
 	
+	protected $status;
+
+
+	
 	protected $jam_hadir_dosen;
 
 
@@ -119,6 +123,13 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getStatus()
+	{
+
+		return $this->status;
+	}
+
+	
 	public function getJamHadirDosen($format = 'H:i:s')
 	{
 
@@ -173,7 +184,9 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	public function setId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -187,7 +200,9 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	public function setDosenId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -205,7 +220,9 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	public function setMateri($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
+		
+		
+		if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
@@ -219,7 +236,9 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	public function setMingguKe($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -250,13 +269,31 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	public function setSksNyata($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
 		if ($this->sks_nyata !== $v) {
 			$this->sks_nyata = $v;
 			$this->modifiedColumns[] = AbsensiPeer::SKS_NYATA;
+		}
+
+	} 
+	
+	public function setStatus($v)
+	{
+
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->status !== $v) {
+			$this->status = $v;
+			$this->modifiedColumns[] = AbsensiPeer::STATUS;
 		}
 
 	} 
@@ -298,7 +335,9 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	public function setKelasparalelId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -329,17 +368,19 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 
 			$this->sks_nyata = $rs->getInt($startcol + 5);
 
-			$this->jam_hadir_dosen = $rs->getTime($startcol + 6, null);
+			$this->status = $rs->getInt($startcol + 6);
 
-			$this->jam_keluar_dosen = $rs->getTime($startcol + 7, null);
+			$this->jam_hadir_dosen = $rs->getTime($startcol + 7, null);
 
-			$this->kelasparalel_id = $rs->getInt($startcol + 8);
+			$this->jam_keluar_dosen = $rs->getTime($startcol + 8, null);
+
+			$this->kelasparalel_id = $rs->getInt($startcol + 9);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 9; 
+						return $startcol + 10; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Absensi object", $e);
 		}
@@ -531,12 +572,15 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 				return $this->getSksNyata();
 				break;
 			case 6:
-				return $this->getJamHadirDosen();
+				return $this->getStatus();
 				break;
 			case 7:
-				return $this->getJamKeluarDosen();
+				return $this->getJamHadirDosen();
 				break;
 			case 8:
+				return $this->getJamKeluarDosen();
+				break;
+			case 9:
 				return $this->getKelasparalelId();
 				break;
 			default:
@@ -555,9 +599,10 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 			$keys[3] => $this->getMingguKe(),
 			$keys[4] => $this->getTanggal(),
 			$keys[5] => $this->getSksNyata(),
-			$keys[6] => $this->getJamHadirDosen(),
-			$keys[7] => $this->getJamKeluarDosen(),
-			$keys[8] => $this->getKelasparalelId(),
+			$keys[6] => $this->getStatus(),
+			$keys[7] => $this->getJamHadirDosen(),
+			$keys[8] => $this->getJamKeluarDosen(),
+			$keys[9] => $this->getKelasparalelId(),
 		);
 		return $result;
 	}
@@ -592,12 +637,15 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 				$this->setSksNyata($value);
 				break;
 			case 6:
-				$this->setJamHadirDosen($value);
+				$this->setStatus($value);
 				break;
 			case 7:
-				$this->setJamKeluarDosen($value);
+				$this->setJamHadirDosen($value);
 				break;
 			case 8:
+				$this->setJamKeluarDosen($value);
+				break;
+			case 9:
 				$this->setKelasparalelId($value);
 				break;
 		} 	}
@@ -613,9 +661,10 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[3], $arr)) $this->setMingguKe($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setTanggal($arr[$keys[4]]);
 		if (array_key_exists($keys[5], $arr)) $this->setSksNyata($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setJamHadirDosen($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setJamKeluarDosen($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setKelasparalelId($arr[$keys[8]]);
+		if (array_key_exists($keys[6], $arr)) $this->setStatus($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setJamHadirDosen($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setJamKeluarDosen($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setKelasparalelId($arr[$keys[9]]);
 	}
 
 	
@@ -629,6 +678,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(AbsensiPeer::MINGGU_KE)) $criteria->add(AbsensiPeer::MINGGU_KE, $this->minggu_ke);
 		if ($this->isColumnModified(AbsensiPeer::TANGGAL)) $criteria->add(AbsensiPeer::TANGGAL, $this->tanggal);
 		if ($this->isColumnModified(AbsensiPeer::SKS_NYATA)) $criteria->add(AbsensiPeer::SKS_NYATA, $this->sks_nyata);
+		if ($this->isColumnModified(AbsensiPeer::STATUS)) $criteria->add(AbsensiPeer::STATUS, $this->status);
 		if ($this->isColumnModified(AbsensiPeer::JAM_HADIR_DOSEN)) $criteria->add(AbsensiPeer::JAM_HADIR_DOSEN, $this->jam_hadir_dosen);
 		if ($this->isColumnModified(AbsensiPeer::JAM_KELUAR_DOSEN)) $criteria->add(AbsensiPeer::JAM_KELUAR_DOSEN, $this->jam_keluar_dosen);
 		if ($this->isColumnModified(AbsensiPeer::KELASPARALEL_ID)) $criteria->add(AbsensiPeer::KELASPARALEL_ID, $this->kelasparalel_id);
@@ -671,6 +721,8 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 		$copyObj->setTanggal($this->tanggal);
 
 		$copyObj->setSksNyata($this->sks_nyata);
+
+		$copyObj->setStatus($this->status);
 
 		$copyObj->setJamHadirDosen($this->jam_hadir_dosen);
 

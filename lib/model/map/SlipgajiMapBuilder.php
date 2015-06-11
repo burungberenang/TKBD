@@ -32,6 +32,8 @@ class SlipgajiMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('slipgaji_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('GRAND_TOTAL', 'GrandTotal', 'double', CreoleTypes::NUMERIC, false, 20);

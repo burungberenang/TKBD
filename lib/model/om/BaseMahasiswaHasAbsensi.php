@@ -82,7 +82,9 @@ abstract class BaseMahasiswaHasAbsensi extends BaseObject  implements Persistent
 	public function setMahasiswaId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -100,7 +102,9 @@ abstract class BaseMahasiswaHasAbsensi extends BaseObject  implements Persistent
 	public function setAbsensiId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -135,7 +139,9 @@ abstract class BaseMahasiswaHasAbsensi extends BaseObject  implements Persistent
 	public function setId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 

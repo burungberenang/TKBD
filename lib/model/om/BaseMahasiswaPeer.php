@@ -13,7 +13,7 @@ abstract class BaseMahasiswaPeer {
 	const CLASS_DEFAULT = 'lib.model.Mahasiswa';
 
 	
-	const NUM_COLUMNS = 7;
+	const NUM_COLUMNS = 8;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -35,6 +35,9 @@ abstract class BaseMahasiswaPeer {
 	const TGL_LAHIR = 'mahasiswa.TGL_LAHIR';
 
 	
+	const JURUSAN_ID = 'mahasiswa.JURUSAN_ID';
+
+	
 	const CREATED_AT = 'mahasiswa.CREATED_AT';
 
 	
@@ -46,18 +49,18 @@ abstract class BaseMahasiswaPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'Nrp', 'Nama', 'Alamat', 'TglLahir', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (MahasiswaPeer::ID, MahasiswaPeer::NRP, MahasiswaPeer::NAMA, MahasiswaPeer::ALAMAT, MahasiswaPeer::TGL_LAHIR, MahasiswaPeer::CREATED_AT, MahasiswaPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'nrp', 'nama', 'alamat', 'tgl_lahir', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'Nrp', 'Nama', 'Alamat', 'TglLahir', 'JurusanId', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (MahasiswaPeer::ID, MahasiswaPeer::NRP, MahasiswaPeer::NAMA, MahasiswaPeer::ALAMAT, MahasiswaPeer::TGL_LAHIR, MahasiswaPeer::JURUSAN_ID, MahasiswaPeer::CREATED_AT, MahasiswaPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'nrp', 'nama', 'alamat', 'tgl_lahir', 'Jurusan_id', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Nrp' => 1, 'Nama' => 2, 'Alamat' => 3, 'TglLahir' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, ),
-		BasePeer::TYPE_COLNAME => array (MahasiswaPeer::ID => 0, MahasiswaPeer::NRP => 1, MahasiswaPeer::NAMA => 2, MahasiswaPeer::ALAMAT => 3, MahasiswaPeer::TGL_LAHIR => 4, MahasiswaPeer::CREATED_AT => 5, MahasiswaPeer::UPDATED_AT => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'nrp' => 1, 'nama' => 2, 'alamat' => 3, 'tgl_lahir' => 4, 'created_at' => 5, 'updated_at' => 6, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Nrp' => 1, 'Nama' => 2, 'Alamat' => 3, 'TglLahir' => 4, 'JurusanId' => 5, 'CreatedAt' => 6, 'UpdatedAt' => 7, ),
+		BasePeer::TYPE_COLNAME => array (MahasiswaPeer::ID => 0, MahasiswaPeer::NRP => 1, MahasiswaPeer::NAMA => 2, MahasiswaPeer::ALAMAT => 3, MahasiswaPeer::TGL_LAHIR => 4, MahasiswaPeer::JURUSAN_ID => 5, MahasiswaPeer::CREATED_AT => 6, MahasiswaPeer::UPDATED_AT => 7, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'nrp' => 1, 'nama' => 2, 'alamat' => 3, 'tgl_lahir' => 4, 'Jurusan_id' => 5, 'created_at' => 6, 'updated_at' => 7, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	
@@ -120,6 +123,8 @@ abstract class BaseMahasiswaPeer {
 		$criteria->addSelectColumn(MahasiswaPeer::ALAMAT);
 
 		$criteria->addSelectColumn(MahasiswaPeer::TGL_LAHIR);
+
+		$criteria->addSelectColumn(MahasiswaPeer::JURUSAN_ID);
 
 		$criteria->addSelectColumn(MahasiswaPeer::CREATED_AT);
 
@@ -202,6 +207,167 @@ abstract class BaseMahasiswaPeer {
 		}
 		return $results;
 	}
+
+	
+	public static function doCountJoinJurusan(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MahasiswaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MahasiswaPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MahasiswaPeer::JURUSAN_ID, JurusanPeer::ID);
+
+		$rs = MahasiswaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doSelectJoinJurusan(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MahasiswaPeer::addSelectColumns($c);
+		$startcol = (MahasiswaPeer::NUM_COLUMNS - MahasiswaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		JurusanPeer::addSelectColumns($c);
+
+		$c->addJoin(MahasiswaPeer::JURUSAN_ID, JurusanPeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MahasiswaPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = JurusanPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getJurusan(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addMahasiswa($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initMahasiswas();
+				$obj2->addMahasiswa($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doCountJoinAll(Criteria $criteria, $distinct = false, $con = null)
+	{
+		$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MahasiswaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MahasiswaPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MahasiswaPeer::JURUSAN_ID, JurusanPeer::ID);
+
+		$rs = MahasiswaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doSelectJoinAll(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MahasiswaPeer::addSelectColumns($c);
+		$startcol2 = (MahasiswaPeer::NUM_COLUMNS - MahasiswaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		JurusanPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + JurusanPeer::NUM_COLUMNS;
+
+		$c->addJoin(MahasiswaPeer::JURUSAN_ID, JurusanPeer::ID);
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MahasiswaPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+
+					
+			$omClass = JurusanPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getJurusan(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addMahasiswa($obj1); 					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initMahasiswas();
+				$obj2->addMahasiswa($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
 	
 	public static function getTableMap()
 	{
@@ -270,7 +436,6 @@ abstract class BaseMahasiswaPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += MahasiswaPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(MahasiswaPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -301,7 +466,7 @@ abstract class BaseMahasiswaPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += MahasiswaPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -309,32 +474,6 @@ abstract class BaseMahasiswaPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = MahasiswaPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/MahasiswaHasAbsensi.php';
-
-						$c = new Criteria();
-			
-			$c->add(MahasiswaHasAbsensiPeer::MAHASISWA_ID, $obj->getId());
-			$affectedRows += MahasiswaHasAbsensiPeer::doDelete($c, $con);
-
-			include_once 'lib/model/MahasiswaHasKelasparalel.php';
-
-						$c = new Criteria();
-			
-			$c->add(MahasiswaHasKelasparalelPeer::MAHASISWA_ID, $obj->getId());
-			$affectedRows += MahasiswaHasKelasparalelPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

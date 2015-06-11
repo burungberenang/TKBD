@@ -32,6 +32,8 @@ class KelasparalelHasJadwalMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('kelasparalel_has_jadwal_SEQ');
+
 		$tMap->addForeignKey('KELASPARALEL_ID', 'KelasparalelId', 'int', CreoleTypes::INTEGER, 'kelasparalel', 'ID', true, null);
 
 		$tMap->addForeignKey('JADWAL_ID', 'JadwalId', 'int', CreoleTypes::INTEGER, 'jadwal', 'ID', true, null);

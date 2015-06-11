@@ -32,6 +32,8 @@ class KelasparalelHasDosenMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('kelasparalel_has_dosen_SEQ');
+
 		$tMap->addForeignKey('KELASPARALEL_ID', 'KelasparalelId', 'int', CreoleTypes::INTEGER, 'kelasparalel', 'ID', true, null);
 
 		$tMap->addForeignKey('DOSEN_ID', 'DosenId', 'int', CreoleTypes::INTEGER, 'dosen', 'ID', true, null);

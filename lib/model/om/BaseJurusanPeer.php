@@ -421,7 +421,6 @@ abstract class BaseJurusanPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += JurusanPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(JurusanPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -452,7 +451,7 @@ abstract class BaseJurusanPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += JurusanPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -460,25 +459,6 @@ abstract class BaseJurusanPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = JurusanPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Matakuliah.php';
-
-						$c = new Criteria();
-			
-			$c->add(MatakuliahPeer::JURUSAN_ID, $obj->getId());
-			$affectedRows += MatakuliahPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

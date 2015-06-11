@@ -426,7 +426,6 @@ abstract class BaseKelasparalelPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += KelasparalelPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(KelasparalelPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -457,7 +456,7 @@ abstract class BaseKelasparalelPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += KelasparalelPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -465,46 +464,6 @@ abstract class BaseKelasparalelPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = KelasparalelPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Absensi.php';
-
-						$c = new Criteria();
-			
-			$c->add(AbsensiPeer::KELASPARALEL_ID, $obj->getId());
-			$affectedRows += AbsensiPeer::doDelete($c, $con);
-
-			include_once 'lib/model/KelasparalelHasDosen.php';
-
-						$c = new Criteria();
-			
-			$c->add(KelasparalelHasDosenPeer::KELASPARALEL_ID, $obj->getId());
-			$affectedRows += KelasparalelHasDosenPeer::doDelete($c, $con);
-
-			include_once 'lib/model/KelasparalelHasJadwal.php';
-
-						$c = new Criteria();
-			
-			$c->add(KelasparalelHasJadwalPeer::KELASPARALEL_ID, $obj->getId());
-			$affectedRows += KelasparalelHasJadwalPeer::doDelete($c, $con);
-
-			include_once 'lib/model/MahasiswaHasKelasparalel.php';
-
-						$c = new Criteria();
-			
-			$c->add(MahasiswaHasKelasparalelPeer::KELASPARALEL_ID, $obj->getId());
-			$affectedRows += MahasiswaHasKelasparalelPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

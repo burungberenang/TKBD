@@ -29,11 +29,18 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 
 
 	
+	protected $jurusan_id;
+
+
+	
 	protected $created_at;
 
 
 	
 	protected $updated_at;
+
+	
+	protected $aJurusan;
 
 	
 	protected $collMahasiswaHasAbsensis;
@@ -104,6 +111,13 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getJurusanId()
+	{
+
+		return $this->jurusan_id;
+	}
+
+	
 	public function getCreatedAt($format = 'Y-m-d H:i:s')
 	{
 
@@ -151,7 +165,9 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	public function setId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -165,7 +181,9 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	public function setNrp($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
+		
+		
+		if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
@@ -179,7 +197,9 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	public function setNama($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
+		
+		
+		if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
@@ -193,7 +213,9 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	public function setAlamat($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
+		
+		
+		if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
@@ -217,6 +239,26 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 		if ($this->tgl_lahir !== $ts) {
 			$this->tgl_lahir = $ts;
 			$this->modifiedColumns[] = MahasiswaPeer::TGL_LAHIR;
+		}
+
+	} 
+	
+	public function setJurusanId($v)
+	{
+
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->jurusan_id !== $v) {
+			$this->jurusan_id = $v;
+			$this->modifiedColumns[] = MahasiswaPeer::JURUSAN_ID;
+		}
+
+		if ($this->aJurusan !== null && $this->aJurusan->getId() !== $v) {
+			$this->aJurusan = null;
 		}
 
 	} 
@@ -269,15 +311,17 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 
 			$this->tgl_lahir = $rs->getDate($startcol + 4, null);
 
-			$this->created_at = $rs->getTimestamp($startcol + 5, null);
+			$this->jurusan_id = $rs->getInt($startcol + 5);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 6, null);
+			$this->created_at = $rs->getTimestamp($startcol + 6, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 7, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 7; 
+						return $startcol + 8; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Mahasiswa object", $e);
 		}
@@ -344,6 +388,15 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			$this->alreadyInSave = true;
 
 
+												
+			if ($this->aJurusan !== null) {
+				if ($this->aJurusan->isModified()) {
+					$affectedRows += $this->aJurusan->save($con);
+				}
+				$this->setJurusan($this->aJurusan);
+			}
+
+
 						if ($this->isModified()) {
 				if ($this->isNew()) {
 					$pk = MahasiswaPeer::doInsert($this, $con);
@@ -407,6 +460,14 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			$failureMap = array();
 
 
+												
+			if ($this->aJurusan !== null) {
+				if (!$this->aJurusan->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aJurusan->getValidationFailures());
+				}
+			}
+
+
 			if (($retval = MahasiswaPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
@@ -462,9 +523,12 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 				return $this->getTglLahir();
 				break;
 			case 5:
-				return $this->getCreatedAt();
+				return $this->getJurusanId();
 				break;
 			case 6:
+				return $this->getCreatedAt();
+				break;
+			case 7:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -482,8 +546,9 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			$keys[2] => $this->getNama(),
 			$keys[3] => $this->getAlamat(),
 			$keys[4] => $this->getTglLahir(),
-			$keys[5] => $this->getCreatedAt(),
-			$keys[6] => $this->getUpdatedAt(),
+			$keys[5] => $this->getJurusanId(),
+			$keys[6] => $this->getCreatedAt(),
+			$keys[7] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -515,9 +580,12 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 				$this->setTglLahir($value);
 				break;
 			case 5:
-				$this->setCreatedAt($value);
+				$this->setJurusanId($value);
 				break;
 			case 6:
+				$this->setCreatedAt($value);
+				break;
+			case 7:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -532,8 +600,9 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[2], $arr)) $this->setNama($arr[$keys[2]]);
 		if (array_key_exists($keys[3], $arr)) $this->setAlamat($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setTglLahir($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setCreatedAt($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setUpdatedAt($arr[$keys[6]]);
+		if (array_key_exists($keys[5], $arr)) $this->setJurusanId($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setCreatedAt($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setUpdatedAt($arr[$keys[7]]);
 	}
 
 	
@@ -546,6 +615,7 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(MahasiswaPeer::NAMA)) $criteria->add(MahasiswaPeer::NAMA, $this->nama);
 		if ($this->isColumnModified(MahasiswaPeer::ALAMAT)) $criteria->add(MahasiswaPeer::ALAMAT, $this->alamat);
 		if ($this->isColumnModified(MahasiswaPeer::TGL_LAHIR)) $criteria->add(MahasiswaPeer::TGL_LAHIR, $this->tgl_lahir);
+		if ($this->isColumnModified(MahasiswaPeer::JURUSAN_ID)) $criteria->add(MahasiswaPeer::JURUSAN_ID, $this->jurusan_id);
 		if ($this->isColumnModified(MahasiswaPeer::CREATED_AT)) $criteria->add(MahasiswaPeer::CREATED_AT, $this->created_at);
 		if ($this->isColumnModified(MahasiswaPeer::UPDATED_AT)) $criteria->add(MahasiswaPeer::UPDATED_AT, $this->updated_at);
 
@@ -586,6 +656,8 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 
 		$copyObj->setTglLahir($this->tgl_lahir);
 
+		$copyObj->setJurusanId($this->jurusan_id);
+
 		$copyObj->setCreatedAt($this->created_at);
 
 		$copyObj->setUpdatedAt($this->updated_at);
@@ -625,6 +697,35 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			self::$peer = new MahasiswaPeer();
 		}
 		return self::$peer;
+	}
+
+	
+	public function setJurusan($v)
+	{
+
+
+		if ($v === null) {
+			$this->setJurusanId(NULL);
+		} else {
+			$this->setJurusanId($v->getId());
+		}
+
+
+		$this->aJurusan = $v;
+	}
+
+
+	
+	public function getJurusan($con = null)
+	{
+		if ($this->aJurusan === null && ($this->jurusan_id !== null)) {
+						include_once 'lib/model/om/BaseJurusanPeer.php';
+
+			$this->aJurusan = JurusanPeer::retrieveByPK($this->jurusan_id, $con);
+
+			
+		}
+		return $this->aJurusan;
 	}
 
 	

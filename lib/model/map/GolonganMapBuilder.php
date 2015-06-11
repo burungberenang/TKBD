@@ -32,6 +32,8 @@ class GolonganMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('golongan_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('KODE', 'Kode', 'string', CreoleTypes::VARCHAR, true, 45);

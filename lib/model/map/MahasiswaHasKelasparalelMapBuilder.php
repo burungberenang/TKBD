@@ -32,6 +32,8 @@ class MahasiswaHasKelasparalelMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('mahasiswa_has_kelasparalel_SEQ');
+
 		$tMap->addForeignKey('MAHASISWA_ID', 'MahasiswaId', 'int', CreoleTypes::INTEGER, 'mahasiswa', 'ID', true, null);
 
 		$tMap->addForeignKey('KELASPARALEL_ID', 'KelasparalelId', 'int', CreoleTypes::INTEGER, 'kelasparalel', 'ID', true, null);

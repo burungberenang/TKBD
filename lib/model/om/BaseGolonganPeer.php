@@ -270,7 +270,6 @@ abstract class BaseGolonganPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += GolonganPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(GolonganPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -301,7 +300,7 @@ abstract class BaseGolonganPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += GolonganPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -309,25 +308,6 @@ abstract class BaseGolonganPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = GolonganPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Dosen.php';
-
-						$c = new Criteria();
-			
-			$c->add(DosenPeer::GOLONGAN_ID, $obj->getId());
-			$affectedRows += DosenPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

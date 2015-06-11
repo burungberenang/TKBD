@@ -32,6 +32,8 @@ class AbsensiMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('absensi_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addForeignKey('DOSEN_ID', 'DosenId', 'int', CreoleTypes::INTEGER, 'dosen', 'ID', true, null);
@@ -43,6 +45,8 @@ class AbsensiMapBuilder {
 		$tMap->addColumn('TANGGAL', 'Tanggal', 'int', CreoleTypes::DATE, false, null);
 
 		$tMap->addColumn('SKS_NYATA', 'SksNyata', 'int', CreoleTypes::INTEGER, true, null);
+
+		$tMap->addColumn('STATUS', 'Status', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('JAM_HADIR_DOSEN', 'JamHadirDosen', 'int', CreoleTypes::TIME, false, null);
 

@@ -32,6 +32,8 @@ class MatakuliahMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('matakuliah_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('KODEMK', 'Kodemk', 'string', CreoleTypes::VARCHAR, false, 45);

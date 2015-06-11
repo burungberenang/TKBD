@@ -32,6 +32,8 @@ class DosenMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('dosen_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('NPK', 'Npk', 'string', CreoleTypes::VARCHAR, true, 20);

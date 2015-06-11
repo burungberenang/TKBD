@@ -255,7 +255,6 @@ abstract class BaseFakultasPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += FakultasPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(FakultasPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -286,7 +285,7 @@ abstract class BaseFakultasPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += FakultasPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -294,25 +293,6 @@ abstract class BaseFakultasPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = FakultasPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Jurusan.php';
-
-						$c = new Criteria();
-			
-			$c->add(JurusanPeer::FAKULTAS_ID, $obj->getId());
-			$affectedRows += JurusanPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

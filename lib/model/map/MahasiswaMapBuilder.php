@@ -32,6 +32,8 @@ class MahasiswaMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('mahasiswa_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('NRP', 'Nrp', 'string', CreoleTypes::VARCHAR, true, 10);
@@ -41,6 +43,8 @@ class MahasiswaMapBuilder {
 		$tMap->addColumn('ALAMAT', 'Alamat', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
 		$tMap->addColumn('TGL_LAHIR', 'TglLahir', 'int', CreoleTypes::DATE, false, null);
+
+		$tMap->addForeignKey('JURUSAN_ID', 'JurusanId', 'int', CreoleTypes::INTEGER, 'jurusan', 'ID', true, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

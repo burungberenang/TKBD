@@ -32,6 +32,8 @@ class JadwalMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('jadwal_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addForeignKey('JAM_ID', 'JamId', 'int', CreoleTypes::INTEGER, 'jam', 'ID', true, null);

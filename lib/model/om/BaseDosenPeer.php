@@ -436,7 +436,6 @@ abstract class BaseDosenPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += DosenPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(DosenPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -467,7 +466,7 @@ abstract class BaseDosenPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += DosenPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -475,39 +474,6 @@ abstract class BaseDosenPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = DosenPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/Slipgaji.php';
-
-						$c = new Criteria();
-			
-			$c->add(SlipgajiPeer::DOSEN_ID, $obj->getId());
-			$affectedRows += SlipgajiPeer::doDelete($c, $con);
-
-			include_once 'lib/model/Absensi.php';
-
-						$c = new Criteria();
-			
-			$c->add(AbsensiPeer::DOSEN_ID, $obj->getId());
-			$affectedRows += AbsensiPeer::doDelete($c, $con);
-
-			include_once 'lib/model/KelasparalelHasDosen.php';
-
-						$c = new Criteria();
-			
-			$c->add(KelasparalelHasDosenPeer::DOSEN_ID, $obj->getId());
-			$affectedRows += KelasparalelHasDosenPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

@@ -108,7 +108,9 @@ abstract class BaseKelasparalelHasJadwal extends BaseObject  implements Persiste
 	public function setKelasparalelId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -126,7 +128,9 @@ abstract class BaseKelasparalelHasJadwal extends BaseObject  implements Persiste
 	public function setJadwalId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -178,7 +182,9 @@ abstract class BaseKelasparalelHasJadwal extends BaseObject  implements Persiste
 	public function setId($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 

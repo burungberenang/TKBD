@@ -32,6 +32,8 @@ class HariMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('hari_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('NAMA', 'Nama', 'string', CreoleTypes::VARCHAR, false, 45);

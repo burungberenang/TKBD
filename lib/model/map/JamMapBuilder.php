@@ -32,6 +32,8 @@ class JamMapBuilder {
 
 		$tMap->setUseIdGenerator(true);
 
+		$tMap->setPrimaryKeyMethodInfo('jam_SEQ');
+
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('JAM', 'Jam', 'string', CreoleTypes::VARCHAR, false, 45);

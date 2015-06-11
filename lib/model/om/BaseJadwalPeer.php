@@ -686,7 +686,6 @@ abstract class BaseJadwalPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += JadwalPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(JadwalPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -717,7 +716,7 @@ abstract class BaseJadwalPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += JadwalPeer::doOnDeleteCascade($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -725,25 +724,6 @@ abstract class BaseJadwalPeer {
 			$con->rollback();
 			throw $e;
 		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = JadwalPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'lib/model/KelasparalelHasJadwal.php';
-
-						$c = new Criteria();
-			
-			$c->add(KelasparalelHasJadwalPeer::JADWAL_ID, $obj->getId());
-			$affectedRows += KelasparalelHasJadwalPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
 	}
 
 	

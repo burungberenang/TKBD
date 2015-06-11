@@ -1,0 +1,76 @@
+Jurusan:
+    1:
+        nama: Teknik Elektro
+        Fakultas_id: teknik
+#    2:
+#        nama: Teknik Kimia
+#        Fakultas_id: teknik
+#    3:
+#        nama: Teknik Industri
+#        Fakultas_id: teknik
+#    4:
+#        nama: Teknik Informatika
+#        Fakultas_id: teknik
+#    5:
+#        nama: Teknik Manufaktur
+#        Fakultas_id: teknik
+#    6:
+#        nama: Teknik Sistem Informasi
+#        Fakultas_id: teknik
+#    7:
+#        nama: Teknik Multimedia
+#        Fakultas_id: teknik
+#    8:
+#        nama: Information Technology Dual Degree
+#        Fakultas_id: teknik
+#    9:
+#        nama: Akuntansi
+#        Fakultas_id: ekonomi
+#    10:
+#        nama: Bisnis Internasional
+#        Fakultas_id: ekonomi
+#    11:
+#        nama: I.B.N
+#        Fakultas_id: ekonomi
+#    12:
+#        nama: Keuangan Korporat
+#        Fakultas_id: ekonomi
+#    13:
+#        nama: Manajemen Jejaring Bisnis
+#        Fakultas_id: ekonomi
+#    14:
+#        nama: Manajemen Layanan & Pariwisata
+#        Fakultas_id: ekonomi
+#    15:
+#        nama: Manajemen Pemasaran
+#        Fakultas_id: ekonomi
+#    16:
+#        nama: Manajemen SDM & Organisasi
+#        Fakultas_id: ekonomi
+#    17:
+#        nama: Pasar Modal
+#        Fakultas_id: ekonomi
+#    18:
+#        nama: Perbankan & Jasa Keuangan
+#        Fakultas_id: ekonomi
+#    19:
+#        nama: Professional Accounting
+#        Fakultas_id: ekonomi
+#    20:
+#        nama: Psikologi
+#        Fakultas_id: psikologi
+#    21:
+#        nama: Bioteknologi
+#        Fakultas_id: teknobiologi
+#    22:
+#        nama: Farmasi
+#        Fakultas_id: farmasi
+#    23:
+#        nama: Hukum
+#        Fakultas_id: hukum
+#    24:
+#        nama: Desain & Manajemen Produk
+#        Fakultas_id: fik
+#    25:
+#        nama: Desain Fashion & Produk Lifestyle
+#        Fakultas_id: fik

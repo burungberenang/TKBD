@@ -2,4 +2,4 @@ all:
   propel:
     class:          sfPropelDatabase
     param:
-     dsn:          pgsql://postgres:admin/projek_tkbd
+     dsn:          mysql://root@localhost/projek_tkbd

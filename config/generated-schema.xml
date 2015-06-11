@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="propel" package="lib.model" defaultIdMethod="native" noXsd="true">
+
+  <table name="dosen" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="npk" type="VARCHAR" size="20" required="true" />
+    <unique name="dosen_npk_unique">
+      <unique-column name="npk" />
+    </unique>
+    <column name="nama" type="VARCHAR" size="45" required="true" />
+    <column name="alamat" type="LONGVARCHAR" />
+    <column name="tgl_lahir" type="DATE" />
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+  </table>
+
+  <table name="fakultas" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="nama" type="VARCHAR" size="45" />
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+  </table>
+
+  <table name="jadwal" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="hari" type="VARCHAR" size="45" />
+    <column name="Jam_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="jam" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="Jam_id" foreign="id" />
+    </foreign-key>
+    <index name="fk_Jadwal_Jam1_idx">
+      <index-column name="Jam_id" />
+    </index>
+  </table>
+
+  <table name="jam" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="jam" type="VARCHAR" size="45" />
+  </table>
+
+  <table name="jurusan" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="nama" type="VARCHAR" size="45" />
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+    <column name="Fakultas_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="fakultas" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="Fakultas_id" foreign="id" />
+    </foreign-key>
+    <index name="fk_Jurusan_Fakultas_idx">
+      <index-column name="Fakultas_id" />
+    </index>
+  </table>
+
+  <table name="kelasparalel" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="nama" type="VARCHAR" size="45" />
+    <column name="status" type="null" />
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+    <column name="MataKuliah_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="matakuliah" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="MataKuliah_id" foreign="id" />
+    </foreign-key>
+    <index name="fk_KelasParalel_MataKuliah1_idx">
+      <index-column name="MataKuliah_id" />
+    </index>
+  </table>
+
+  <table name="kelasparalel_has_jadwal">
+    <column name="KelasParalel_id" type="INTEGER" required="true" primaryKey="true" />
+    <foreign-key foreignTable="kelasparalel" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="KelasParalel_id" foreign="id" />
+    </foreign-key>
+    <column name="Jadwal_id" type="INTEGER" required="true" primaryKey="true" />
+    <foreign-key foreignTable="jadwal" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="Jadwal_id" foreign="id" />
+    </foreign-key>
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+    <index name="fk_KelasParalel_has_Jadwal_Jadwal1_idx">
+      <index-column name="Jadwal_id" />
+    </index>
+    <index name="fk_KelasParalel_has_Jadwal_KelasParalel1_idx">
+      <index-column name="KelasParalel_id" />
+    </index>
+  </table>
+
+  <table name="mahasiswa" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="nrp" type="VARCHAR" size="10" required="true" />
+    <unique name="mahasiswa_nrp_unique">
+      <unique-column name="nrp" />
+    </unique>
+    <column name="nama" type="VARCHAR" size="45" required="true" />
+    <column name="alamat" type="LONGVARCHAR" />
+    <column name="tgl_lahir" type="DATE" />
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+  </table>
+
+  <table name="mahasiswa_has_kelasparalel">
+    <column name="Mahasiswa_id" type="INTEGER" required="true" primaryKey="true" />
+    <foreign-key foreignTable="mahasiswa" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="Mahasiswa_id" foreign="id" />
+    </foreign-key>
+    <column name="KelasParalel_id" type="INTEGER" required="true" primaryKey="true" />
+    <foreign-key foreignTable="kelasparalel" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="KelasParalel_id" foreign="id" />
+    </foreign-key>
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+    <index name="fk_Mahasiswa_has_KelasParalel_KelasParalel1_idx">
+      <index-column name="KelasParalel_id" />
+    </index>
+    <index name="fk_Mahasiswa_has_KelasParalel_Mahasiswa1_idx">
+      <index-column name="Mahasiswa_id" />
+    </index>
+  </table>
+
+  <table name="matakuliah" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="kodeMk" type="VARCHAR" size="45" />
+    <column name="nama" type="VARCHAR" size="45" />
+    <column name="sks" type="INTEGER" />
+    <column name="created_at" type="TIMESTAMP" />
+    <column name="updated_at" type="TIMESTAMP" />
+    <column name="Jurusan_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="jurusan" onDelete="RESTRICT" onUpdate="RESTRICT">
+      <reference local="Jurusan_id" foreign="id" />
+    </foreign-key>
+    <index name="fk_MataKuliah_Jurusan1_idx">
+      <index-column name="Jurusan_id" />
+    </index>
+  </table>
+
+</database>

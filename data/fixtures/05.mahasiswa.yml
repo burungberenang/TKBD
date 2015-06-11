@@ -1,0 +1,8 @@
+Mahasiswa:
+<?php for($i = 0; $i<7500; $i++): ?>
+    nrp: <?php echo $i."\n" ?>
+    nama: mahasiswa <?php echo $i."\n" ?>
+    alamat: jalan mahasiswa <?php echo $i."\n" ?>
+    tgl_lahir: 1991-<?php echo $i%11+1 ?>-<?php echo ($i%28+1)."\n" ?>
+    jurusan_id: <?php echo ($i%24+1)."\n" ?>
+<?php endfor; ?>

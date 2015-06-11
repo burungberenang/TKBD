@@ -52,7 +52,7 @@ class AbsensiMapBuilder {
 
 		$tMap->addColumn('JAM_KELUAR_DOSEN', 'JamKeluarDosen', 'int', CreoleTypes::TIME, false, null);
 
-		$tMap->addForeignKey('KELASPARALEL_ID', 'KelasparalelId', 'int', CreoleTypes::INTEGER, 'kelasparalel', 'ID', true, null);
+		$tMap->addForeignKey('KELAS_PARALEL_ID', 'KelasParalelId', 'int', CreoleTypes::INTEGER, 'kelas_palalel', 'ID', true, null);
 
 	} 
 } 

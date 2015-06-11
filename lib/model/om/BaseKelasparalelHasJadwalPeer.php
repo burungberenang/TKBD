@@ -42,7 +42,7 @@ abstract class BaseKelasparalelHasJadwalPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('KelasparalelId', 'JadwalId', 'CreatedAt', 'UpdatedAt', 'Id', ),
 		BasePeer::TYPE_COLNAME => array (KelasparalelHasJadwalPeer::KELASPARALEL_ID, KelasparalelHasJadwalPeer::JADWAL_ID, KelasparalelHasJadwalPeer::CREATED_AT, KelasparalelHasJadwalPeer::UPDATED_AT, KelasparalelHasJadwalPeer::ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('KelasParalel_id', 'Jadwal_id', 'created_at', 'updated_at', 'id', ),
+		BasePeer::TYPE_FIELDNAME => array ('kelasParalel_id', 'jadwal_id', 'created_at', 'updated_at', 'id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
@@ -50,7 +50,7 @@ abstract class BaseKelasparalelHasJadwalPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('KelasparalelId' => 0, 'JadwalId' => 1, 'CreatedAt' => 2, 'UpdatedAt' => 3, 'Id' => 4, ),
 		BasePeer::TYPE_COLNAME => array (KelasparalelHasJadwalPeer::KELASPARALEL_ID => 0, KelasparalelHasJadwalPeer::JADWAL_ID => 1, KelasparalelHasJadwalPeer::CREATED_AT => 2, KelasparalelHasJadwalPeer::UPDATED_AT => 3, KelasparalelHasJadwalPeer::ID => 4, ),
-		BasePeer::TYPE_FIELDNAME => array ('KelasParalel_id' => 0, 'Jadwal_id' => 1, 'created_at' => 2, 'updated_at' => 3, 'id' => 4, ),
+		BasePeer::TYPE_FIELDNAME => array ('kelasParalel_id' => 0, 'jadwal_id' => 1, 'created_at' => 2, 'updated_at' => 3, 'id' => 4, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 

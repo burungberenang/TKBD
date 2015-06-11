@@ -45,13 +45,13 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 
 
 	
-	protected $kelasparalel_id;
+	protected $kelas_paralel_id;
 
 	
 	protected $aDosen;
 
 	
-	protected $aKelasparalel;
+	protected $aKelasPalalel;
 
 	
 	protected $collMahasiswaHasAbsensis;
@@ -174,10 +174,10 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getKelasparalelId()
+	public function getKelasParalelId()
 	{
 
-		return $this->kelasparalel_id;
+		return $this->kelas_paralel_id;
 	}
 
 	
@@ -332,7 +332,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setKelasparalelId($v)
+	public function setKelasParalelId($v)
 	{
 
 		
@@ -341,13 +341,13 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 			$v = (int) $v;
 		}
 
-		if ($this->kelasparalel_id !== $v) {
-			$this->kelasparalel_id = $v;
-			$this->modifiedColumns[] = AbsensiPeer::KELASPARALEL_ID;
+		if ($this->kelas_paralel_id !== $v) {
+			$this->kelas_paralel_id = $v;
+			$this->modifiedColumns[] = AbsensiPeer::KELAS_PARALEL_ID;
 		}
 
-		if ($this->aKelasparalel !== null && $this->aKelasparalel->getId() !== $v) {
-			$this->aKelasparalel = null;
+		if ($this->aKelasPalalel !== null && $this->aKelasPalalel->getId() !== $v) {
+			$this->aKelasPalalel = null;
 		}
 
 	} 
@@ -374,7 +374,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 
 			$this->jam_keluar_dosen = $rs->getTime($startcol + 8, null);
 
-			$this->kelasparalel_id = $rs->getInt($startcol + 9);
+			$this->kelas_paralel_id = $rs->getInt($startcol + 9);
 
 			$this->resetModified();
 
@@ -445,11 +445,11 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 				$this->setDosen($this->aDosen);
 			}
 
-			if ($this->aKelasparalel !== null) {
-				if ($this->aKelasparalel->isModified()) {
-					$affectedRows += $this->aKelasparalel->save($con);
+			if ($this->aKelasPalalel !== null) {
+				if ($this->aKelasPalalel->isModified()) {
+					$affectedRows += $this->aKelasPalalel->save($con);
 				}
-				$this->setKelasparalel($this->aKelasparalel);
+				$this->setKelasPalalel($this->aKelasPalalel);
 			}
 
 
@@ -515,9 +515,9 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->aKelasparalel !== null) {
-				if (!$this->aKelasparalel->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aKelasparalel->getValidationFailures());
+			if ($this->aKelasPalalel !== null) {
+				if (!$this->aKelasPalalel->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aKelasPalalel->getValidationFailures());
 				}
 			}
 
@@ -581,7 +581,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 				return $this->getJamKeluarDosen();
 				break;
 			case 9:
-				return $this->getKelasparalelId();
+				return $this->getKelasParalelId();
 				break;
 			default:
 				return null;
@@ -602,7 +602,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 			$keys[6] => $this->getStatus(),
 			$keys[7] => $this->getJamHadirDosen(),
 			$keys[8] => $this->getJamKeluarDosen(),
-			$keys[9] => $this->getKelasparalelId(),
+			$keys[9] => $this->getKelasParalelId(),
 		);
 		return $result;
 	}
@@ -646,7 +646,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 				$this->setJamKeluarDosen($value);
 				break;
 			case 9:
-				$this->setKelasparalelId($value);
+				$this->setKelasParalelId($value);
 				break;
 		} 	}
 
@@ -664,7 +664,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[6], $arr)) $this->setStatus($arr[$keys[6]]);
 		if (array_key_exists($keys[7], $arr)) $this->setJamHadirDosen($arr[$keys[7]]);
 		if (array_key_exists($keys[8], $arr)) $this->setJamKeluarDosen($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setKelasparalelId($arr[$keys[9]]);
+		if (array_key_exists($keys[9], $arr)) $this->setKelasParalelId($arr[$keys[9]]);
 	}
 
 	
@@ -681,7 +681,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(AbsensiPeer::STATUS)) $criteria->add(AbsensiPeer::STATUS, $this->status);
 		if ($this->isColumnModified(AbsensiPeer::JAM_HADIR_DOSEN)) $criteria->add(AbsensiPeer::JAM_HADIR_DOSEN, $this->jam_hadir_dosen);
 		if ($this->isColumnModified(AbsensiPeer::JAM_KELUAR_DOSEN)) $criteria->add(AbsensiPeer::JAM_KELUAR_DOSEN, $this->jam_keluar_dosen);
-		if ($this->isColumnModified(AbsensiPeer::KELASPARALEL_ID)) $criteria->add(AbsensiPeer::KELASPARALEL_ID, $this->kelasparalel_id);
+		if ($this->isColumnModified(AbsensiPeer::KELAS_PARALEL_ID)) $criteria->add(AbsensiPeer::KELAS_PARALEL_ID, $this->kelas_paralel_id);
 
 		return $criteria;
 	}
@@ -728,7 +728,7 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 
 		$copyObj->setJamKeluarDosen($this->jam_keluar_dosen);
 
-		$copyObj->setKelasparalelId($this->kelasparalel_id);
+		$copyObj->setKelasParalelId($this->kelas_paralel_id);
 
 
 		if ($deepCopy) {
@@ -793,32 +793,32 @@ abstract class BaseAbsensi extends BaseObject  implements Persistent {
 	}
 
 	
-	public function setKelasparalel($v)
+	public function setKelasPalalel($v)
 	{
 
 
 		if ($v === null) {
-			$this->setKelasparalelId(NULL);
+			$this->setKelasParalelId(NULL);
 		} else {
-			$this->setKelasparalelId($v->getId());
+			$this->setKelasParalelId($v->getId());
 		}
 
 
-		$this->aKelasparalel = $v;
+		$this->aKelasPalalel = $v;
 	}
 
 
 	
-	public function getKelasparalel($con = null)
+	public function getKelasPalalel($con = null)
 	{
-		if ($this->aKelasparalel === null && ($this->kelasparalel_id !== null)) {
-						include_once 'lib/model/om/BaseKelasparalelPeer.php';
+		if ($this->aKelasPalalel === null && ($this->kelas_paralel_id !== null)) {
+						include_once 'lib/model/om/BaseKelasPalalelPeer.php';
 
-			$this->aKelasparalel = KelasparalelPeer::retrieveByPK($this->kelasparalel_id, $con);
+			$this->aKelasPalalel = KelasPalalelPeer::retrieveByPK($this->kelas_paralel_id, $con);
 
 			
 		}
-		return $this->aKelasparalel;
+		return $this->aKelasPalalel;
 	}
 
 	

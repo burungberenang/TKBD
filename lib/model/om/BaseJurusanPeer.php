@@ -42,7 +42,7 @@ abstract class BaseJurusanPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('Id', 'Nama', 'CreatedAt', 'UpdatedAt', 'FakultasId', ),
 		BasePeer::TYPE_COLNAME => array (JurusanPeer::ID, JurusanPeer::NAMA, JurusanPeer::CREATED_AT, JurusanPeer::UPDATED_AT, JurusanPeer::FAKULTAS_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'nama', 'created_at', 'updated_at', 'Fakultas_id', ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'nama', 'created_at', 'updated_at', 'fakultas_id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
@@ -50,7 +50,7 @@ abstract class BaseJurusanPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Nama' => 1, 'CreatedAt' => 2, 'UpdatedAt' => 3, 'FakultasId' => 4, ),
 		BasePeer::TYPE_COLNAME => array (JurusanPeer::ID => 0, JurusanPeer::NAMA => 1, JurusanPeer::CREATED_AT => 2, JurusanPeer::UPDATED_AT => 3, JurusanPeer::FAKULTAS_ID => 4, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'nama' => 1, 'created_at' => 2, 'updated_at' => 3, 'Fakultas_id' => 4, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'nama' => 1, 'created_at' => 2, 'updated_at' => 3, 'fakultas_id' => 4, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 

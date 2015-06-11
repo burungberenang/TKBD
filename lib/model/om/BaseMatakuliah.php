@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class BaseMatakuliah extends BaseObject  implements Persistent {
+abstract class BaseMataKuliah extends BaseObject  implements Persistent {
 
 
 	
@@ -39,10 +39,10 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	protected $aJurusan;
 
 	
-	protected $collKelasparalels;
+	protected $collKelasPalalels;
 
 	
-	protected $lastKelasparalelCriteria = null;
+	protected $lastKelasPalalelCriteria = null;
 
 	
 	protected $alreadyInSave = false;
@@ -141,7 +141,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 		if ($this->id !== $v) {
 			$this->id = $v;
-			$this->modifiedColumns[] = MatakuliahPeer::ID;
+			$this->modifiedColumns[] = MataKuliahPeer::ID;
 		}
 
 	} 
@@ -157,7 +157,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 		if ($this->kodemk !== $v) {
 			$this->kodemk = $v;
-			$this->modifiedColumns[] = MatakuliahPeer::KODEMK;
+			$this->modifiedColumns[] = MataKuliahPeer::KODEMK;
 		}
 
 	} 
@@ -173,7 +173,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 		if ($this->nama !== $v) {
 			$this->nama = $v;
-			$this->modifiedColumns[] = MatakuliahPeer::NAMA;
+			$this->modifiedColumns[] = MataKuliahPeer::NAMA;
 		}
 
 	} 
@@ -189,7 +189,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 		if ($this->sks !== $v) {
 			$this->sks = $v;
-			$this->modifiedColumns[] = MatakuliahPeer::SKS;
+			$this->modifiedColumns[] = MataKuliahPeer::SKS;
 		}
 
 	} 
@@ -206,7 +206,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 		}
 		if ($this->created_at !== $ts) {
 			$this->created_at = $ts;
-			$this->modifiedColumns[] = MatakuliahPeer::CREATED_AT;
+			$this->modifiedColumns[] = MataKuliahPeer::CREATED_AT;
 		}
 
 	} 
@@ -223,7 +223,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 		}
 		if ($this->updated_at !== $ts) {
 			$this->updated_at = $ts;
-			$this->modifiedColumns[] = MatakuliahPeer::UPDATED_AT;
+			$this->modifiedColumns[] = MataKuliahPeer::UPDATED_AT;
 		}
 
 	} 
@@ -239,7 +239,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 		if ($this->jurusan_id !== $v) {
 			$this->jurusan_id = $v;
-			$this->modifiedColumns[] = MatakuliahPeer::JURUSAN_ID;
+			$this->modifiedColumns[] = MataKuliahPeer::JURUSAN_ID;
 		}
 
 		if ($this->aJurusan !== null && $this->aJurusan->getId() !== $v) {
@@ -272,7 +272,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 						return $startcol + 7; 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating Matakuliah object", $e);
+			throw new PropelException("Error populating MataKuliah object", $e);
 		}
 	}
 
@@ -284,12 +284,12 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(MatakuliahPeer::DATABASE_NAME);
+			$con = Propel::getConnection(MataKuliahPeer::DATABASE_NAME);
 		}
 
 		try {
 			$con->begin();
-			MatakuliahPeer::doDelete($this, $con);
+			MataKuliahPeer::doDelete($this, $con);
 			$this->setDeleted(true);
 			$con->commit();
 		} catch (PropelException $e) {
@@ -301,12 +301,12 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function save($con = null)
 	{
-    if ($this->isNew() && !$this->isColumnModified(MatakuliahPeer::CREATED_AT))
+    if ($this->isNew() && !$this->isColumnModified(MataKuliahPeer::CREATED_AT))
     {
       $this->setCreatedAt(time());
     }
 
-    if ($this->isModified() && !$this->isColumnModified(MatakuliahPeer::UPDATED_AT))
+    if ($this->isModified() && !$this->isColumnModified(MataKuliahPeer::UPDATED_AT))
     {
       $this->setUpdatedAt(time());
     }
@@ -316,7 +316,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(MatakuliahPeer::DATABASE_NAME);
+			$con = Propel::getConnection(MataKuliahPeer::DATABASE_NAME);
 		}
 
 		try {
@@ -348,17 +348,17 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 
 						if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = MatakuliahPeer::doInsert($this, $con);
+					$pk = MataKuliahPeer::doInsert($this, $con);
 					$affectedRows += 1; 										 										 
 					$this->setId($pk);  
 					$this->setNew(false);
 				} else {
-					$affectedRows += MatakuliahPeer::doUpdate($this, $con);
+					$affectedRows += MataKuliahPeer::doUpdate($this, $con);
 				}
 				$this->resetModified(); 			}
 
-			if ($this->collKelasparalels !== null) {
-				foreach($this->collKelasparalels as $referrerFK) {
+			if ($this->collKelasPalalels !== null) {
+				foreach($this->collKelasPalalels as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -409,13 +409,13 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 			}
 
 
-			if (($retval = MatakuliahPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = MataKuliahPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
 
-				if ($this->collKelasparalels !== null) {
-					foreach($this->collKelasparalels as $referrerFK) {
+				if ($this->collKelasPalalels !== null) {
+					foreach($this->collKelasPalalels as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -432,7 +432,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = MatakuliahPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = MataKuliahPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->getByPosition($pos);
 	}
 
@@ -469,7 +469,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = MatakuliahPeer::getFieldNames($keyType);
+		$keys = MataKuliahPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getKodemk(),
@@ -485,7 +485,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = MatakuliahPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = MataKuliahPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -519,7 +519,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = MatakuliahPeer::getFieldNames($keyType);
+		$keys = MataKuliahPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setKodemk($arr[$keys[1]]);
@@ -533,15 +533,15 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(MatakuliahPeer::DATABASE_NAME);
+		$criteria = new Criteria(MataKuliahPeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(MatakuliahPeer::ID)) $criteria->add(MatakuliahPeer::ID, $this->id);
-		if ($this->isColumnModified(MatakuliahPeer::KODEMK)) $criteria->add(MatakuliahPeer::KODEMK, $this->kodemk);
-		if ($this->isColumnModified(MatakuliahPeer::NAMA)) $criteria->add(MatakuliahPeer::NAMA, $this->nama);
-		if ($this->isColumnModified(MatakuliahPeer::SKS)) $criteria->add(MatakuliahPeer::SKS, $this->sks);
-		if ($this->isColumnModified(MatakuliahPeer::CREATED_AT)) $criteria->add(MatakuliahPeer::CREATED_AT, $this->created_at);
-		if ($this->isColumnModified(MatakuliahPeer::UPDATED_AT)) $criteria->add(MatakuliahPeer::UPDATED_AT, $this->updated_at);
-		if ($this->isColumnModified(MatakuliahPeer::JURUSAN_ID)) $criteria->add(MatakuliahPeer::JURUSAN_ID, $this->jurusan_id);
+		if ($this->isColumnModified(MataKuliahPeer::ID)) $criteria->add(MataKuliahPeer::ID, $this->id);
+		if ($this->isColumnModified(MataKuliahPeer::KODEMK)) $criteria->add(MataKuliahPeer::KODEMK, $this->kodemk);
+		if ($this->isColumnModified(MataKuliahPeer::NAMA)) $criteria->add(MataKuliahPeer::NAMA, $this->nama);
+		if ($this->isColumnModified(MataKuliahPeer::SKS)) $criteria->add(MataKuliahPeer::SKS, $this->sks);
+		if ($this->isColumnModified(MataKuliahPeer::CREATED_AT)) $criteria->add(MataKuliahPeer::CREATED_AT, $this->created_at);
+		if ($this->isColumnModified(MataKuliahPeer::UPDATED_AT)) $criteria->add(MataKuliahPeer::UPDATED_AT, $this->updated_at);
+		if ($this->isColumnModified(MataKuliahPeer::JURUSAN_ID)) $criteria->add(MataKuliahPeer::JURUSAN_ID, $this->jurusan_id);
 
 		return $criteria;
 	}
@@ -549,9 +549,9 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(MatakuliahPeer::DATABASE_NAME);
+		$criteria = new Criteria(MataKuliahPeer::DATABASE_NAME);
 
-		$criteria->add(MatakuliahPeer::ID, $this->id);
+		$criteria->add(MataKuliahPeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -588,8 +588,8 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 		if ($deepCopy) {
 									$copyObj->setNew(false);
 
-			foreach($this->getKelasparalels() as $relObj) {
-				$copyObj->addKelasparalel($relObj->copy($deepCopy));
+			foreach($this->getKelasPalalels() as $relObj) {
+				$copyObj->addKelasPalalel($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -612,7 +612,7 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new MatakuliahPeer();
+			self::$peer = new MataKuliahPeer();
 		}
 		return self::$peer;
 	}
@@ -647,17 +647,17 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 	}
 
 	
-	public function initKelasparalels()
+	public function initKelasPalalels()
 	{
-		if ($this->collKelasparalels === null) {
-			$this->collKelasparalels = array();
+		if ($this->collKelasPalalels === null) {
+			$this->collKelasPalalels = array();
 		}
 	}
 
 	
-	public function getKelasparalels($criteria = null, $con = null)
+	public function getKelasPalalels($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelPeer.php';
+				include_once 'lib/model/om/BaseKelasPalalelPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -666,36 +666,36 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collKelasparalels === null) {
+		if ($this->collKelasPalalels === null) {
 			if ($this->isNew()) {
-			   $this->collKelasparalels = array();
+			   $this->collKelasPalalels = array();
 			} else {
 
-				$criteria->add(KelasparalelPeer::MATAKULIAH_ID, $this->getId());
+				$criteria->add(KelasPalalelPeer::MATA_KULIAH_ID, $this->getId());
 
-				KelasparalelPeer::addSelectColumns($criteria);
-				$this->collKelasparalels = KelasparalelPeer::doSelect($criteria, $con);
+				KelasPalalelPeer::addSelectColumns($criteria);
+				$this->collKelasPalalels = KelasPalalelPeer::doSelect($criteria, $con);
 			}
 		} else {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(KelasparalelPeer::MATAKULIAH_ID, $this->getId());
+				$criteria->add(KelasPalalelPeer::MATA_KULIAH_ID, $this->getId());
 
-				KelasparalelPeer::addSelectColumns($criteria);
-				if (!isset($this->lastKelasparalelCriteria) || !$this->lastKelasparalelCriteria->equals($criteria)) {
-					$this->collKelasparalels = KelasparalelPeer::doSelect($criteria, $con);
+				KelasPalalelPeer::addSelectColumns($criteria);
+				if (!isset($this->lastKelasPalalelCriteria) || !$this->lastKelasPalalelCriteria->equals($criteria)) {
+					$this->collKelasPalalels = KelasPalalelPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastKelasparalelCriteria = $criteria;
-		return $this->collKelasparalels;
+		$this->lastKelasPalalelCriteria = $criteria;
+		return $this->collKelasPalalels;
 	}
 
 	
-	public function countKelasparalels($criteria = null, $distinct = false, $con = null)
+	public function countKelasPalalels($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelPeer.php';
+				include_once 'lib/model/om/BaseKelasPalalelPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -704,16 +704,16 @@ abstract class BaseMatakuliah extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(KelasparalelPeer::MATAKULIAH_ID, $this->getId());
+		$criteria->add(KelasPalalelPeer::MATA_KULIAH_ID, $this->getId());
 
-		return KelasparalelPeer::doCount($criteria, $distinct, $con);
+		return KelasPalalelPeer::doCount($criteria, $distinct, $con);
 	}
 
 	
-	public function addKelasparalel(Kelasparalel $l)
+	public function addKelasPalalel(KelasPalalel $l)
 	{
-		$this->collKelasparalels[] = $l;
-		$l->setMatakuliah($this);
+		$this->collKelasPalalels[] = $l;
+		$l->setMataKuliah($this);
 	}
 
 } 

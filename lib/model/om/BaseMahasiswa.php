@@ -49,10 +49,10 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	protected $lastMahasiswaHasAbsensiCriteria = null;
 
 	
-	protected $collMahasiswaHasKelasparalels;
+	protected $collMahasiswaHasKelasPalalels;
 
 	
-	protected $lastMahasiswaHasKelasparalelCriteria = null;
+	protected $lastMahasiswaHasKelasPalalelCriteria = null;
 
 	
 	protected $alreadyInSave = false;
@@ -416,8 +416,8 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->collMahasiswaHasKelasparalels !== null) {
-				foreach($this->collMahasiswaHasKelasparalels as $referrerFK) {
+			if ($this->collMahasiswaHasKelasPalalels !== null) {
+				foreach($this->collMahasiswaHasKelasPalalels as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -481,8 +481,8 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 					}
 				}
 
-				if ($this->collMahasiswaHasKelasparalels !== null) {
-					foreach($this->collMahasiswaHasKelasparalels as $referrerFK) {
+				if ($this->collMahasiswaHasKelasPalalels !== null) {
+					foreach($this->collMahasiswaHasKelasPalalels as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -670,8 +670,8 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 				$copyObj->addMahasiswaHasAbsensi($relObj->copy($deepCopy));
 			}
 
-			foreach($this->getMahasiswaHasKelasparalels() as $relObj) {
-				$copyObj->addMahasiswaHasKelasparalel($relObj->copy($deepCopy));
+			foreach($this->getMahasiswaHasKelasPalalels() as $relObj) {
+				$copyObj->addMahasiswaHasKelasPalalel($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -834,17 +834,17 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 	}
 
 	
-	public function initMahasiswaHasKelasparalels()
+	public function initMahasiswaHasKelasPalalels()
 	{
-		if ($this->collMahasiswaHasKelasparalels === null) {
-			$this->collMahasiswaHasKelasparalels = array();
+		if ($this->collMahasiswaHasKelasPalalels === null) {
+			$this->collMahasiswaHasKelasPalalels = array();
 		}
 	}
 
 	
-	public function getMahasiswaHasKelasparalels($criteria = null, $con = null)
+	public function getMahasiswaHasKelasPalalels($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseMahasiswaHasKelasparalelPeer.php';
+				include_once 'lib/model/om/BaseMahasiswaHasKelasPalalelPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -853,36 +853,36 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collMahasiswaHasKelasparalels === null) {
+		if ($this->collMahasiswaHasKelasPalalels === null) {
 			if ($this->isNew()) {
-			   $this->collMahasiswaHasKelasparalels = array();
+			   $this->collMahasiswaHasKelasPalalels = array();
 			} else {
 
-				$criteria->add(MahasiswaHasKelasparalelPeer::MAHASISWA_ID, $this->getId());
+				$criteria->add(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, $this->getId());
 
-				MahasiswaHasKelasparalelPeer::addSelectColumns($criteria);
-				$this->collMahasiswaHasKelasparalels = MahasiswaHasKelasparalelPeer::doSelect($criteria, $con);
+				MahasiswaHasKelasPalalelPeer::addSelectColumns($criteria);
+				$this->collMahasiswaHasKelasPalalels = MahasiswaHasKelasPalalelPeer::doSelect($criteria, $con);
 			}
 		} else {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(MahasiswaHasKelasparalelPeer::MAHASISWA_ID, $this->getId());
+				$criteria->add(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, $this->getId());
 
-				MahasiswaHasKelasparalelPeer::addSelectColumns($criteria);
-				if (!isset($this->lastMahasiswaHasKelasparalelCriteria) || !$this->lastMahasiswaHasKelasparalelCriteria->equals($criteria)) {
-					$this->collMahasiswaHasKelasparalels = MahasiswaHasKelasparalelPeer::doSelect($criteria, $con);
+				MahasiswaHasKelasPalalelPeer::addSelectColumns($criteria);
+				if (!isset($this->lastMahasiswaHasKelasPalalelCriteria) || !$this->lastMahasiswaHasKelasPalalelCriteria->equals($criteria)) {
+					$this->collMahasiswaHasKelasPalalels = MahasiswaHasKelasPalalelPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastMahasiswaHasKelasparalelCriteria = $criteria;
-		return $this->collMahasiswaHasKelasparalels;
+		$this->lastMahasiswaHasKelasPalalelCriteria = $criteria;
+		return $this->collMahasiswaHasKelasPalalels;
 	}
 
 	
-	public function countMahasiswaHasKelasparalels($criteria = null, $distinct = false, $con = null)
+	public function countMahasiswaHasKelasPalalels($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseMahasiswaHasKelasparalelPeer.php';
+				include_once 'lib/model/om/BaseMahasiswaHasKelasPalalelPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -891,23 +891,23 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(MahasiswaHasKelasparalelPeer::MAHASISWA_ID, $this->getId());
+		$criteria->add(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, $this->getId());
 
-		return MahasiswaHasKelasparalelPeer::doCount($criteria, $distinct, $con);
+		return MahasiswaHasKelasPalalelPeer::doCount($criteria, $distinct, $con);
 	}
 
 	
-	public function addMahasiswaHasKelasparalel(MahasiswaHasKelasparalel $l)
+	public function addMahasiswaHasKelasPalalel(MahasiswaHasKelasPalalel $l)
 	{
-		$this->collMahasiswaHasKelasparalels[] = $l;
+		$this->collMahasiswaHasKelasPalalels[] = $l;
 		$l->setMahasiswa($this);
 	}
 
 
 	
-	public function getMahasiswaHasKelasparalelsJoinKelasparalel($criteria = null, $con = null)
+	public function getMahasiswaHasKelasPalalelsJoinKelasPalalel($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseMahasiswaHasKelasparalelPeer.php';
+				include_once 'lib/model/om/BaseMahasiswaHasKelasPalalelPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -916,26 +916,26 @@ abstract class BaseMahasiswa extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collMahasiswaHasKelasparalels === null) {
+		if ($this->collMahasiswaHasKelasPalalels === null) {
 			if ($this->isNew()) {
-				$this->collMahasiswaHasKelasparalels = array();
+				$this->collMahasiswaHasKelasPalalels = array();
 			} else {
 
-				$criteria->add(MahasiswaHasKelasparalelPeer::MAHASISWA_ID, $this->getId());
+				$criteria->add(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, $this->getId());
 
-				$this->collMahasiswaHasKelasparalels = MahasiswaHasKelasparalelPeer::doSelectJoinKelasparalel($criteria, $con);
+				$this->collMahasiswaHasKelasPalalels = MahasiswaHasKelasPalalelPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		} else {
 									
-			$criteria->add(MahasiswaHasKelasparalelPeer::MAHASISWA_ID, $this->getId());
+			$criteria->add(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, $this->getId());
 
-			if (!isset($this->lastMahasiswaHasKelasparalelCriteria) || !$this->lastMahasiswaHasKelasparalelCriteria->equals($criteria)) {
-				$this->collMahasiswaHasKelasparalels = MahasiswaHasKelasparalelPeer::doSelectJoinKelasparalel($criteria, $con);
+			if (!isset($this->lastMahasiswaHasKelasPalalelCriteria) || !$this->lastMahasiswaHasKelasPalalelCriteria->equals($criteria)) {
+				$this->collMahasiswaHasKelasPalalels = MahasiswaHasKelasPalalelPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		}
-		$this->lastMahasiswaHasKelasparalelCriteria = $criteria;
+		$this->lastMahasiswaHasKelasPalalelCriteria = $criteria;
 
-		return $this->collMahasiswaHasKelasparalels;
+		return $this->collMahasiswaHasKelasPalalels;
 	}
 
 } 

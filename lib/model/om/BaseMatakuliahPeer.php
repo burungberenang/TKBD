@@ -1,16 +1,16 @@
 <?php
 
 
-abstract class BaseMatakuliahPeer {
+abstract class BaseMataKuliahPeer {
 
 	
 	const DATABASE_NAME = 'propel';
 
 	
-	const TABLE_NAME = 'matakuliah';
+	const TABLE_NAME = 'mata_kuliah';
 
 	
-	const CLASS_DEFAULT = 'lib.model.Matakuliah';
+	const CLASS_DEFAULT = 'lib.model.MataKuliah';
 
 	
 	const NUM_COLUMNS = 7;
@@ -20,25 +20,25 @@ abstract class BaseMatakuliahPeer {
 
 
 	
-	const ID = 'matakuliah.ID';
+	const ID = 'mata_kuliah.ID';
 
 	
-	const KODEMK = 'matakuliah.KODEMK';
+	const KODEMK = 'mata_kuliah.KODEMK';
 
 	
-	const NAMA = 'matakuliah.NAMA';
+	const NAMA = 'mata_kuliah.NAMA';
 
 	
-	const SKS = 'matakuliah.SKS';
+	const SKS = 'mata_kuliah.SKS';
 
 	
-	const CREATED_AT = 'matakuliah.CREATED_AT';
+	const CREATED_AT = 'mata_kuliah.CREATED_AT';
 
 	
-	const UPDATED_AT = 'matakuliah.UPDATED_AT';
+	const UPDATED_AT = 'mata_kuliah.UPDATED_AT';
 
 	
-	const JURUSAN_ID = 'matakuliah.JURUSAN_ID';
+	const JURUSAN_ID = 'mata_kuliah.JURUSAN_ID';
 
 	
 	private static $phpNameMap = null;
@@ -47,30 +47,30 @@ abstract class BaseMatakuliahPeer {
 	
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('Id', 'Kodemk', 'Nama', 'Sks', 'CreatedAt', 'UpdatedAt', 'JurusanId', ),
-		BasePeer::TYPE_COLNAME => array (MatakuliahPeer::ID, MatakuliahPeer::KODEMK, MatakuliahPeer::NAMA, MatakuliahPeer::SKS, MatakuliahPeer::CREATED_AT, MatakuliahPeer::UPDATED_AT, MatakuliahPeer::JURUSAN_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'kodeMk', 'nama', 'sks', 'created_at', 'updated_at', 'Jurusan_id', ),
+		BasePeer::TYPE_COLNAME => array (MataKuliahPeer::ID, MataKuliahPeer::KODEMK, MataKuliahPeer::NAMA, MataKuliahPeer::SKS, MataKuliahPeer::CREATED_AT, MataKuliahPeer::UPDATED_AT, MataKuliahPeer::JURUSAN_ID, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'kodeMk', 'nama', 'sks', 'created_at', 'updated_at', 'jurusan_id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Kodemk' => 1, 'Nama' => 2, 'Sks' => 3, 'CreatedAt' => 4, 'UpdatedAt' => 5, 'JurusanId' => 6, ),
-		BasePeer::TYPE_COLNAME => array (MatakuliahPeer::ID => 0, MatakuliahPeer::KODEMK => 1, MatakuliahPeer::NAMA => 2, MatakuliahPeer::SKS => 3, MatakuliahPeer::CREATED_AT => 4, MatakuliahPeer::UPDATED_AT => 5, MatakuliahPeer::JURUSAN_ID => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'kodeMk' => 1, 'nama' => 2, 'sks' => 3, 'created_at' => 4, 'updated_at' => 5, 'Jurusan_id' => 6, ),
+		BasePeer::TYPE_COLNAME => array (MataKuliahPeer::ID => 0, MataKuliahPeer::KODEMK => 1, MataKuliahPeer::NAMA => 2, MataKuliahPeer::SKS => 3, MataKuliahPeer::CREATED_AT => 4, MataKuliahPeer::UPDATED_AT => 5, MataKuliahPeer::JURUSAN_ID => 6, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'kodeMk' => 1, 'nama' => 2, 'sks' => 3, 'created_at' => 4, 'updated_at' => 5, 'jurusan_id' => 6, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/MatakuliahMapBuilder.php';
-		return BasePeer::getMapBuilder('lib.model.map.MatakuliahMapBuilder');
+		include_once 'lib/model/map/MataKuliahMapBuilder.php';
+		return BasePeer::getMapBuilder('lib.model.map.MataKuliahMapBuilder');
 	}
 	
 	public static function getPhpNameMap()
 	{
 		if (self::$phpNameMap === null) {
-			$map = MatakuliahPeer::getTableMap();
+			$map = MataKuliahPeer::getTableMap();
 			$columns = $map->getColumns();
 			$nameMap = array();
 			foreach ($columns as $column) {
@@ -104,31 +104,31 @@ abstract class BaseMatakuliahPeer {
 	
 	public static function alias($alias, $column)
 	{
-		return str_replace(MatakuliahPeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(MataKuliahPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
-		$criteria->addSelectColumn(MatakuliahPeer::ID);
+		$criteria->addSelectColumn(MataKuliahPeer::ID);
 
-		$criteria->addSelectColumn(MatakuliahPeer::KODEMK);
+		$criteria->addSelectColumn(MataKuliahPeer::KODEMK);
 
-		$criteria->addSelectColumn(MatakuliahPeer::NAMA);
+		$criteria->addSelectColumn(MataKuliahPeer::NAMA);
 
-		$criteria->addSelectColumn(MatakuliahPeer::SKS);
+		$criteria->addSelectColumn(MataKuliahPeer::SKS);
 
-		$criteria->addSelectColumn(MatakuliahPeer::CREATED_AT);
+		$criteria->addSelectColumn(MataKuliahPeer::CREATED_AT);
 
-		$criteria->addSelectColumn(MatakuliahPeer::UPDATED_AT);
+		$criteria->addSelectColumn(MataKuliahPeer::UPDATED_AT);
 
-		$criteria->addSelectColumn(MatakuliahPeer::JURUSAN_ID);
+		$criteria->addSelectColumn(MataKuliahPeer::JURUSAN_ID);
 
 	}
 
-	const COUNT = 'COUNT(matakuliah.ID)';
-	const COUNT_DISTINCT = 'COUNT(DISTINCT matakuliah.ID)';
+	const COUNT = 'COUNT(mata_kuliah.ID)';
+	const COUNT_DISTINCT = 'COUNT(DISTINCT mata_kuliah.ID)';
 
 	
 	public static function doCount(Criteria $criteria, $distinct = false, $con = null)
@@ -137,9 +137,9 @@ abstract class BaseMatakuliahPeer {
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(MatakuliahPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MataKuliahPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(MatakuliahPeer::COUNT);
+			$criteria->addSelectColumn(MataKuliahPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -147,7 +147,7 @@ abstract class BaseMatakuliahPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$rs = MatakuliahPeer::doSelectRS($criteria, $con);
+		$rs = MataKuliahPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -159,7 +159,7 @@ abstract class BaseMatakuliahPeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = MatakuliahPeer::doSelect($critcopy, $con);
+		$objects = MataKuliahPeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -168,7 +168,7 @@ abstract class BaseMatakuliahPeer {
 	
 	public static function doSelect(Criteria $criteria, $con = null)
 	{
-		return MatakuliahPeer::populateObjects(MatakuliahPeer::doSelectRS($criteria, $con));
+		return MataKuliahPeer::populateObjects(MataKuliahPeer::doSelectRS($criteria, $con));
 	}
 	
 	public static function doSelectRS(Criteria $criteria, $con = null)
@@ -179,7 +179,7 @@ abstract class BaseMatakuliahPeer {
 
 		if (!$criteria->getSelectColumns()) {
 			$criteria = clone $criteria;
-			MatakuliahPeer::addSelectColumns($criteria);
+			MataKuliahPeer::addSelectColumns($criteria);
 		}
 
 				$criteria->setDbName(self::DATABASE_NAME);
@@ -191,7 +191,7 @@ abstract class BaseMatakuliahPeer {
 	{
 		$results = array();
 	
-				$cls = MatakuliahPeer::getOMClass();
+				$cls = MataKuliahPeer::getOMClass();
 		$cls = Propel::import($cls);
 				while($rs->next()) {
 		
@@ -210,9 +210,9 @@ abstract class BaseMatakuliahPeer {
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(MatakuliahPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MataKuliahPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(MatakuliahPeer::COUNT);
+			$criteria->addSelectColumn(MataKuliahPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -220,9 +220,9 @@ abstract class BaseMatakuliahPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(MatakuliahPeer::JURUSAN_ID, JurusanPeer::ID);
+		$criteria->addJoin(MataKuliahPeer::JURUSAN_ID, JurusanPeer::ID);
 
-		$rs = MatakuliahPeer::doSelectRS($criteria, $con);
+		$rs = MataKuliahPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -240,17 +240,17 @@ abstract class BaseMatakuliahPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		MatakuliahPeer::addSelectColumns($c);
-		$startcol = (MatakuliahPeer::NUM_COLUMNS - MatakuliahPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		MataKuliahPeer::addSelectColumns($c);
+		$startcol = (MataKuliahPeer::NUM_COLUMNS - MataKuliahPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 		JurusanPeer::addSelectColumns($c);
 
-		$c->addJoin(MatakuliahPeer::JURUSAN_ID, JurusanPeer::ID);
+		$c->addJoin(MataKuliahPeer::JURUSAN_ID, JurusanPeer::ID);
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while($rs->next()) {
 
-			$omClass = MatakuliahPeer::getOMClass();
+			$omClass = MataKuliahPeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj1 = new $cls();
@@ -266,12 +266,12 @@ abstract class BaseMatakuliahPeer {
 			foreach($results as $temp_obj1) {
 				$temp_obj2 = $temp_obj1->getJurusan(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-										$temp_obj2->addMatakuliah($obj1); 					break;
+										$temp_obj2->addMataKuliah($obj1); 					break;
 				}
 			}
 			if ($newObject) {
-				$obj2->initMatakuliahs();
-				$obj2->addMatakuliah($obj1); 			}
+				$obj2->initMataKuliahs();
+				$obj2->addMataKuliah($obj1); 			}
 			$results[] = $obj1;
 		}
 		return $results;
@@ -285,9 +285,9 @@ abstract class BaseMatakuliahPeer {
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(MatakuliahPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MataKuliahPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(MatakuliahPeer::COUNT);
+			$criteria->addSelectColumn(MataKuliahPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -295,9 +295,9 @@ abstract class BaseMatakuliahPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(MatakuliahPeer::JURUSAN_ID, JurusanPeer::ID);
+		$criteria->addJoin(MataKuliahPeer::JURUSAN_ID, JurusanPeer::ID);
 
-		$rs = MatakuliahPeer::doSelectRS($criteria, $con);
+		$rs = MataKuliahPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -315,20 +315,20 @@ abstract class BaseMatakuliahPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		MatakuliahPeer::addSelectColumns($c);
-		$startcol2 = (MatakuliahPeer::NUM_COLUMNS - MatakuliahPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		MataKuliahPeer::addSelectColumns($c);
+		$startcol2 = (MataKuliahPeer::NUM_COLUMNS - MataKuliahPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
 		JurusanPeer::addSelectColumns($c);
 		$startcol3 = $startcol2 + JurusanPeer::NUM_COLUMNS;
 
-		$c->addJoin(MatakuliahPeer::JURUSAN_ID, JurusanPeer::ID);
+		$c->addJoin(MataKuliahPeer::JURUSAN_ID, JurusanPeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while($rs->next()) {
 
-			$omClass = MatakuliahPeer::getOMClass();
+			$omClass = MataKuliahPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -349,13 +349,13 @@ abstract class BaseMatakuliahPeer {
 				$temp_obj1 = $results[$j];
 				$temp_obj2 = $temp_obj1->getJurusan(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-					$temp_obj2->addMatakuliah($obj1); 					break;
+					$temp_obj2->addMataKuliah($obj1); 					break;
 				}
 			}
 
 			if ($newObject) {
-				$obj2->initMatakuliahs();
-				$obj2->addMatakuliah($obj1);
+				$obj2->initMataKuliahs();
+				$obj2->addMataKuliah($obj1);
 			}
 
 			$results[] = $obj1;
@@ -372,7 +372,7 @@ abstract class BaseMatakuliahPeer {
 	
 	public static function getOMClass()
 	{
-		return MatakuliahPeer::CLASS_DEFAULT;
+		return MataKuliahPeer::CLASS_DEFAULT;
 	}
 
 	
@@ -386,7 +386,7 @@ abstract class BaseMatakuliahPeer {
 			$criteria = clone $values; 		} else {
 			$criteria = $values->buildCriteria(); 		}
 
-		$criteria->remove(MatakuliahPeer::ID); 
+		$criteria->remove(MataKuliahPeer::ID); 
 
 				$criteria->setDbName(self::DATABASE_NAME);
 
@@ -413,8 +413,8 @@ abstract class BaseMatakuliahPeer {
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; 
-			$comparison = $criteria->getComparison(MatakuliahPeer::ID);
-			$selectCriteria->add(MatakuliahPeer::ID, $criteria->remove(MatakuliahPeer::ID), $comparison);
+			$comparison = $criteria->getComparison(MataKuliahPeer::ID);
+			$selectCriteria->add(MataKuliahPeer::ID, $criteria->remove(MataKuliahPeer::ID), $comparison);
 
 		} else { 			$criteria = $values->buildCriteria(); 			$selectCriteria = $values->buildPkeyCriteria(); 		}
 
@@ -431,7 +431,7 @@ abstract class BaseMatakuliahPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += BasePeer::doDeleteAll(MatakuliahPeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(MataKuliahPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -444,16 +444,16 @@ abstract class BaseMatakuliahPeer {
 	 public static function doDelete($values, $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(MatakuliahPeer::DATABASE_NAME);
+			$con = Propel::getConnection(MataKuliahPeer::DATABASE_NAME);
 		}
 
 		if ($values instanceof Criteria) {
-			$criteria = clone $values; 		} elseif ($values instanceof Matakuliah) {
+			$criteria = clone $values; 		} elseif ($values instanceof MataKuliah) {
 
 			$criteria = $values->buildPkeyCriteria();
 		} else {
 						$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(MatakuliahPeer::ID, (array) $values, Criteria::IN);
+			$criteria->add(MataKuliahPeer::ID, (array) $values, Criteria::IN);
 		}
 
 				$criteria->setDbName(self::DATABASE_NAME);
@@ -472,13 +472,13 @@ abstract class BaseMatakuliahPeer {
 	}
 
 	
-	public static function doValidate(Matakuliah $obj, $cols = null)
+	public static function doValidate(MataKuliah $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(MatakuliahPeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(MatakuliahPeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(MataKuliahPeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(MataKuliahPeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -494,11 +494,11 @@ abstract class BaseMatakuliahPeer {
 
 		}
 
-		$res =  BasePeer::doValidate(MatakuliahPeer::DATABASE_NAME, MatakuliahPeer::TABLE_NAME, $columns);
+		$res =  BasePeer::doValidate(MataKuliahPeer::DATABASE_NAME, MataKuliahPeer::TABLE_NAME, $columns);
     if ($res !== true) {
         $request = sfContext::getInstance()->getRequest();
         foreach ($res as $failed) {
-            $col = MatakuliahPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+            $col = MataKuliahPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
             $request->setError($col, $failed->getMessage());
         }
     }
@@ -513,12 +513,12 @@ abstract class BaseMatakuliahPeer {
 			$con = Propel::getConnection(self::DATABASE_NAME);
 		}
 
-		$criteria = new Criteria(MatakuliahPeer::DATABASE_NAME);
+		$criteria = new Criteria(MataKuliahPeer::DATABASE_NAME);
 
-		$criteria->add(MatakuliahPeer::ID, $pk);
+		$criteria->add(MataKuliahPeer::ID, $pk);
 
 
-		$v = MatakuliahPeer::doSelect($criteria, $con);
+		$v = MataKuliahPeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -535,8 +535,8 @@ abstract class BaseMatakuliahPeer {
 			$objs = array();
 		} else {
 			$criteria = new Criteria();
-			$criteria->add(MatakuliahPeer::ID, $pks, Criteria::IN);
-			$objs = MatakuliahPeer::doSelect($criteria, $con);
+			$criteria->add(MataKuliahPeer::ID, $pks, Criteria::IN);
+			$objs = MataKuliahPeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
@@ -544,11 +544,11 @@ abstract class BaseMatakuliahPeer {
 } 
 if (Propel::isInit()) {
 			try {
-		BaseMatakuliahPeer::getMapBuilder();
+		BaseMataKuliahPeer::getMapBuilder();
 	} catch (Exception $e) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/MatakuliahMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.MatakuliahMapBuilder');
+			require_once 'lib/model/map/MataKuliahMapBuilder.php';
+	Propel::registerMapBuilder('lib.model.map.MataKuliahMapBuilder');
 }

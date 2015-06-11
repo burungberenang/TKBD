@@ -1,32 +1,38 @@
 <?php
 
 
-abstract class BaseKelasParalelHasDosenPeer {
+abstract class BaseMahasiswaHasKelasPalalelPeer {
 
 	
 	const DATABASE_NAME = 'propel';
 
 	
-	const TABLE_NAME = 'kelas_paralel_has_dosen';
+	const TABLE_NAME = 'mahasiswa_has_kelas_palalel';
 
 	
-	const CLASS_DEFAULT = 'lib.model.KelasParalelHasDosen';
+	const CLASS_DEFAULT = 'lib.model.MahasiswaHasKelasPalalel';
 
 	
-	const NUM_COLUMNS = 3;
+	const NUM_COLUMNS = 5;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 
 	
-	const KELAS_PARALEL_ID = 'kelas_paralel_has_dosen.KELAS_PARALEL_ID';
+	const MAHASISWA_ID = 'mahasiswa_has_kelas_palalel.MAHASISWA_ID';
 
 	
-	const DOSEN_ID = 'kelas_paralel_has_dosen.DOSEN_ID';
+	const KELAS_PARALEL_ID = 'mahasiswa_has_kelas_palalel.KELAS_PARALEL_ID';
 
 	
-	const ID = 'kelas_paralel_has_dosen.ID';
+	const CREATED_AT = 'mahasiswa_has_kelas_palalel.CREATED_AT';
+
+	
+	const UPDATED_AT = 'mahasiswa_has_kelas_palalel.UPDATED_AT';
+
+	
+	const ID = 'mahasiswa_has_kelas_palalel.ID';
 
 	
 	private static $phpNameMap = null;
@@ -34,31 +40,31 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('KelasParalelId', 'DosenId', 'Id', ),
-		BasePeer::TYPE_COLNAME => array (KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasParalelHasDosenPeer::DOSEN_ID, KelasParalelHasDosenPeer::ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('kelas_paralel_id', 'dosen_id', 'id', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, )
+		BasePeer::TYPE_PHPNAME => array ('MahasiswaId', 'KelasParalelId', 'CreatedAt', 'UpdatedAt', 'Id', ),
+		BasePeer::TYPE_COLNAME => array (MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, MahasiswaHasKelasPalalelPeer::CREATED_AT, MahasiswaHasKelasPalalelPeer::UPDATED_AT, MahasiswaHasKelasPalalelPeer::ID, ),
+		BasePeer::TYPE_FIELDNAME => array ('mahasiswa_id', 'kelas_paralel_id', 'created_at', 'updated_at', 'id', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('KelasParalelId' => 0, 'DosenId' => 1, 'Id' => 2, ),
-		BasePeer::TYPE_COLNAME => array (KelasParalelHasDosenPeer::KELAS_PARALEL_ID => 0, KelasParalelHasDosenPeer::DOSEN_ID => 1, KelasParalelHasDosenPeer::ID => 2, ),
-		BasePeer::TYPE_FIELDNAME => array ('kelas_paralel_id' => 0, 'dosen_id' => 1, 'id' => 2, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, )
+		BasePeer::TYPE_PHPNAME => array ('MahasiswaId' => 0, 'KelasParalelId' => 1, 'CreatedAt' => 2, 'UpdatedAt' => 3, 'Id' => 4, ),
+		BasePeer::TYPE_COLNAME => array (MahasiswaHasKelasPalalelPeer::MAHASISWA_ID => 0, MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID => 1, MahasiswaHasKelasPalalelPeer::CREATED_AT => 2, MahasiswaHasKelasPalalelPeer::UPDATED_AT => 3, MahasiswaHasKelasPalalelPeer::ID => 4, ),
+		BasePeer::TYPE_FIELDNAME => array ('mahasiswa_id' => 0, 'kelas_paralel_id' => 1, 'created_at' => 2, 'updated_at' => 3, 'id' => 4, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/KelasParalelHasDosenMapBuilder.php';
-		return BasePeer::getMapBuilder('lib.model.map.KelasParalelHasDosenMapBuilder');
+		include_once 'lib/model/map/MahasiswaHasKelasPalalelMapBuilder.php';
+		return BasePeer::getMapBuilder('lib.model.map.MahasiswaHasKelasPalalelMapBuilder');
 	}
 	
 	public static function getPhpNameMap()
 	{
 		if (self::$phpNameMap === null) {
-			$map = KelasParalelHasDosenPeer::getTableMap();
+			$map = MahasiswaHasKelasPalalelPeer::getTableMap();
 			$columns = $map->getColumns();
 			$nameMap = array();
 			foreach ($columns as $column) {
@@ -92,23 +98,27 @@ abstract class BaseKelasParalelHasDosenPeer {
 	
 	public static function alias($alias, $column)
 	{
-		return str_replace(KelasParalelHasDosenPeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(MahasiswaHasKelasPalalelPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
-		$criteria->addSelectColumn(KelasParalelHasDosenPeer::KELAS_PARALEL_ID);
+		$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID);
 
-		$criteria->addSelectColumn(KelasParalelHasDosenPeer::DOSEN_ID);
+		$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID);
 
-		$criteria->addSelectColumn(KelasParalelHasDosenPeer::ID);
+		$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::CREATED_AT);
+
+		$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::UPDATED_AT);
+
+		$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::ID);
 
 	}
 
-	const COUNT = 'COUNT(kelas_paralel_has_dosen.ID)';
-	const COUNT_DISTINCT = 'COUNT(DISTINCT kelas_paralel_has_dosen.ID)';
+	const COUNT = 'COUNT(mahasiswa_has_kelas_palalel.ID)';
+	const COUNT_DISTINCT = 'COUNT(DISTINCT mahasiswa_has_kelas_palalel.ID)';
 
 	
 	public static function doCount(Criteria $criteria, $distinct = false, $con = null)
@@ -117,9 +127,9 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -127,7 +137,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$rs = KelasParalelHasDosenPeer::doSelectRS($criteria, $con);
+		$rs = MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -139,7 +149,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = KelasParalelHasDosenPeer::doSelect($critcopy, $con);
+		$objects = MahasiswaHasKelasPalalelPeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -148,7 +158,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 	
 	public static function doSelect(Criteria $criteria, $con = null)
 	{
-		return KelasParalelHasDosenPeer::populateObjects(KelasParalelHasDosenPeer::doSelectRS($criteria, $con));
+		return MahasiswaHasKelasPalalelPeer::populateObjects(MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con));
 	}
 	
 	public static function doSelectRS(Criteria $criteria, $con = null)
@@ -159,7 +169,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 		if (!$criteria->getSelectColumns()) {
 			$criteria = clone $criteria;
-			KelasParalelHasDosenPeer::addSelectColumns($criteria);
+			MahasiswaHasKelasPalalelPeer::addSelectColumns($criteria);
 		}
 
 				$criteria->setDbName(self::DATABASE_NAME);
@@ -171,7 +181,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 	{
 		$results = array();
 	
-				$cls = KelasParalelHasDosenPeer::getOMClass();
+				$cls = MahasiswaHasKelasPalalelPeer::getOMClass();
 		$cls = Propel::import($cls);
 				while($rs->next()) {
 		
@@ -184,15 +194,15 @@ abstract class BaseKelasParalelHasDosenPeer {
 	}
 
 	
-	public static function doCountJoinKelasPalalel(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinMahasiswa(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -200,9 +210,9 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
+		$criteria->addJoin(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaPeer::ID);
 
-		$rs = KelasParalelHasDosenPeer::doSelectRS($criteria, $con);
+		$rs = MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -212,15 +222,15 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 
 	
-	public static function doCountJoinDosen(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinKelasPalalel(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -228,14 +238,61 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(KelasParalelHasDosenPeer::DOSEN_ID, DosenPeer::ID);
+		$criteria->addJoin(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
-		$rs = KelasParalelHasDosenPeer::doSelectRS($criteria, $con);
+		$rs = MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
 						return 0;
 		}
+	}
+
+
+	
+	public static function doSelectJoinMahasiswa(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MahasiswaHasKelasPalalelPeer::addSelectColumns($c);
+		$startcol = (MahasiswaHasKelasPalalelPeer::NUM_COLUMNS - MahasiswaHasKelasPalalelPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		MahasiswaPeer::addSelectColumns($c);
+
+		$c->addJoin(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaPeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MahasiswaHasKelasPalalelPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = MahasiswaPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getMahasiswa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addMahasiswaHasKelasPalalel($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initMahasiswaHasKelasPalalels();
+				$obj2->addMahasiswaHasKelasPalalel($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
 	}
 
 
@@ -248,17 +305,17 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		KelasParalelHasDosenPeer::addSelectColumns($c);
-		$startcol = (KelasParalelHasDosenPeer::NUM_COLUMNS - KelasParalelHasDosenPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		MahasiswaHasKelasPalalelPeer::addSelectColumns($c);
+		$startcol = (MahasiswaHasKelasPalalelPeer::NUM_COLUMNS - MahasiswaHasKelasPalalelPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 		KelasPalalelPeer::addSelectColumns($c);
 
-		$c->addJoin(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
+		$c->addJoin(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while($rs->next()) {
 
-			$omClass = KelasParalelHasDosenPeer::getOMClass();
+			$omClass = MahasiswaHasKelasPalalelPeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj1 = new $cls();
@@ -274,59 +331,12 @@ abstract class BaseKelasParalelHasDosenPeer {
 			foreach($results as $temp_obj1) {
 				$temp_obj2 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-										$temp_obj2->addKelasParalelHasDosen($obj1); 					break;
+										$temp_obj2->addMahasiswaHasKelasPalalel($obj1); 					break;
 				}
 			}
 			if ($newObject) {
-				$obj2->initKelasParalelHasDosens();
-				$obj2->addKelasParalelHasDosen($obj1); 			}
-			$results[] = $obj1;
-		}
-		return $results;
-	}
-
-
-	
-	public static function doSelectJoinDosen(Criteria $c, $con = null)
-	{
-		$c = clone $c;
-
-				if ($c->getDbName() == Propel::getDefaultDB()) {
-			$c->setDbName(self::DATABASE_NAME);
-		}
-
-		KelasParalelHasDosenPeer::addSelectColumns($c);
-		$startcol = (KelasParalelHasDosenPeer::NUM_COLUMNS - KelasParalelHasDosenPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		DosenPeer::addSelectColumns($c);
-
-		$c->addJoin(KelasParalelHasDosenPeer::DOSEN_ID, DosenPeer::ID);
-		$rs = BasePeer::doSelect($c, $con);
-		$results = array();
-
-		while($rs->next()) {
-
-			$omClass = KelasParalelHasDosenPeer::getOMClass();
-
-			$cls = Propel::import($omClass);
-			$obj1 = new $cls();
-			$obj1->hydrate($rs);
-
-			$omClass = DosenPeer::getOMClass();
-
-			$cls = Propel::import($omClass);
-			$obj2 = new $cls();
-			$obj2->hydrate($rs, $startcol);
-
-			$newObject = true;
-			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getDosen(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
-					$newObject = false;
-										$temp_obj2->addKelasParalelHasDosen($obj1); 					break;
-				}
-			}
-			if ($newObject) {
-				$obj2->initKelasParalelHasDosens();
-				$obj2->addKelasParalelHasDosen($obj1); 			}
+				$obj2->initMahasiswaHasKelasPalalels();
+				$obj2->addMahasiswaHasKelasPalalel($obj1); 			}
 			$results[] = $obj1;
 		}
 		return $results;
@@ -340,9 +350,9 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -350,11 +360,11 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
+		$criteria->addJoin(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaPeer::ID);
 
-		$criteria->addJoin(KelasParalelHasDosenPeer::DOSEN_ID, DosenPeer::ID);
+		$criteria->addJoin(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
-		$rs = KelasParalelHasDosenPeer::doSelectRS($criteria, $con);
+		$rs = MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -372,25 +382,25 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		KelasParalelHasDosenPeer::addSelectColumns($c);
-		$startcol2 = (KelasParalelHasDosenPeer::NUM_COLUMNS - KelasParalelHasDosenPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		MahasiswaHasKelasPalalelPeer::addSelectColumns($c);
+		$startcol2 = (MahasiswaHasKelasPalalelPeer::NUM_COLUMNS - MahasiswaHasKelasPalalelPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		MahasiswaPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + MahasiswaPeer::NUM_COLUMNS;
 
 		KelasPalalelPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + KelasPalalelPeer::NUM_COLUMNS;
+		$startcol4 = $startcol3 + KelasPalalelPeer::NUM_COLUMNS;
 
-		DosenPeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + DosenPeer::NUM_COLUMNS;
+		$c->addJoin(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaPeer::ID);
 
-		$c->addJoin(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
-
-		$c->addJoin(KelasParalelHasDosenPeer::DOSEN_ID, DosenPeer::ID);
+		$c->addJoin(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while($rs->next()) {
 
-			$omClass = KelasParalelHasDosenPeer::getOMClass();
+			$omClass = MahasiswaHasKelasPalalelPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -399,7 +409,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 
 					
-			$omClass = KelasPalalelPeer::getOMClass();
+			$omClass = MahasiswaPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -409,20 +419,20 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getMahasiswa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-					$temp_obj2->addKelasParalelHasDosen($obj1); 					break;
+					$temp_obj2->addMahasiswaHasKelasPalalel($obj1); 					break;
 				}
 			}
 
 			if ($newObject) {
-				$obj2->initKelasParalelHasDosens();
-				$obj2->addKelasParalelHasDosen($obj1);
+				$obj2->initMahasiswaHasKelasPalalels();
+				$obj2->addMahasiswaHasKelasPalalel($obj1);
 			}
 
 
 					
-			$omClass = DosenPeer::getOMClass();
+			$omClass = KelasPalalelPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -432,20 +442,48 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getDosen(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+				$temp_obj3 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
 					$newObject = false;
-					$temp_obj3->addKelasParalelHasDosen($obj1); 					break;
+					$temp_obj3->addMahasiswaHasKelasPalalel($obj1); 					break;
 				}
 			}
 
 			if ($newObject) {
-				$obj3->initKelasParalelHasDosens();
-				$obj3->addKelasParalelHasDosen($obj1);
+				$obj3->initMahasiswaHasKelasPalalels();
+				$obj3->addMahasiswaHasKelasPalalel($obj1);
 			}
 
 			$results[] = $obj1;
 		}
 		return $results;
+	}
+
+
+	
+	public static function doCountJoinAllExceptMahasiswa(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
+
+		$rs = MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
 	}
 
 
@@ -456,9 +494,9 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT_DISTINCT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT_DISTINCT);
 		} else {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT);
+			$criteria->addSelectColumn(MahasiswaHasKelasPalalelPeer::COUNT);
 		}
 
 				foreach($criteria->getGroupByColumns() as $column)
@@ -466,9 +504,9 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(KelasParalelHasDosenPeer::DOSEN_ID, DosenPeer::ID);
+		$criteria->addJoin(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaPeer::ID);
 
-		$rs = KelasParalelHasDosenPeer::doSelectRS($criteria, $con);
+		$rs = MahasiswaHasKelasPalalelPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
@@ -478,30 +516,59 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 
 	
-	public static function doCountJoinAllExceptDosen(Criteria $criteria, $distinct = false, $con = null)
+	public static function doSelectJoinAllExceptMahasiswa(Criteria $c, $con = null)
 	{
-				$criteria = clone $criteria;
+		$c = clone $c;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
-		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT_DISTINCT);
-		} else {
-			$criteria->addSelectColumn(KelasParalelHasDosenPeer::COUNT);
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
-		{
-			$criteria->addSelectColumn($column);
-		}
+		MahasiswaHasKelasPalalelPeer::addSelectColumns($c);
+		$startcol2 = (MahasiswaHasKelasPalalelPeer::NUM_COLUMNS - MahasiswaHasKelasPalalelPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		$criteria->addJoin(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
+		KelasPalalelPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + KelasPalalelPeer::NUM_COLUMNS;
 
-		$rs = KelasParalelHasDosenPeer::doSelectRS($criteria, $con);
-		if ($rs->next()) {
-			return $rs->getInt(1);
-		} else {
-						return 0;
+		$c->addJoin(MahasiswaHasKelasPalalelPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MahasiswaHasKelasPalalelPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = KelasPalalelPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addMahasiswaHasKelasPalalel($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initMahasiswaHasKelasPalalels();
+				$obj2->addMahasiswaHasKelasPalalel($obj1);
+			}
+
+			$results[] = $obj1;
 		}
+		return $results;
 	}
 
 
@@ -514,13 +581,13 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		KelasParalelHasDosenPeer::addSelectColumns($c);
-		$startcol2 = (KelasParalelHasDosenPeer::NUM_COLUMNS - KelasParalelHasDosenPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		MahasiswaHasKelasPalalelPeer::addSelectColumns($c);
+		$startcol2 = (MahasiswaHasKelasPalalelPeer::NUM_COLUMNS - MahasiswaHasKelasPalalelPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		DosenPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + DosenPeer::NUM_COLUMNS;
+		MahasiswaPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + MahasiswaPeer::NUM_COLUMNS;
 
-		$c->addJoin(KelasParalelHasDosenPeer::DOSEN_ID, DosenPeer::ID);
+		$c->addJoin(MahasiswaHasKelasPalalelPeer::MAHASISWA_ID, MahasiswaPeer::ID);
 
 
 		$rs = BasePeer::doSelect($c, $con);
@@ -528,13 +595,13 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 		while($rs->next()) {
 
-			$omClass = KelasParalelHasDosenPeer::getOMClass();
+			$omClass = MahasiswaHasKelasPalalelPeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = DosenPeer::getOMClass();
+			$omClass = MahasiswaPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -544,73 +611,16 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getDosen(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getMahasiswa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-					$temp_obj2->addKelasParalelHasDosen($obj1);
+					$temp_obj2->addMahasiswaHasKelasPalalel($obj1);
 					break;
 				}
 			}
 
 			if ($newObject) {
-				$obj2->initKelasParalelHasDosens();
-				$obj2->addKelasParalelHasDosen($obj1);
-			}
-
-			$results[] = $obj1;
-		}
-		return $results;
-	}
-
-
-	
-	public static function doSelectJoinAllExceptDosen(Criteria $c, $con = null)
-	{
-		$c = clone $c;
-
-								if ($c->getDbName() == Propel::getDefaultDB()) {
-			$c->setDbName(self::DATABASE_NAME);
-		}
-
-		KelasParalelHasDosenPeer::addSelectColumns($c);
-		$startcol2 = (KelasParalelHasDosenPeer::NUM_COLUMNS - KelasParalelHasDosenPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-
-		KelasPalalelPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + KelasPalalelPeer::NUM_COLUMNS;
-
-		$c->addJoin(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
-
-
-		$rs = BasePeer::doSelect($c, $con);
-		$results = array();
-
-		while($rs->next()) {
-
-			$omClass = KelasParalelHasDosenPeer::getOMClass();
-
-			$cls = Propel::import($omClass);
-			$obj1 = new $cls();
-			$obj1->hydrate($rs);
-
-			$omClass = KelasPalalelPeer::getOMClass();
-
-
-			$cls = Propel::import($omClass);
-			$obj2  = new $cls();
-			$obj2->hydrate($rs, $startcol2);
-
-			$newObject = true;
-			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
-				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
-					$newObject = false;
-					$temp_obj2->addKelasParalelHasDosen($obj1);
-					break;
-				}
-			}
-
-			if ($newObject) {
-				$obj2->initKelasParalelHasDosens();
-				$obj2->addKelasParalelHasDosen($obj1);
+				$obj2->initMahasiswaHasKelasPalalels();
+				$obj2->addMahasiswaHasKelasPalalel($obj1);
 			}
 
 			$results[] = $obj1;
@@ -627,7 +637,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 	
 	public static function getOMClass()
 	{
-		return KelasParalelHasDosenPeer::CLASS_DEFAULT;
+		return MahasiswaHasKelasPalalelPeer::CLASS_DEFAULT;
 	}
 
 	
@@ -641,7 +651,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$criteria = clone $values; 		} else {
 			$criteria = $values->buildCriteria(); 		}
 
-		$criteria->remove(KelasParalelHasDosenPeer::ID); 
+		$criteria->remove(MahasiswaHasKelasPalalelPeer::ID); 
 
 				$criteria->setDbName(self::DATABASE_NAME);
 
@@ -668,8 +678,8 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; 
-			$comparison = $criteria->getComparison(KelasParalelHasDosenPeer::ID);
-			$selectCriteria->add(KelasParalelHasDosenPeer::ID, $criteria->remove(KelasParalelHasDosenPeer::ID), $comparison);
+			$comparison = $criteria->getComparison(MahasiswaHasKelasPalalelPeer::ID);
+			$selectCriteria->add(MahasiswaHasKelasPalalelPeer::ID, $criteria->remove(MahasiswaHasKelasPalalelPeer::ID), $comparison);
 
 		} else { 			$criteria = $values->buildCriteria(); 			$selectCriteria = $values->buildPkeyCriteria(); 		}
 
@@ -686,7 +696,7 @@ abstract class BaseKelasParalelHasDosenPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += BasePeer::doDeleteAll(KelasParalelHasDosenPeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(MahasiswaHasKelasPalalelPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -699,16 +709,16 @@ abstract class BaseKelasParalelHasDosenPeer {
 	 public static function doDelete($values, $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(KelasParalelHasDosenPeer::DATABASE_NAME);
+			$con = Propel::getConnection(MahasiswaHasKelasPalalelPeer::DATABASE_NAME);
 		}
 
 		if ($values instanceof Criteria) {
-			$criteria = clone $values; 		} elseif ($values instanceof KelasParalelHasDosen) {
+			$criteria = clone $values; 		} elseif ($values instanceof MahasiswaHasKelasPalalel) {
 
 			$criteria = $values->buildPkeyCriteria();
 		} else {
 						$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(KelasParalelHasDosenPeer::ID, (array) $values, Criteria::IN);
+			$criteria->add(MahasiswaHasKelasPalalelPeer::ID, (array) $values, Criteria::IN);
 		}
 
 				$criteria->setDbName(self::DATABASE_NAME);
@@ -727,13 +737,13 @@ abstract class BaseKelasParalelHasDosenPeer {
 	}
 
 	
-	public static function doValidate(KelasParalelHasDosen $obj, $cols = null)
+	public static function doValidate(MahasiswaHasKelasPalalel $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(KelasParalelHasDosenPeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(KelasParalelHasDosenPeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(MahasiswaHasKelasPalalelPeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(MahasiswaHasKelasPalalelPeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -749,11 +759,11 @@ abstract class BaseKelasParalelHasDosenPeer {
 
 		}
 
-		$res =  BasePeer::doValidate(KelasParalelHasDosenPeer::DATABASE_NAME, KelasParalelHasDosenPeer::TABLE_NAME, $columns);
+		$res =  BasePeer::doValidate(MahasiswaHasKelasPalalelPeer::DATABASE_NAME, MahasiswaHasKelasPalalelPeer::TABLE_NAME, $columns);
     if ($res !== true) {
         $request = sfContext::getInstance()->getRequest();
         foreach ($res as $failed) {
-            $col = KelasParalelHasDosenPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+            $col = MahasiswaHasKelasPalalelPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
             $request->setError($col, $failed->getMessage());
         }
     }
@@ -768,12 +778,12 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$con = Propel::getConnection(self::DATABASE_NAME);
 		}
 
-		$criteria = new Criteria(KelasParalelHasDosenPeer::DATABASE_NAME);
+		$criteria = new Criteria(MahasiswaHasKelasPalalelPeer::DATABASE_NAME);
 
-		$criteria->add(KelasParalelHasDosenPeer::ID, $pk);
+		$criteria->add(MahasiswaHasKelasPalalelPeer::ID, $pk);
 
 
-		$v = KelasParalelHasDosenPeer::doSelect($criteria, $con);
+		$v = MahasiswaHasKelasPalalelPeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -790,8 +800,8 @@ abstract class BaseKelasParalelHasDosenPeer {
 			$objs = array();
 		} else {
 			$criteria = new Criteria();
-			$criteria->add(KelasParalelHasDosenPeer::ID, $pks, Criteria::IN);
-			$objs = KelasParalelHasDosenPeer::doSelect($criteria, $con);
+			$criteria->add(MahasiswaHasKelasPalalelPeer::ID, $pks, Criteria::IN);
+			$objs = MahasiswaHasKelasPalalelPeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
@@ -799,11 +809,11 @@ abstract class BaseKelasParalelHasDosenPeer {
 } 
 if (Propel::isInit()) {
 			try {
-		BaseKelasParalelHasDosenPeer::getMapBuilder();
+		BaseMahasiswaHasKelasPalalelPeer::getMapBuilder();
 	} catch (Exception $e) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/KelasParalelHasDosenMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.KelasParalelHasDosenMapBuilder');
+			require_once 'lib/model/map/MahasiswaHasKelasPalalelMapBuilder.php';
+	Propel::registerMapBuilder('lib.model.map.MahasiswaHasKelasPalalelMapBuilder');
 }

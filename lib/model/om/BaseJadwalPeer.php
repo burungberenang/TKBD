@@ -36,7 +36,7 @@ abstract class BaseJadwalPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('Id', 'JamId', 'HariId', ),
 		BasePeer::TYPE_COLNAME => array (JadwalPeer::ID, JadwalPeer::JAM_ID, JadwalPeer::HARI_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'Jam_id', 'Hari_id', ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'jam_id', 'hari_id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, )
 	);
 
@@ -44,7 +44,7 @@ abstract class BaseJadwalPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'JamId' => 1, 'HariId' => 2, ),
 		BasePeer::TYPE_COLNAME => array (JadwalPeer::ID => 0, JadwalPeer::JAM_ID => 1, JadwalPeer::HARI_ID => 2, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'Jam_id' => 1, 'Hari_id' => 2, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'jam_id' => 1, 'hari_id' => 2, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, )
 	);
 

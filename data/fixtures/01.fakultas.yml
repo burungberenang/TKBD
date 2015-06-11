@@ -1,15 +1,15 @@
 Fakultas:
-  teknik:
-    nama: Teknik
-  ekonomi:
-    nama: Ekonomi
-  hukum:
-    nama: Hukum
-  farmasi:
-    nama: Farmasi
-  psikologi:
-    nama: Psikologi
-  fik:
-    nama: Industri Kreatif
-  teknobiologi:
-    nama: Teknobiologi
+    teknik:
+        nama: Teknik
+    ekonomi:
+        nama: Ekonomi
+    hukum:
+        nama: Hukum
+    farmasi:
+        nama: Farmasi
+    psikologi:
+        nama: Psikologi
+    fik:
+        nama: Industri Kreatif
+    teknobiologi:
+        nama: Teknobiologi

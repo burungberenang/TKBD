@@ -55,10 +55,10 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 	protected $lastAbsensiCriteria = null;
 
 	
-	protected $collKelasparalelHasDosens;
+	protected $collKelasParalelHasDosens;
 
 	
-	protected $lastKelasparalelHasDosenCriteria = null;
+	protected $lastKelasParalelHasDosenCriteria = null;
 
 	
 	protected $alreadyInSave = false;
@@ -430,8 +430,8 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->collKelasparalelHasDosens !== null) {
-				foreach($this->collKelasparalelHasDosens as $referrerFK) {
+			if ($this->collKelasParalelHasDosens !== null) {
+				foreach($this->collKelasParalelHasDosens as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -503,8 +503,8 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 					}
 				}
 
-				if ($this->collKelasparalelHasDosens !== null) {
-					foreach($this->collKelasparalelHasDosens as $referrerFK) {
+				if ($this->collKelasParalelHasDosens !== null) {
+					foreach($this->collKelasParalelHasDosens as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -696,8 +696,8 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 				$copyObj->addAbsensi($relObj->copy($deepCopy));
 			}
 
-			foreach($this->getKelasparalelHasDosens() as $relObj) {
-				$copyObj->addKelasparalelHasDosen($relObj->copy($deepCopy));
+			foreach($this->getKelasParalelHasDosens() as $relObj) {
+				$copyObj->addKelasParalelHasDosen($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -896,7 +896,7 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 
 
 	
-	public function getAbsensisJoinKelasparalel($criteria = null, $con = null)
+	public function getAbsensisJoinKelasPalalel($criteria = null, $con = null)
 	{
 				include_once 'lib/model/om/BaseAbsensiPeer.php';
 		if ($criteria === null) {
@@ -914,14 +914,14 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 
 				$criteria->add(AbsensiPeer::DOSEN_ID, $this->getId());
 
-				$this->collAbsensis = AbsensiPeer::doSelectJoinKelasparalel($criteria, $con);
+				$this->collAbsensis = AbsensiPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		} else {
 									
 			$criteria->add(AbsensiPeer::DOSEN_ID, $this->getId());
 
 			if (!isset($this->lastAbsensiCriteria) || !$this->lastAbsensiCriteria->equals($criteria)) {
-				$this->collAbsensis = AbsensiPeer::doSelectJoinKelasparalel($criteria, $con);
+				$this->collAbsensis = AbsensiPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		}
 		$this->lastAbsensiCriteria = $criteria;
@@ -930,17 +930,17 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 	}
 
 	
-	public function initKelasparalelHasDosens()
+	public function initKelasParalelHasDosens()
 	{
-		if ($this->collKelasparalelHasDosens === null) {
-			$this->collKelasparalelHasDosens = array();
+		if ($this->collKelasParalelHasDosens === null) {
+			$this->collKelasParalelHasDosens = array();
 		}
 	}
 
 	
-	public function getKelasparalelHasDosens($criteria = null, $con = null)
+	public function getKelasParalelHasDosens($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelHasDosenPeer.php';
+				include_once 'lib/model/om/BaseKelasParalelHasDosenPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -949,36 +949,36 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collKelasparalelHasDosens === null) {
+		if ($this->collKelasParalelHasDosens === null) {
 			if ($this->isNew()) {
-			   $this->collKelasparalelHasDosens = array();
+			   $this->collKelasParalelHasDosens = array();
 			} else {
 
-				$criteria->add(KelasparalelHasDosenPeer::DOSEN_ID, $this->getId());
+				$criteria->add(KelasParalelHasDosenPeer::DOSEN_ID, $this->getId());
 
-				KelasparalelHasDosenPeer::addSelectColumns($criteria);
-				$this->collKelasparalelHasDosens = KelasparalelHasDosenPeer::doSelect($criteria, $con);
+				KelasParalelHasDosenPeer::addSelectColumns($criteria);
+				$this->collKelasParalelHasDosens = KelasParalelHasDosenPeer::doSelect($criteria, $con);
 			}
 		} else {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(KelasparalelHasDosenPeer::DOSEN_ID, $this->getId());
+				$criteria->add(KelasParalelHasDosenPeer::DOSEN_ID, $this->getId());
 
-				KelasparalelHasDosenPeer::addSelectColumns($criteria);
-				if (!isset($this->lastKelasparalelHasDosenCriteria) || !$this->lastKelasparalelHasDosenCriteria->equals($criteria)) {
-					$this->collKelasparalelHasDosens = KelasparalelHasDosenPeer::doSelect($criteria, $con);
+				KelasParalelHasDosenPeer::addSelectColumns($criteria);
+				if (!isset($this->lastKelasParalelHasDosenCriteria) || !$this->lastKelasParalelHasDosenCriteria->equals($criteria)) {
+					$this->collKelasParalelHasDosens = KelasParalelHasDosenPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastKelasparalelHasDosenCriteria = $criteria;
-		return $this->collKelasparalelHasDosens;
+		$this->lastKelasParalelHasDosenCriteria = $criteria;
+		return $this->collKelasParalelHasDosens;
 	}
 
 	
-	public function countKelasparalelHasDosens($criteria = null, $distinct = false, $con = null)
+	public function countKelasParalelHasDosens($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelHasDosenPeer.php';
+				include_once 'lib/model/om/BaseKelasParalelHasDosenPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -987,23 +987,23 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(KelasparalelHasDosenPeer::DOSEN_ID, $this->getId());
+		$criteria->add(KelasParalelHasDosenPeer::DOSEN_ID, $this->getId());
 
-		return KelasparalelHasDosenPeer::doCount($criteria, $distinct, $con);
+		return KelasParalelHasDosenPeer::doCount($criteria, $distinct, $con);
 	}
 
 	
-	public function addKelasparalelHasDosen(KelasparalelHasDosen $l)
+	public function addKelasParalelHasDosen(KelasParalelHasDosen $l)
 	{
-		$this->collKelasparalelHasDosens[] = $l;
+		$this->collKelasParalelHasDosens[] = $l;
 		$l->setDosen($this);
 	}
 
 
 	
-	public function getKelasparalelHasDosensJoinKelasparalel($criteria = null, $con = null)
+	public function getKelasParalelHasDosensJoinKelasPalalel($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelHasDosenPeer.php';
+				include_once 'lib/model/om/BaseKelasParalelHasDosenPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -1012,26 +1012,26 @@ abstract class BaseDosen extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collKelasparalelHasDosens === null) {
+		if ($this->collKelasParalelHasDosens === null) {
 			if ($this->isNew()) {
-				$this->collKelasparalelHasDosens = array();
+				$this->collKelasParalelHasDosens = array();
 			} else {
 
-				$criteria->add(KelasparalelHasDosenPeer::DOSEN_ID, $this->getId());
+				$criteria->add(KelasParalelHasDosenPeer::DOSEN_ID, $this->getId());
 
-				$this->collKelasparalelHasDosens = KelasparalelHasDosenPeer::doSelectJoinKelasparalel($criteria, $con);
+				$this->collKelasParalelHasDosens = KelasParalelHasDosenPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		} else {
 									
-			$criteria->add(KelasparalelHasDosenPeer::DOSEN_ID, $this->getId());
+			$criteria->add(KelasParalelHasDosenPeer::DOSEN_ID, $this->getId());
 
-			if (!isset($this->lastKelasparalelHasDosenCriteria) || !$this->lastKelasparalelHasDosenCriteria->equals($criteria)) {
-				$this->collKelasparalelHasDosens = KelasparalelHasDosenPeer::doSelectJoinKelasparalel($criteria, $con);
+			if (!isset($this->lastKelasParalelHasDosenCriteria) || !$this->lastKelasParalelHasDosenCriteria->equals($criteria)) {
+				$this->collKelasParalelHasDosens = KelasParalelHasDosenPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		}
-		$this->lastKelasparalelHasDosenCriteria = $criteria;
+		$this->lastKelasParalelHasDosenCriteria = $criteria;
 
-		return $this->collKelasparalelHasDosens;
+		return $this->collKelasParalelHasDosens;
 	}
 
 } 

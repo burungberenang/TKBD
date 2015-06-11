@@ -51,7 +51,7 @@ abstract class BaseDosenPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('Id', 'Npk', 'Nama', 'Alamat', 'TglLahir', 'CreatedAt', 'UpdatedAt', 'GolonganId', ),
 		BasePeer::TYPE_COLNAME => array (DosenPeer::ID, DosenPeer::NPK, DosenPeer::NAMA, DosenPeer::ALAMAT, DosenPeer::TGL_LAHIR, DosenPeer::CREATED_AT, DosenPeer::UPDATED_AT, DosenPeer::GOLONGAN_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'npk', 'nama', 'alamat', 'tgl_lahir', 'created_at', 'updated_at', 'Golongan_id', ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'npk', 'nama', 'alamat', 'tgl_lahir', 'created_at', 'updated_at', 'golongan_id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
@@ -59,7 +59,7 @@ abstract class BaseDosenPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Npk' => 1, 'Nama' => 2, 'Alamat' => 3, 'TglLahir' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, 'GolonganId' => 7, ),
 		BasePeer::TYPE_COLNAME => array (DosenPeer::ID => 0, DosenPeer::NPK => 1, DosenPeer::NAMA => 2, DosenPeer::ALAMAT => 3, DosenPeer::TGL_LAHIR => 4, DosenPeer::CREATED_AT => 5, DosenPeer::UPDATED_AT => 6, DosenPeer::GOLONGAN_ID => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'npk' => 1, 'nama' => 2, 'alamat' => 3, 'tgl_lahir' => 4, 'created_at' => 5, 'updated_at' => 6, 'Golongan_id' => 7, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'npk' => 1, 'nama' => 2, 'alamat' => 3, 'tgl_lahir' => 4, 'created_at' => 5, 'updated_at' => 6, 'golongan_id' => 7, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 

@@ -31,10 +31,10 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	protected $aFakultas;
 
 	
-	protected $collMatakuliahs;
+	protected $collMataKuliahs;
 
 	
-	protected $lastMatakuliahCriteria = null;
+	protected $lastMataKuliahCriteria = null;
 
 	
 	protected $collMahasiswas;
@@ -305,8 +305,8 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 				}
 				$this->resetModified(); 			}
 
-			if ($this->collMatakuliahs !== null) {
-				foreach($this->collMatakuliahs as $referrerFK) {
+			if ($this->collMataKuliahs !== null) {
+				foreach($this->collMataKuliahs as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -370,8 +370,8 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 			}
 
 
-				if ($this->collMatakuliahs !== null) {
-					foreach($this->collMatakuliahs as $referrerFK) {
+				if ($this->collMataKuliahs !== null) {
+					foreach($this->collMataKuliahs as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -530,8 +530,8 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 		if ($deepCopy) {
 									$copyObj->setNew(false);
 
-			foreach($this->getMatakuliahs() as $relObj) {
-				$copyObj->addMatakuliah($relObj->copy($deepCopy));
+			foreach($this->getMataKuliahs() as $relObj) {
+				$copyObj->addMataKuliah($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getMahasiswas() as $relObj) {
@@ -593,17 +593,17 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 	}
 
 	
-	public function initMatakuliahs()
+	public function initMataKuliahs()
 	{
-		if ($this->collMatakuliahs === null) {
-			$this->collMatakuliahs = array();
+		if ($this->collMataKuliahs === null) {
+			$this->collMataKuliahs = array();
 		}
 	}
 
 	
-	public function getMatakuliahs($criteria = null, $con = null)
+	public function getMataKuliahs($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseMatakuliahPeer.php';
+				include_once 'lib/model/om/BaseMataKuliahPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -612,36 +612,36 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collMatakuliahs === null) {
+		if ($this->collMataKuliahs === null) {
 			if ($this->isNew()) {
-			   $this->collMatakuliahs = array();
+			   $this->collMataKuliahs = array();
 			} else {
 
-				$criteria->add(MatakuliahPeer::JURUSAN_ID, $this->getId());
+				$criteria->add(MataKuliahPeer::JURUSAN_ID, $this->getId());
 
-				MatakuliahPeer::addSelectColumns($criteria);
-				$this->collMatakuliahs = MatakuliahPeer::doSelect($criteria, $con);
+				MataKuliahPeer::addSelectColumns($criteria);
+				$this->collMataKuliahs = MataKuliahPeer::doSelect($criteria, $con);
 			}
 		} else {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(MatakuliahPeer::JURUSAN_ID, $this->getId());
+				$criteria->add(MataKuliahPeer::JURUSAN_ID, $this->getId());
 
-				MatakuliahPeer::addSelectColumns($criteria);
-				if (!isset($this->lastMatakuliahCriteria) || !$this->lastMatakuliahCriteria->equals($criteria)) {
-					$this->collMatakuliahs = MatakuliahPeer::doSelect($criteria, $con);
+				MataKuliahPeer::addSelectColumns($criteria);
+				if (!isset($this->lastMataKuliahCriteria) || !$this->lastMataKuliahCriteria->equals($criteria)) {
+					$this->collMataKuliahs = MataKuliahPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastMatakuliahCriteria = $criteria;
-		return $this->collMatakuliahs;
+		$this->lastMataKuliahCriteria = $criteria;
+		return $this->collMataKuliahs;
 	}
 
 	
-	public function countMatakuliahs($criteria = null, $distinct = false, $con = null)
+	public function countMataKuliahs($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseMatakuliahPeer.php';
+				include_once 'lib/model/om/BaseMataKuliahPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -650,15 +650,15 @@ abstract class BaseJurusan extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(MatakuliahPeer::JURUSAN_ID, $this->getId());
+		$criteria->add(MataKuliahPeer::JURUSAN_ID, $this->getId());
 
-		return MatakuliahPeer::doCount($criteria, $distinct, $con);
+		return MataKuliahPeer::doCount($criteria, $distinct, $con);
 	}
 
 	
-	public function addMatakuliah(Matakuliah $l)
+	public function addMataKuliah(MataKuliah $l)
 	{
-		$this->collMatakuliahs[] = $l;
+		$this->collMataKuliahs[] = $l;
 		$l->setJurusan($this);
 	}
 

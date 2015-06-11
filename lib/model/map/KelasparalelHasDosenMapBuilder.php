@@ -2,10 +2,10 @@
 
 
 
-class KelasparalelHasDosenMapBuilder {
+class KelasParalelHasDosenMapBuilder {
 
 	
-	const CLASS_NAME = 'lib.model.map.KelasparalelHasDosenMapBuilder';
+	const CLASS_NAME = 'lib.model.map.KelasParalelHasDosenMapBuilder';
 
 	
 	private $dbMap;
@@ -27,14 +27,14 @@ class KelasparalelHasDosenMapBuilder {
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
 
-		$tMap = $this->dbMap->addTable('kelasparalel_has_dosen');
-		$tMap->setPhpName('KelasparalelHasDosen');
+		$tMap = $this->dbMap->addTable('kelas_paralel_has_dosen');
+		$tMap->setPhpName('KelasParalelHasDosen');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->setPrimaryKeyMethodInfo('kelasparalel_has_dosen_SEQ');
+		$tMap->setPrimaryKeyMethodInfo('kelas_paralel_has_dosen_SEQ');
 
-		$tMap->addForeignKey('KELASPARALEL_ID', 'KelasparalelId', 'int', CreoleTypes::INTEGER, 'kelasparalel', 'ID', true, null);
+		$tMap->addForeignKey('KELAS_PARALEL_ID', 'KelasParalelId', 'int', CreoleTypes::INTEGER, 'kelas_palalel', 'ID', true, null);
 
 		$tMap->addForeignKey('DOSEN_ID', 'DosenId', 'int', CreoleTypes::INTEGER, 'dosen', 'ID', true, null);
 

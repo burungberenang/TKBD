@@ -51,7 +51,7 @@ abstract class BaseMahasiswaPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('Id', 'Nrp', 'Nama', 'Alamat', 'TglLahir', 'JurusanId', 'CreatedAt', 'UpdatedAt', ),
 		BasePeer::TYPE_COLNAME => array (MahasiswaPeer::ID, MahasiswaPeer::NRP, MahasiswaPeer::NAMA, MahasiswaPeer::ALAMAT, MahasiswaPeer::TGL_LAHIR, MahasiswaPeer::JURUSAN_ID, MahasiswaPeer::CREATED_AT, MahasiswaPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'nrp', 'nama', 'alamat', 'tgl_lahir', 'Jurusan_id', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'nrp', 'nama', 'alamat', 'tgl_lahir', 'jurusan_id', 'created_at', 'updated_at', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
@@ -59,7 +59,7 @@ abstract class BaseMahasiswaPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Nrp' => 1, 'Nama' => 2, 'Alamat' => 3, 'TglLahir' => 4, 'JurusanId' => 5, 'CreatedAt' => 6, 'UpdatedAt' => 7, ),
 		BasePeer::TYPE_COLNAME => array (MahasiswaPeer::ID => 0, MahasiswaPeer::NRP => 1, MahasiswaPeer::NAMA => 2, MahasiswaPeer::ALAMAT => 3, MahasiswaPeer::TGL_LAHIR => 4, MahasiswaPeer::JURUSAN_ID => 5, MahasiswaPeer::CREATED_AT => 6, MahasiswaPeer::UPDATED_AT => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'nrp' => 1, 'nama' => 2, 'alamat' => 3, 'tgl_lahir' => 4, 'Jurusan_id' => 5, 'created_at' => 6, 'updated_at' => 7, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'nrp' => 1, 'nama' => 2, 'alamat' => 3, 'tgl_lahir' => 4, 'jurusan_id' => 5, 'created_at' => 6, 'updated_at' => 7, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 

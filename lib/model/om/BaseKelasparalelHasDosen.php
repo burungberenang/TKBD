@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persistent {
+abstract class BaseKelasParalelHasDosen extends BaseObject  implements Persistent {
 
 
 	
@@ -9,7 +9,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 
 	
-	protected $kelasparalel_id;
+	protected $kelas_paralel_id;
 
 
 	
@@ -20,7 +20,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	protected $id;
 
 	
-	protected $aKelasparalel;
+	protected $aKelasPalalel;
 
 	
 	protected $aDosen;
@@ -32,10 +32,10 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	protected $alreadyInValidation = false;
 
 	
-	public function getKelasparalelId()
+	public function getKelasParalelId()
 	{
 
-		return $this->kelasparalel_id;
+		return $this->kelas_paralel_id;
 	}
 
 	
@@ -53,7 +53,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	}
 
 	
-	public function setKelasparalelId($v)
+	public function setKelasParalelId($v)
 	{
 
 		
@@ -62,13 +62,13 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 			$v = (int) $v;
 		}
 
-		if ($this->kelasparalel_id !== $v) {
-			$this->kelasparalel_id = $v;
-			$this->modifiedColumns[] = KelasparalelHasDosenPeer::KELASPARALEL_ID;
+		if ($this->kelas_paralel_id !== $v) {
+			$this->kelas_paralel_id = $v;
+			$this->modifiedColumns[] = KelasParalelHasDosenPeer::KELAS_PARALEL_ID;
 		}
 
-		if ($this->aKelasparalel !== null && $this->aKelasparalel->getId() !== $v) {
-			$this->aKelasparalel = null;
+		if ($this->aKelasPalalel !== null && $this->aKelasPalalel->getId() !== $v) {
+			$this->aKelasPalalel = null;
 		}
 
 	} 
@@ -84,7 +84,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 		if ($this->dosen_id !== $v) {
 			$this->dosen_id = $v;
-			$this->modifiedColumns[] = KelasparalelHasDosenPeer::DOSEN_ID;
+			$this->modifiedColumns[] = KelasParalelHasDosenPeer::DOSEN_ID;
 		}
 
 		if ($this->aDosen !== null && $this->aDosen->getId() !== $v) {
@@ -104,7 +104,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 		if ($this->id !== $v) {
 			$this->id = $v;
-			$this->modifiedColumns[] = KelasparalelHasDosenPeer::ID;
+			$this->modifiedColumns[] = KelasParalelHasDosenPeer::ID;
 		}
 
 	} 
@@ -113,7 +113,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	{
 		try {
 
-			$this->kelasparalel_id = $rs->getInt($startcol + 0);
+			$this->kelas_paralel_id = $rs->getInt($startcol + 0);
 
 			$this->dosen_id = $rs->getInt($startcol + 1);
 
@@ -125,7 +125,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 						return $startcol + 3; 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating KelasparalelHasDosen object", $e);
+			throw new PropelException("Error populating KelasParalelHasDosen object", $e);
 		}
 	}
 
@@ -137,12 +137,12 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(KelasparalelHasDosenPeer::DATABASE_NAME);
+			$con = Propel::getConnection(KelasParalelHasDosenPeer::DATABASE_NAME);
 		}
 
 		try {
 			$con->begin();
-			KelasparalelHasDosenPeer::doDelete($this, $con);
+			KelasParalelHasDosenPeer::doDelete($this, $con);
 			$this->setDeleted(true);
 			$con->commit();
 		} catch (PropelException $e) {
@@ -159,7 +159,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(KelasparalelHasDosenPeer::DATABASE_NAME);
+			$con = Propel::getConnection(KelasParalelHasDosenPeer::DATABASE_NAME);
 		}
 
 		try {
@@ -181,11 +181,11 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 
 												
-			if ($this->aKelasparalel !== null) {
-				if ($this->aKelasparalel->isModified()) {
-					$affectedRows += $this->aKelasparalel->save($con);
+			if ($this->aKelasPalalel !== null) {
+				if ($this->aKelasPalalel->isModified()) {
+					$affectedRows += $this->aKelasPalalel->save($con);
 				}
-				$this->setKelasparalel($this->aKelasparalel);
+				$this->setKelasPalalel($this->aKelasPalalel);
 			}
 
 			if ($this->aDosen !== null) {
@@ -198,12 +198,12 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 						if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = KelasparalelHasDosenPeer::doInsert($this, $con);
+					$pk = KelasParalelHasDosenPeer::doInsert($this, $con);
 					$affectedRows += 1; 										 										 
 					$this->setId($pk);  
 					$this->setNew(false);
 				} else {
-					$affectedRows += KelasparalelHasDosenPeer::doUpdate($this, $con);
+					$affectedRows += KelasParalelHasDosenPeer::doUpdate($this, $con);
 				}
 				$this->resetModified(); 			}
 
@@ -244,9 +244,9 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 
 
 												
-			if ($this->aKelasparalel !== null) {
-				if (!$this->aKelasparalel->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aKelasparalel->getValidationFailures());
+			if ($this->aKelasPalalel !== null) {
+				if (!$this->aKelasPalalel->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aKelasPalalel->getValidationFailures());
 				}
 			}
 
@@ -257,7 +257,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 			}
 
 
-			if (($retval = KelasparalelHasDosenPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = KelasParalelHasDosenPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
@@ -272,7 +272,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = KelasparalelHasDosenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = KelasParalelHasDosenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->getByPosition($pos);
 	}
 
@@ -281,7 +281,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	{
 		switch($pos) {
 			case 0:
-				return $this->getKelasparalelId();
+				return $this->getKelasParalelId();
 				break;
 			case 1:
 				return $this->getDosenId();
@@ -297,9 +297,9 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = KelasparalelHasDosenPeer::getFieldNames($keyType);
+		$keys = KelasParalelHasDosenPeer::getFieldNames($keyType);
 		$result = array(
-			$keys[0] => $this->getKelasparalelId(),
+			$keys[0] => $this->getKelasParalelId(),
 			$keys[1] => $this->getDosenId(),
 			$keys[2] => $this->getId(),
 		);
@@ -309,7 +309,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = KelasparalelHasDosenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = KelasParalelHasDosenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -318,7 +318,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	{
 		switch($pos) {
 			case 0:
-				$this->setKelasparalelId($value);
+				$this->setKelasParalelId($value);
 				break;
 			case 1:
 				$this->setDosenId($value);
@@ -331,9 +331,9 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = KelasparalelHasDosenPeer::getFieldNames($keyType);
+		$keys = KelasParalelHasDosenPeer::getFieldNames($keyType);
 
-		if (array_key_exists($keys[0], $arr)) $this->setKelasparalelId($arr[$keys[0]]);
+		if (array_key_exists($keys[0], $arr)) $this->setKelasParalelId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setDosenId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setId($arr[$keys[2]]);
 	}
@@ -341,11 +341,11 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(KelasparalelHasDosenPeer::DATABASE_NAME);
+		$criteria = new Criteria(KelasParalelHasDosenPeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(KelasparalelHasDosenPeer::KELASPARALEL_ID)) $criteria->add(KelasparalelHasDosenPeer::KELASPARALEL_ID, $this->kelasparalel_id);
-		if ($this->isColumnModified(KelasparalelHasDosenPeer::DOSEN_ID)) $criteria->add(KelasparalelHasDosenPeer::DOSEN_ID, $this->dosen_id);
-		if ($this->isColumnModified(KelasparalelHasDosenPeer::ID)) $criteria->add(KelasparalelHasDosenPeer::ID, $this->id);
+		if ($this->isColumnModified(KelasParalelHasDosenPeer::KELAS_PARALEL_ID)) $criteria->add(KelasParalelHasDosenPeer::KELAS_PARALEL_ID, $this->kelas_paralel_id);
+		if ($this->isColumnModified(KelasParalelHasDosenPeer::DOSEN_ID)) $criteria->add(KelasParalelHasDosenPeer::DOSEN_ID, $this->dosen_id);
+		if ($this->isColumnModified(KelasParalelHasDosenPeer::ID)) $criteria->add(KelasParalelHasDosenPeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -353,9 +353,9 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(KelasparalelHasDosenPeer::DATABASE_NAME);
+		$criteria = new Criteria(KelasParalelHasDosenPeer::DATABASE_NAME);
 
-		$criteria->add(KelasparalelHasDosenPeer::ID, $this->id);
+		$criteria->add(KelasParalelHasDosenPeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -376,7 +376,7 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setKelasparalelId($this->kelasparalel_id);
+		$copyObj->setKelasParalelId($this->kelas_paralel_id);
 
 		$copyObj->setDosenId($this->dosen_id);
 
@@ -399,38 +399,38 @@ abstract class BaseKelasparalelHasDosen extends BaseObject  implements Persisten
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new KelasparalelHasDosenPeer();
+			self::$peer = new KelasParalelHasDosenPeer();
 		}
 		return self::$peer;
 	}
 
 	
-	public function setKelasparalel($v)
+	public function setKelasPalalel($v)
 	{
 
 
 		if ($v === null) {
-			$this->setKelasparalelId(NULL);
+			$this->setKelasParalelId(NULL);
 		} else {
-			$this->setKelasparalelId($v->getId());
+			$this->setKelasParalelId($v->getId());
 		}
 
 
-		$this->aKelasparalel = $v;
+		$this->aKelasPalalel = $v;
 	}
 
 
 	
-	public function getKelasparalel($con = null)
+	public function getKelasPalalel($con = null)
 	{
-		if ($this->aKelasparalel === null && ($this->kelasparalel_id !== null)) {
-						include_once 'lib/model/om/BaseKelasparalelPeer.php';
+		if ($this->aKelasPalalel === null && ($this->kelas_paralel_id !== null)) {
+						include_once 'lib/model/om/BaseKelasPalalelPeer.php';
 
-			$this->aKelasparalel = KelasparalelPeer::retrieveByPK($this->kelasparalel_id, $con);
+			$this->aKelasPalalel = KelasPalalelPeer::retrieveByPK($this->kelas_paralel_id, $con);
 
 			
 		}
-		return $this->aKelasparalel;
+		return $this->aKelasPalalel;
 	}
 
 	

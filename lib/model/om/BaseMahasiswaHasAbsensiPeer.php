@@ -39,7 +39,7 @@ abstract class BaseMahasiswaHasAbsensiPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('MahasiswaId', 'AbsensiId', 'CreatedAt', 'Id', ),
 		BasePeer::TYPE_COLNAME => array (MahasiswaHasAbsensiPeer::MAHASISWA_ID, MahasiswaHasAbsensiPeer::ABSENSI_ID, MahasiswaHasAbsensiPeer::CREATED_AT, MahasiswaHasAbsensiPeer::ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('Mahasiswa_id', 'Absensi_id', 'created_at', 'id', ),
+		BasePeer::TYPE_FIELDNAME => array ('mahasiswa_id', 'absensi_id', 'created_at', 'id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, )
 	);
 
@@ -47,7 +47,7 @@ abstract class BaseMahasiswaHasAbsensiPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('MahasiswaId' => 0, 'AbsensiId' => 1, 'CreatedAt' => 2, 'Id' => 3, ),
 		BasePeer::TYPE_COLNAME => array (MahasiswaHasAbsensiPeer::MAHASISWA_ID => 0, MahasiswaHasAbsensiPeer::ABSENSI_ID => 1, MahasiswaHasAbsensiPeer::CREATED_AT => 2, MahasiswaHasAbsensiPeer::ID => 3, ),
-		BasePeer::TYPE_FIELDNAME => array ('Mahasiswa_id' => 0, 'Absensi_id' => 1, 'created_at' => 2, 'id' => 3, ),
+		BasePeer::TYPE_FIELDNAME => array ('mahasiswa_id' => 0, 'absensi_id' => 1, 'created_at' => 2, 'id' => 3, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, )
 	);
 

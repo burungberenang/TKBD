@@ -26,10 +26,10 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 	protected $aHari;
 
 	
-	protected $collKelasparalelHasJadwals;
+	protected $collKelasPalalelHasJadwals;
 
 	
-	protected $lastKelasparalelHasJadwalCriteria = null;
+	protected $lastKelasPalalelHasJadwalCriteria = null;
 
 	
 	protected $alreadyInSave = false;
@@ -213,8 +213,8 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 				}
 				$this->resetModified(); 			}
 
-			if ($this->collKelasparalelHasJadwals !== null) {
-				foreach($this->collKelasparalelHasJadwals as $referrerFK) {
+			if ($this->collKelasPalalelHasJadwals !== null) {
+				foreach($this->collKelasPalalelHasJadwals as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -276,8 +276,8 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 			}
 
 
-				if ($this->collKelasparalelHasJadwals !== null) {
-					foreach($this->collKelasparalelHasJadwals as $referrerFK) {
+				if ($this->collKelasPalalelHasJadwals !== null) {
+					foreach($this->collKelasPalalelHasJadwals as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -406,8 +406,8 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 		if ($deepCopy) {
 									$copyObj->setNew(false);
 
-			foreach($this->getKelasparalelHasJadwals() as $relObj) {
-				$copyObj->addKelasparalelHasJadwal($relObj->copy($deepCopy));
+			foreach($this->getKelasPalalelHasJadwals() as $relObj) {
+				$copyObj->addKelasPalalelHasJadwal($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -494,17 +494,17 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 	}
 
 	
-	public function initKelasparalelHasJadwals()
+	public function initKelasPalalelHasJadwals()
 	{
-		if ($this->collKelasparalelHasJadwals === null) {
-			$this->collKelasparalelHasJadwals = array();
+		if ($this->collKelasPalalelHasJadwals === null) {
+			$this->collKelasPalalelHasJadwals = array();
 		}
 	}
 
 	
-	public function getKelasparalelHasJadwals($criteria = null, $con = null)
+	public function getKelasPalalelHasJadwals($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelHasJadwalPeer.php';
+				include_once 'lib/model/om/BaseKelasPalalelHasJadwalPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -513,36 +513,36 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collKelasparalelHasJadwals === null) {
+		if ($this->collKelasPalalelHasJadwals === null) {
 			if ($this->isNew()) {
-			   $this->collKelasparalelHasJadwals = array();
+			   $this->collKelasPalalelHasJadwals = array();
 			} else {
 
-				$criteria->add(KelasparalelHasJadwalPeer::JADWAL_ID, $this->getId());
+				$criteria->add(KelasPalalelHasJadwalPeer::JADWAL_ID, $this->getId());
 
-				KelasparalelHasJadwalPeer::addSelectColumns($criteria);
-				$this->collKelasparalelHasJadwals = KelasparalelHasJadwalPeer::doSelect($criteria, $con);
+				KelasPalalelHasJadwalPeer::addSelectColumns($criteria);
+				$this->collKelasPalalelHasJadwals = KelasPalalelHasJadwalPeer::doSelect($criteria, $con);
 			}
 		} else {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(KelasparalelHasJadwalPeer::JADWAL_ID, $this->getId());
+				$criteria->add(KelasPalalelHasJadwalPeer::JADWAL_ID, $this->getId());
 
-				KelasparalelHasJadwalPeer::addSelectColumns($criteria);
-				if (!isset($this->lastKelasparalelHasJadwalCriteria) || !$this->lastKelasparalelHasJadwalCriteria->equals($criteria)) {
-					$this->collKelasparalelHasJadwals = KelasparalelHasJadwalPeer::doSelect($criteria, $con);
+				KelasPalalelHasJadwalPeer::addSelectColumns($criteria);
+				if (!isset($this->lastKelasPalalelHasJadwalCriteria) || !$this->lastKelasPalalelHasJadwalCriteria->equals($criteria)) {
+					$this->collKelasPalalelHasJadwals = KelasPalalelHasJadwalPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastKelasparalelHasJadwalCriteria = $criteria;
-		return $this->collKelasparalelHasJadwals;
+		$this->lastKelasPalalelHasJadwalCriteria = $criteria;
+		return $this->collKelasPalalelHasJadwals;
 	}
 
 	
-	public function countKelasparalelHasJadwals($criteria = null, $distinct = false, $con = null)
+	public function countKelasPalalelHasJadwals($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelHasJadwalPeer.php';
+				include_once 'lib/model/om/BaseKelasPalalelHasJadwalPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -551,23 +551,23 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(KelasparalelHasJadwalPeer::JADWAL_ID, $this->getId());
+		$criteria->add(KelasPalalelHasJadwalPeer::JADWAL_ID, $this->getId());
 
-		return KelasparalelHasJadwalPeer::doCount($criteria, $distinct, $con);
+		return KelasPalalelHasJadwalPeer::doCount($criteria, $distinct, $con);
 	}
 
 	
-	public function addKelasparalelHasJadwal(KelasparalelHasJadwal $l)
+	public function addKelasPalalelHasJadwal(KelasPalalelHasJadwal $l)
 	{
-		$this->collKelasparalelHasJadwals[] = $l;
+		$this->collKelasPalalelHasJadwals[] = $l;
 		$l->setJadwal($this);
 	}
 
 
 	
-	public function getKelasparalelHasJadwalsJoinKelasparalel($criteria = null, $con = null)
+	public function getKelasPalalelHasJadwalsJoinKelasPalalel($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseKelasparalelHasJadwalPeer.php';
+				include_once 'lib/model/om/BaseKelasPalalelHasJadwalPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -576,26 +576,26 @@ abstract class BaseJadwal extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collKelasparalelHasJadwals === null) {
+		if ($this->collKelasPalalelHasJadwals === null) {
 			if ($this->isNew()) {
-				$this->collKelasparalelHasJadwals = array();
+				$this->collKelasPalalelHasJadwals = array();
 			} else {
 
-				$criteria->add(KelasparalelHasJadwalPeer::JADWAL_ID, $this->getId());
+				$criteria->add(KelasPalalelHasJadwalPeer::JADWAL_ID, $this->getId());
 
-				$this->collKelasparalelHasJadwals = KelasparalelHasJadwalPeer::doSelectJoinKelasparalel($criteria, $con);
+				$this->collKelasPalalelHasJadwals = KelasPalalelHasJadwalPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		} else {
 									
-			$criteria->add(KelasparalelHasJadwalPeer::JADWAL_ID, $this->getId());
+			$criteria->add(KelasPalalelHasJadwalPeer::JADWAL_ID, $this->getId());
 
-			if (!isset($this->lastKelasparalelHasJadwalCriteria) || !$this->lastKelasparalelHasJadwalCriteria->equals($criteria)) {
-				$this->collKelasparalelHasJadwals = KelasparalelHasJadwalPeer::doSelectJoinKelasparalel($criteria, $con);
+			if (!isset($this->lastKelasPalalelHasJadwalCriteria) || !$this->lastKelasPalalelHasJadwalCriteria->equals($criteria)) {
+				$this->collKelasPalalelHasJadwals = KelasPalalelHasJadwalPeer::doSelectJoinKelasPalalel($criteria, $con);
 			}
 		}
-		$this->lastKelasparalelHasJadwalCriteria = $criteria;
+		$this->lastKelasPalalelHasJadwalCriteria = $criteria;
 
-		return $this->collKelasparalelHasJadwals;
+		return $this->collKelasPalalelHasJadwals;
 	}
 
 } 

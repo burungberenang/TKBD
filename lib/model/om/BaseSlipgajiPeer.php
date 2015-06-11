@@ -42,7 +42,7 @@ abstract class BaseSlipgajiPeer {
 	private static $fieldNames = array (
 		BasePeer::TYPE_PHPNAME => array ('Id', 'GrandTotal', 'Pajak', 'CreatedAt', 'DosenId', ),
 		BasePeer::TYPE_COLNAME => array (SlipgajiPeer::ID, SlipgajiPeer::GRAND_TOTAL, SlipgajiPeer::PAJAK, SlipgajiPeer::CREATED_AT, SlipgajiPeer::DOSEN_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'grand_total', 'pajak', 'created_at', 'Dosen_id', ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'grand_total', 'pajak', 'created_at', 'dosen_id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
@@ -50,7 +50,7 @@ abstract class BaseSlipgajiPeer {
 	private static $fieldKeys = array (
 		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'GrandTotal' => 1, 'Pajak' => 2, 'CreatedAt' => 3, 'DosenId' => 4, ),
 		BasePeer::TYPE_COLNAME => array (SlipgajiPeer::ID => 0, SlipgajiPeer::GRAND_TOTAL => 1, SlipgajiPeer::PAJAK => 2, SlipgajiPeer::CREATED_AT => 3, SlipgajiPeer::DOSEN_ID => 4, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'grand_total' => 1, 'pajak' => 2, 'created_at' => 3, 'Dosen_id' => 4, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'grand_total' => 1, 'pajak' => 2, 'created_at' => 3, 'dosen_id' => 4, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 

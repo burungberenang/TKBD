@@ -47,7 +47,7 @@ abstract class BaseAbsensiPeer {
 	const JAM_KELUAR_DOSEN = 'absensi.JAM_KELUAR_DOSEN';
 
 	
-	const KELASPARALEL_ID = 'absensi.KELASPARALEL_ID';
+	const KELAS_PARALEL_ID = 'absensi.KELAS_PARALEL_ID';
 
 	
 	private static $phpNameMap = null;
@@ -55,17 +55,17 @@ abstract class BaseAbsensiPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'DosenId', 'Materi', 'MingguKe', 'Tanggal', 'SksNyata', 'Status', 'JamHadirDosen', 'JamKeluarDosen', 'KelasparalelId', ),
-		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID, AbsensiPeer::DOSEN_ID, AbsensiPeer::MATERI, AbsensiPeer::MINGGU_KE, AbsensiPeer::TANGGAL, AbsensiPeer::SKS_NYATA, AbsensiPeer::STATUS, AbsensiPeer::JAM_HADIR_DOSEN, AbsensiPeer::JAM_KELUAR_DOSEN, AbsensiPeer::KELASPARALEL_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'dosen_id', 'materi', 'minggu_ke', 'tanggal', 'sks_nyata', 'status', 'jam_hadir_dosen', 'jam_keluar_dosen', 'KelasParalel_id', ),
+		BasePeer::TYPE_PHPNAME => array ('Id', 'DosenId', 'Materi', 'MingguKe', 'Tanggal', 'SksNyata', 'Status', 'JamHadirDosen', 'JamKeluarDosen', 'KelasParalelId', ),
+		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID, AbsensiPeer::DOSEN_ID, AbsensiPeer::MATERI, AbsensiPeer::MINGGU_KE, AbsensiPeer::TANGGAL, AbsensiPeer::SKS_NYATA, AbsensiPeer::STATUS, AbsensiPeer::JAM_HADIR_DOSEN, AbsensiPeer::JAM_KELUAR_DOSEN, AbsensiPeer::KELAS_PARALEL_ID, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'dosen_id', 'materi', 'minggu_ke', 'tanggal', 'sks_nyata', 'status', 'jam_hadir_dosen', 'jam_keluar_dosen', 'kelas_paralel_id', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'DosenId' => 1, 'Materi' => 2, 'MingguKe' => 3, 'Tanggal' => 4, 'SksNyata' => 5, 'Status' => 6, 'JamHadirDosen' => 7, 'JamKeluarDosen' => 8, 'KelasparalelId' => 9, ),
-		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID => 0, AbsensiPeer::DOSEN_ID => 1, AbsensiPeer::MATERI => 2, AbsensiPeer::MINGGU_KE => 3, AbsensiPeer::TANGGAL => 4, AbsensiPeer::SKS_NYATA => 5, AbsensiPeer::STATUS => 6, AbsensiPeer::JAM_HADIR_DOSEN => 7, AbsensiPeer::JAM_KELUAR_DOSEN => 8, AbsensiPeer::KELASPARALEL_ID => 9, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'dosen_id' => 1, 'materi' => 2, 'minggu_ke' => 3, 'tanggal' => 4, 'sks_nyata' => 5, 'status' => 6, 'jam_hadir_dosen' => 7, 'jam_keluar_dosen' => 8, 'KelasParalel_id' => 9, ),
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'DosenId' => 1, 'Materi' => 2, 'MingguKe' => 3, 'Tanggal' => 4, 'SksNyata' => 5, 'Status' => 6, 'JamHadirDosen' => 7, 'JamKeluarDosen' => 8, 'KelasParalelId' => 9, ),
+		BasePeer::TYPE_COLNAME => array (AbsensiPeer::ID => 0, AbsensiPeer::DOSEN_ID => 1, AbsensiPeer::MATERI => 2, AbsensiPeer::MINGGU_KE => 3, AbsensiPeer::TANGGAL => 4, AbsensiPeer::SKS_NYATA => 5, AbsensiPeer::STATUS => 6, AbsensiPeer::JAM_HADIR_DOSEN => 7, AbsensiPeer::JAM_KELUAR_DOSEN => 8, AbsensiPeer::KELAS_PARALEL_ID => 9, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'dosen_id' => 1, 'materi' => 2, 'minggu_ke' => 3, 'tanggal' => 4, 'sks_nyata' => 5, 'status' => 6, 'jam_hadir_dosen' => 7, 'jam_keluar_dosen' => 8, 'kelas_paralel_id' => 9, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
 	);
 
@@ -138,7 +138,7 @@ abstract class BaseAbsensiPeer {
 
 		$criteria->addSelectColumn(AbsensiPeer::JAM_KELUAR_DOSEN);
 
-		$criteria->addSelectColumn(AbsensiPeer::KELASPARALEL_ID);
+		$criteria->addSelectColumn(AbsensiPeer::KELAS_PARALEL_ID);
 
 	}
 
@@ -247,7 +247,7 @@ abstract class BaseAbsensiPeer {
 
 
 	
-	public static function doCountJoinKelasparalel(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinKelasPalalel(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
@@ -263,7 +263,7 @@ abstract class BaseAbsensiPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(AbsensiPeer::KELASPARALEL_ID, KelasparalelPeer::ID);
+		$criteria->addJoin(AbsensiPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
 		$rs = AbsensiPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -322,7 +322,7 @@ abstract class BaseAbsensiPeer {
 
 
 	
-	public static function doSelectJoinKelasparalel(Criteria $c, $con = null)
+	public static function doSelectJoinKelasPalalel(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
@@ -332,9 +332,9 @@ abstract class BaseAbsensiPeer {
 
 		AbsensiPeer::addSelectColumns($c);
 		$startcol = (AbsensiPeer::NUM_COLUMNS - AbsensiPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		KelasparalelPeer::addSelectColumns($c);
+		KelasPalalelPeer::addSelectColumns($c);
 
-		$c->addJoin(AbsensiPeer::KELASPARALEL_ID, KelasparalelPeer::ID);
+		$c->addJoin(AbsensiPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
@@ -346,7 +346,7 @@ abstract class BaseAbsensiPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = KelasparalelPeer::getOMClass();
+			$omClass = KelasPalalelPeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj2 = new $cls();
@@ -354,7 +354,7 @@ abstract class BaseAbsensiPeer {
 
 			$newObject = true;
 			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getKelasparalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 										$temp_obj2->addAbsensi($obj1); 					break;
 				}
@@ -387,7 +387,7 @@ abstract class BaseAbsensiPeer {
 
 		$criteria->addJoin(AbsensiPeer::DOSEN_ID, DosenPeer::ID);
 
-		$criteria->addJoin(AbsensiPeer::KELASPARALEL_ID, KelasparalelPeer::ID);
+		$criteria->addJoin(AbsensiPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
 		$rs = AbsensiPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -413,12 +413,12 @@ abstract class BaseAbsensiPeer {
 		DosenPeer::addSelectColumns($c);
 		$startcol3 = $startcol2 + DosenPeer::NUM_COLUMNS;
 
-		KelasparalelPeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + KelasparalelPeer::NUM_COLUMNS;
+		KelasPalalelPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + KelasPalalelPeer::NUM_COLUMNS;
 
 		$c->addJoin(AbsensiPeer::DOSEN_ID, DosenPeer::ID);
 
-		$c->addJoin(AbsensiPeer::KELASPARALEL_ID, KelasparalelPeer::ID);
+		$c->addJoin(AbsensiPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
@@ -457,7 +457,7 @@ abstract class BaseAbsensiPeer {
 
 
 					
-			$omClass = KelasparalelPeer::getOMClass();
+			$omClass = KelasPalalelPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -467,7 +467,7 @@ abstract class BaseAbsensiPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getKelasparalel(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+				$temp_obj3 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj3->addAbsensi($obj1); 					break;
 				}
@@ -501,7 +501,7 @@ abstract class BaseAbsensiPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(AbsensiPeer::KELASPARALEL_ID, KelasparalelPeer::ID);
+		$criteria->addJoin(AbsensiPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
 		$rs = AbsensiPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -513,7 +513,7 @@ abstract class BaseAbsensiPeer {
 
 
 	
-	public static function doCountJoinAllExceptKelasparalel(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinAllExceptKelasPalalel(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
@@ -552,10 +552,10 @@ abstract class BaseAbsensiPeer {
 		AbsensiPeer::addSelectColumns($c);
 		$startcol2 = (AbsensiPeer::NUM_COLUMNS - AbsensiPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		KelasparalelPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + KelasparalelPeer::NUM_COLUMNS;
+		KelasPalalelPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + KelasPalalelPeer::NUM_COLUMNS;
 
-		$c->addJoin(AbsensiPeer::KELASPARALEL_ID, KelasparalelPeer::ID);
+		$c->addJoin(AbsensiPeer::KELAS_PARALEL_ID, KelasPalalelPeer::ID);
 
 
 		$rs = BasePeer::doSelect($c, $con);
@@ -569,7 +569,7 @@ abstract class BaseAbsensiPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = KelasparalelPeer::getOMClass();
+			$omClass = KelasPalalelPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -579,7 +579,7 @@ abstract class BaseAbsensiPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getKelasparalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getKelasPalalel(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addAbsensi($obj1);
 					break;
@@ -598,7 +598,7 @@ abstract class BaseAbsensiPeer {
 
 
 	
-	public static function doSelectJoinAllExceptKelasparalel(Criteria $c, $con = null)
+	public static function doSelectJoinAllExceptKelasPalalel(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 

@@ -108,8 +108,8 @@ CREATE SEQUENCE "jadwal_seq";
 CREATE TABLE "jadwal"
 (
 	"id" INTEGER  NOT NULL,
-	"Jam_id" INTEGER  NOT NULL,
-	"Hari_id" INTEGER  NOT NULL,
+	"jam_id" INTEGER  NOT NULL,
+	"hari_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
@@ -117,9 +117,9 @@ COMMENT ON TABLE "jadwal" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "jadwal" ADD CONSTRAINT "jadwal_FK_1" FOREIGN KEY ("Jam_id") REFERENCES "jam" ("id") ON DELETE CASCADE;
+ALTER TABLE "jadwal" ADD CONSTRAINT "jadwal_FK_1" FOREIGN KEY ("jam_id") REFERENCES "jam" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "jadwal" ADD CONSTRAINT "jadwal_FK_2" FOREIGN KEY ("Hari_id") REFERENCES "hari" ("id") ON DELETE CASCADE;
+ALTER TABLE "jadwal" ADD CONSTRAINT "jadwal_FK_2" FOREIGN KEY ("hari_id") REFERENCES "hari" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
 -- jurusan
@@ -138,7 +138,7 @@ CREATE TABLE "jurusan"
 	"nama" VARCHAR(45),
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
-	"Fakultas_id" INTEGER  NOT NULL,
+	"fakultas_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
@@ -146,20 +146,20 @@ COMMENT ON TABLE "jurusan" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "jurusan" ADD CONSTRAINT "jurusan_FK_1" FOREIGN KEY ("Fakultas_id") REFERENCES "fakultas" ("id") ON DELETE CASCADE;
+ALTER TABLE "jurusan" ADD CONSTRAINT "jurusan_FK_1" FOREIGN KEY ("fakultas_id") REFERENCES "fakultas" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
--- matakuliah
+-- mata_kuliah
 -----------------------------------------------------------------------------
 
-DROP TABLE "matakuliah" CASCADE;
+DROP TABLE "mata_kuliah" CASCADE;
 
-DROP SEQUENCE "matakuliah_seq";
+DROP SEQUENCE "mata_kuliah_seq";
 
-CREATE SEQUENCE "matakuliah_seq";
+CREATE SEQUENCE "mata_kuliah_seq";
 
 
-CREATE TABLE "matakuliah"
+CREATE TABLE "mata_kuliah"
 (
 	"id" INTEGER  NOT NULL,
 	"kodeMk" VARCHAR(45),
@@ -167,15 +167,15 @@ CREATE TABLE "matakuliah"
 	"sks" INTEGER,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
-	"Jurusan_id" INTEGER  NOT NULL,
+	"jurusan_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
-COMMENT ON TABLE "matakuliah" IS '';
+COMMENT ON TABLE "mata_kuliah" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "matakuliah" ADD CONSTRAINT "matakuliah_FK_1" FOREIGN KEY ("Jurusan_id") REFERENCES "jurusan" ("id") ON DELETE CASCADE;
+ALTER TABLE "mata_kuliah" ADD CONSTRAINT "mata_kuliah_FK_1" FOREIGN KEY ("jurusan_id") REFERENCES "jurusan" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
 -- dosen
@@ -197,7 +197,7 @@ CREATE TABLE "dosen"
 	"tgl_lahir" DATE,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
-	"Golongan_id" INTEGER  NOT NULL,
+	"golongan_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id"),
 	CONSTRAINT "dosen_npk_unique" UNIQUE ("npk")
 );
@@ -206,7 +206,7 @@ COMMENT ON TABLE "dosen" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "dosen" ADD CONSTRAINT "dosen_FK_1" FOREIGN KEY ("Golongan_id") REFERENCES "golongan" ("id") ON DELETE CASCADE;
+ALTER TABLE "dosen" ADD CONSTRAINT "dosen_FK_1" FOREIGN KEY ("golongan_id") REFERENCES "golongan" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
 -- slipgaji
@@ -225,7 +225,7 @@ CREATE TABLE "slipgaji"
 	"grand_total" NUMERIC(20,2),
 	"pajak" NUMERIC(20,2),
 	"created_at" TIMESTAMP,
-	"Dosen_id" INTEGER  NOT NULL,
+	"dosen_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
@@ -233,7 +233,7 @@ COMMENT ON TABLE "slipgaji" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "slipgaji" ADD CONSTRAINT "slipgaji_FK_1" FOREIGN KEY ("Dosen_id") REFERENCES "dosen" ("id") ON DELETE CASCADE;
+ALTER TABLE "slipgaji" ADD CONSTRAINT "slipgaji_FK_1" FOREIGN KEY ("dosen_id") REFERENCES "dosen" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
 -- mahasiswa
@@ -253,7 +253,7 @@ CREATE TABLE "mahasiswa"
 	"nama" VARCHAR(45)  NOT NULL,
 	"alamat" TEXT,
 	"tgl_lahir" DATE,
-	"Jurusan_id" INTEGER  NOT NULL,
+	"jurusan_id" INTEGER  NOT NULL,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
 	PRIMARY KEY ("id"),
@@ -264,35 +264,35 @@ COMMENT ON TABLE "mahasiswa" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "mahasiswa" ADD CONSTRAINT "mahasiswa_FK_1" FOREIGN KEY ("Jurusan_id") REFERENCES "jurusan" ("id") ON DELETE CASCADE;
+ALTER TABLE "mahasiswa" ADD CONSTRAINT "mahasiswa_FK_1" FOREIGN KEY ("jurusan_id") REFERENCES "jurusan" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
--- kelasparalel
+-- kelas_palalel
 -----------------------------------------------------------------------------
 
-DROP TABLE "kelasparalel" CASCADE;
+DROP TABLE "kelas_palalel" CASCADE;
 
-DROP SEQUENCE "kelasparalel_seq";
+DROP SEQUENCE "kelas_palalel_seq";
 
-CREATE SEQUENCE "kelasparalel_seq";
+CREATE SEQUENCE "kelas_palalel_seq";
 
 
-CREATE TABLE "kelasparalel"
+CREATE TABLE "kelas_palalel"
 (
 	"id" INTEGER  NOT NULL,
 	"nama" VARCHAR(45),
 	"status" INTEGER,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
-	"MataKuliah_id" INTEGER  NOT NULL,
+	"mata_kuliah_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
-COMMENT ON TABLE "kelasparalel" IS '';
+COMMENT ON TABLE "kelas_palalel" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "kelasparalel" ADD CONSTRAINT "kelasparalel_FK_1" FOREIGN KEY ("MataKuliah_id") REFERENCES "matakuliah" ("id") ON DELETE CASCADE;
+ALTER TABLE "kelas_palalel" ADD CONSTRAINT "kelas_palalel_FK_1" FOREIGN KEY ("mata_kuliah_id") REFERENCES "mata_kuliah" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
 -- absensi
@@ -316,7 +316,7 @@ CREATE TABLE "absensi"
 	"status" INTEGER  NOT NULL,
 	"jam_hadir_dosen" TIME,
 	"jam_keluar_dosen" TIME,
-	"KelasParalel_id" INTEGER  NOT NULL,
+	"kelas_paralel_id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
@@ -326,63 +326,63 @@ COMMENT ON TABLE "absensi" IS '';
 SET search_path TO public;
 ALTER TABLE "absensi" ADD CONSTRAINT "absensi_FK_1" FOREIGN KEY ("dosen_id") REFERENCES "dosen" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "absensi" ADD CONSTRAINT "absensi_FK_2" FOREIGN KEY ("KelasParalel_id") REFERENCES "kelasparalel" ("id") ON DELETE CASCADE;
+ALTER TABLE "absensi" ADD CONSTRAINT "absensi_FK_2" FOREIGN KEY ("kelas_paralel_id") REFERENCES "kelas_palalel" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
--- kelasparalel_has_dosen
+-- kelas_paralel_has_dosen
 -----------------------------------------------------------------------------
 
-DROP TABLE "kelasparalel_has_dosen" CASCADE;
+DROP TABLE "kelas_paralel_has_dosen" CASCADE;
 
-DROP SEQUENCE "kelasparalel_has_dosen_seq";
+DROP SEQUENCE "kelas_paralel_has_dosen_seq";
 
-CREATE SEQUENCE "kelasparalel_has_dosen_seq";
+CREATE SEQUENCE "kelas_paralel_has_dosen_seq";
 
 
-CREATE TABLE "kelasparalel_has_dosen"
+CREATE TABLE "kelas_paralel_has_dosen"
 (
-	"KelasParalel_id" INTEGER  NOT NULL,
-	"Dosen_id" INTEGER  NOT NULL,
+	"kelas_paralel_id" INTEGER  NOT NULL,
+	"dosen_id" INTEGER  NOT NULL,
 	"id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
-COMMENT ON TABLE "kelasparalel_has_dosen" IS '';
+COMMENT ON TABLE "kelas_paralel_has_dosen" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "kelasparalel_has_dosen" ADD CONSTRAINT "kelasparalel_has_dosen_FK_1" FOREIGN KEY ("KelasParalel_id") REFERENCES "kelasparalel" ("id") ON DELETE CASCADE;
+ALTER TABLE "kelas_paralel_has_dosen" ADD CONSTRAINT "kelas_paralel_has_dosen_FK_1" FOREIGN KEY ("kelas_paralel_id") REFERENCES "kelas_palalel" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "kelasparalel_has_dosen" ADD CONSTRAINT "kelasparalel_has_dosen_FK_2" FOREIGN KEY ("Dosen_id") REFERENCES "dosen" ("id") ON DELETE CASCADE;
+ALTER TABLE "kelas_paralel_has_dosen" ADD CONSTRAINT "kelas_paralel_has_dosen_FK_2" FOREIGN KEY ("dosen_id") REFERENCES "dosen" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
--- kelasparalel_has_jadwal
+-- kelas_palalel_has_jadwal
 -----------------------------------------------------------------------------
 
-DROP TABLE "kelasparalel_has_jadwal" CASCADE;
+DROP TABLE "kelas_palalel_has_jadwal" CASCADE;
 
-DROP SEQUENCE "kelasparalel_has_jadwal_seq";
+DROP SEQUENCE "kelas_palalel_has_jadwal_seq";
 
-CREATE SEQUENCE "kelasparalel_has_jadwal_seq";
+CREATE SEQUENCE "kelas_palalel_has_jadwal_seq";
 
 
-CREATE TABLE "kelasparalel_has_jadwal"
+CREATE TABLE "kelas_palalel_has_jadwal"
 (
-	"KelasParalel_id" INTEGER  NOT NULL,
-	"Jadwal_id" INTEGER  NOT NULL,
+	"kelas_paralel_id" INTEGER  NOT NULL,
+	"jadwal_id" INTEGER  NOT NULL,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
 	"id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
-COMMENT ON TABLE "kelasparalel_has_jadwal" IS '';
+COMMENT ON TABLE "kelas_palalel_has_jadwal" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "kelasparalel_has_jadwal" ADD CONSTRAINT "kelasparalel_has_jadwal_FK_1" FOREIGN KEY ("KelasParalel_id") REFERENCES "kelasparalel" ("id") ON DELETE CASCADE;
+ALTER TABLE "kelas_palalel_has_jadwal" ADD CONSTRAINT "kelas_palalel_has_jadwal_FK_1" FOREIGN KEY ("kelas_paralel_id") REFERENCES "kelas_palalel" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "kelasparalel_has_jadwal" ADD CONSTRAINT "kelasparalel_has_jadwal_FK_2" FOREIGN KEY ("Jadwal_id") REFERENCES "jadwal" ("id") ON DELETE CASCADE;
+ALTER TABLE "kelas_palalel_has_jadwal" ADD CONSTRAINT "kelas_palalel_has_jadwal_FK_2" FOREIGN KEY ("jadwal_id") REFERENCES "jadwal" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
 -- mahasiswa_has_absensi
@@ -397,8 +397,8 @@ CREATE SEQUENCE "mahasiswa_has_absensi_seq";
 
 CREATE TABLE "mahasiswa_has_absensi"
 (
-	"Mahasiswa_id" INTEGER  NOT NULL,
-	"Absensi_id" INTEGER  NOT NULL,
+	"mahasiswa_id" INTEGER  NOT NULL,
+	"absensi_id" INTEGER  NOT NULL,
 	"created_at" TIMESTAMP,
 	"id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
@@ -408,35 +408,35 @@ COMMENT ON TABLE "mahasiswa_has_absensi" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "mahasiswa_has_absensi" ADD CONSTRAINT "mahasiswa_has_absensi_FK_1" FOREIGN KEY ("Mahasiswa_id") REFERENCES "mahasiswa" ("id") ON DELETE CASCADE;
+ALTER TABLE "mahasiswa_has_absensi" ADD CONSTRAINT "mahasiswa_has_absensi_FK_1" FOREIGN KEY ("mahasiswa_id") REFERENCES "mahasiswa" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "mahasiswa_has_absensi" ADD CONSTRAINT "mahasiswa_has_absensi_FK_2" FOREIGN KEY ("Absensi_id") REFERENCES "absensi" ("id") ON DELETE CASCADE;
+ALTER TABLE "mahasiswa_has_absensi" ADD CONSTRAINT "mahasiswa_has_absensi_FK_2" FOREIGN KEY ("absensi_id") REFERENCES "absensi" ("id") ON DELETE CASCADE;
 
 -----------------------------------------------------------------------------
--- mahasiswa_has_kelasparalel
+-- mahasiswa_has_kelas_palalel
 -----------------------------------------------------------------------------
 
-DROP TABLE "mahasiswa_has_kelasparalel" CASCADE;
+DROP TABLE "mahasiswa_has_kelas_palalel" CASCADE;
 
-DROP SEQUENCE "mahasiswa_has_kelasparalel_seq";
+DROP SEQUENCE "mahasiswa_has_kelas_palalel_seq";
 
-CREATE SEQUENCE "mahasiswa_has_kelasparalel_seq";
+CREATE SEQUENCE "mahasiswa_has_kelas_palalel_seq";
 
 
-CREATE TABLE "mahasiswa_has_kelasparalel"
+CREATE TABLE "mahasiswa_has_kelas_palalel"
 (
-	"Mahasiswa_id" INTEGER  NOT NULL,
-	"KelasParalel_id" INTEGER  NOT NULL,
+	"mahasiswa_id" INTEGER  NOT NULL,
+	"kelas_paralel_id" INTEGER  NOT NULL,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
 	"id" INTEGER  NOT NULL,
 	PRIMARY KEY ("id")
 );
 
-COMMENT ON TABLE "mahasiswa_has_kelasparalel" IS '';
+COMMENT ON TABLE "mahasiswa_has_kelas_palalel" IS '';
 
 
 SET search_path TO public;
-ALTER TABLE "mahasiswa_has_kelasparalel" ADD CONSTRAINT "mahasiswa_has_kelasparalel_FK_1" FOREIGN KEY ("Mahasiswa_id") REFERENCES "mahasiswa" ("id") ON DELETE CASCADE;
+ALTER TABLE "mahasiswa_has_kelas_palalel" ADD CONSTRAINT "mahasiswa_has_kelas_palalel_FK_1" FOREIGN KEY ("mahasiswa_id") REFERENCES "mahasiswa" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "mahasiswa_has_kelasparalel" ADD CONSTRAINT "mahasiswa_has_kelasparalel_FK_2" FOREIGN KEY ("KelasParalel_id") REFERENCES "kelasparalel" ("id") ON DELETE CASCADE;
+ALTER TABLE "mahasiswa_has_kelas_palalel" ADD CONSTRAINT "mahasiswa_has_kelas_palalel_FK_2" FOREIGN KEY ("kelas_paralel_id") REFERENCES "kelas_palalel" ("id") ON DELETE CASCADE;

@@ -56,9 +56,7 @@ abstract class BaseKelasParalelHasDosen extends BaseObject  implements Persisten
 	public function setKelasParalelId($v)
 	{
 
-		
-		
-		if ($v !== null && !is_int($v) && is_numeric($v)) {
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -76,9 +74,7 @@ abstract class BaseKelasParalelHasDosen extends BaseObject  implements Persisten
 	public function setDosenId($v)
 	{
 
-		
-		
-		if ($v !== null && !is_int($v) && is_numeric($v)) {
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
@@ -96,9 +92,7 @@ abstract class BaseKelasParalelHasDosen extends BaseObject  implements Persisten
 	public function setId($v)
 	{
 
-		
-		
-		if ($v !== null && !is_int($v) && is_numeric($v)) {
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 

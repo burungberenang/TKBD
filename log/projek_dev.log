@@ -3049,3 +3049,49 @@ Jun 11 18:43:30 symfony [info] {sfCreole} executeUpdate(): INSERT INTO golongan 
 Jun 11 18:43:30 symfony [info] {sfCreole} committing transaction.
 Jun 11 18:43:30 symfony [info] {sfCreole} committing transaction.
 Jun 11 18:43:30 symfony [info] {sfCreole} committing transaction.
+Jun 11 19:49:44 symfony [info] {sfRouting} connect "/"
+Jun 11 19:49:44 symfony [info] {sfRouting} connect "/symfony/:action/*"
+Jun 11 19:49:44 symfony [info] {sfRouting} connect "/:module"
+Jun 11 19:49:44 symfony [info] {sfRouting} connect "/:module/:action/*"
+Jun 11 19:49:44 symfony [info] {sfContext} initialization
+Jun 11 19:49:44 symfony [info] {sfController} initialization
+Jun 11 19:49:44 symfony [info] {sfRouting} match route [default_index] "/:module"
+Jun 11 19:49:44 symfony [info] {sfRequest} request parameters array (  'module' => 'fakultas',  'action' => 'index',)
+Jun 11 19:49:44 symfony [info] {sfController} dispatch request
+Jun 11 19:50:02 symfony [info] {sfContext} initialization
+Jun 11 19:50:02 symfony [info] {sfController} initialization
+Jun 11 19:50:02 symfony [info] {sfRouting} match route [default_index] "/:module"
+Jun 11 19:50:02 symfony [info] {sfRequest} request parameters array (  'module' => 'jurusan',  'action' => 'index',)
+Jun 11 19:50:02 symfony [info] {sfController} dispatch request
+Jun 11 19:52:46 symfony [info] {sfContext} initialization
+Jun 11 19:52:46 symfony [info] {sfController} initialization
+Jun 11 19:52:46 symfony [info] {sfRouting} match route [default_index] "/:module"
+Jun 11 19:52:46 symfony [info] {sfRequest} request parameters array (  'module' => 'jurusan',  'action' => 'index',)
+Jun 11 19:52:46 symfony [info] {sfController} dispatch request
+Jun 11 19:53:20 symfony [info] {sfContext} initialization
+Jun 11 19:53:21 symfony [info] {sfController} initialization
+Jun 11 19:53:21 symfony [info] {sfRouting} match route [default_index] "/:module"
+Jun 11 19:53:21 symfony [info] {sfRequest} request parameters array (  'module' => 'jurusan',  'action' => 'index',)
+Jun 11 19:53:21 symfony [info] {sfController} dispatch request
+Jun 11 13:53:43 symfony [info] {sfCreole} connect(): DSN: array (   'compat_assoc_lower' => NULL,   'compat_rtrim_string' => NULL,   'database' => 'projek_tkbd',   'encoding' => NULL,   'hostspec' => 'localhost',   'password' => 'admin',   'persistent' => NULL,   'phptype' => 'pgsql',   'port' => NULL,   'protocol' => NULL,   'socket' => NULL,   'username' => 'postgres', ), FLAGS: 0
+Jun 11 13:53:43 symfony [info] {sfCreole} beginning transaction.
+Jun 11 13:53:43 symfony [err] {sfException} Unable to find path for class "MatakKuliahPeer".
+Jun 11 13:53:43 symfony [info] {sfCreole} rolling back transaction.
+Jun 11 13:53:51 symfony [info] {sfCreole} connect(): DSN: array (   'compat_assoc_lower' => NULL,   'compat_rtrim_string' => NULL,   'database' => 'projek_tkbd',   'encoding' => NULL,   'hostspec' => 'localhost',   'password' => 'admin',   'persistent' => NULL,   'phptype' => 'pgsql',   'port' => NULL,   'protocol' => NULL,   'socket' => NULL,   'username' => 'postgres', ), FLAGS: 0
+Jun 11 13:53:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 13:53:51 symfony [err] {sfException} Unable to find path for class "MataKuliahPeer".
+Jun 11 13:53:51 symfony [info] {sfCreole} rolling back transaction.
+Jun 11 13:53:59 symfony [info] {sfCreole} connect(): DSN: array (   'compat_assoc_lower' => NULL,   'compat_rtrim_string' => NULL,   'database' => 'projek_tkbd',   'encoding' => NULL,   'hostspec' => 'localhost',   'password' => 'admin',   'persistent' => NULL,   'phptype' => 'pgsql',   'port' => NULL,   'protocol' => NULL,   'socket' => NULL,   'username' => 'postgres', ), FLAGS: 0
+Jun 11 13:53:59 symfony [info] {sfCreole} beginning transaction.
+Jun 11 13:53:59 symfony [info] {sfCreole} beginning transaction.
+Jun 11 13:53:59 symfony [info] {sfCreole} prepareStatement(): DELETE FROM jam
+Jun 11 13:53:59 symfony [info] {sfCreole} executeUpdate(): DELETE FROM jam
+Jun 11 13:53:59 symfony [info] {sfCreole} committing transaction.
+Jun 11 13:53:59 symfony [info] {sfCreole} beginning transaction.
+Jun 11 13:53:59 symfony [info] {sfCreole} prepareStatement(): DELETE FROM hari
+Jun 11 13:53:59 symfony [info] {sfCreole} executeUpdate(): DELETE FROM hari
+Jun 11 13:53:59 symfony [info] {sfCreole} committing transaction.
+Jun 11 13:54:02 symfony [info] {sfCreole} beginning transaction.
+Jun 11 13:54:02 symfony [info] {sfCreole} prepareStatement(): DELETE FROM mahasiswa
+Jun 11 13:54:02 symfony [info] {sfCreole} executeUpdate(): DELETE FROM mahasiswa
+Jun 11 13:54:02 symfony [info] {sfCreole} committing transaction.

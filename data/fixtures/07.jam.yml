@@ -1,0 +1,46 @@
+Jam:
+    1:
+        mulai: "7.00"
+        selesai: "7.55"
+    2:
+        mulai: "7.55"
+        selesai: "8.50"
+    3:
+        mulai: "8.50"
+        selesai: "9.45"
+    4:
+        mulai: "9.45"
+        selesai: "10.40"
+    5:
+        mulai: "10.40"
+        selesai: "11.35"
+    6:
+        mulai: "11.35"
+        selesai: "12.30"
+    7:
+        mulai: "13.00"
+        selesai: "13.55"
+    8:
+        mulai: "13.55"
+        selesai: "14.50"
+    9:
+        mulai: "14.50"
+        selesai: "15.45"
+    10:
+        mulai: "15.45"
+        selesai: "16.40"
+    11:
+        mulai: "16.40"
+        selesai: "17.35"
+    12:
+        mulai: "17.35"
+        selesai: "18.30"
+    13:
+        mulai: "18.30"
+        selesai: "19.25"
+    14:
+        mulai: "19.25"
+        selesai: "20.20"
+    15:
+        mulai: "20.20"
+        selesai: "21.15"

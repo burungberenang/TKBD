@@ -2,18 +2,18 @@ Golongan:
 <?php for ($i=1; $i<=3; $i++): ?>
     golongan_<?php echo $i;?>_a:
         kode: <?php echo $i."a\n"?>
-        gaji_pokok: <?php echo $i.($i*1)."00000"."\n" ?>
-        gaji_sks: <?php echo ($i*1)."00000"."\n" ?>
-        gaji_sks_inggris: <?php echo ($i*2)."00000\n" ?>
+        gaji_pokok: <?php echo $i."00000"."\n" ?>
+        gaji_sks: <?php echo ($i)."10000"."\n" ?>
+        gaji_sks_inggris: <?php echo ($i)."50000\n" ?>
     golongan_<?php echo $i;?>_b:
         kode: <?php echo $i."b\n"?>
-        gaji_pokok: <?php echo $i.($i*2)."00000"."\n" ?>
-        gaji_sks: <?php echo ($i*2)."00000"."\n" ?>
-        gaji_sks_inggris: <?php echo ($i*3)."00000\n" ?>
+        gaji_pokok: <?php echo $i."200000"."\n" ?>
+        gaji_sks: <?php echo ($i)."20000"."\n" ?>
+        gaji_sks_inggris: <?php echo ($i)."70000\n" ?>
     golongan_<?php echo $i;?>_c:
         kode: <?php echo $i."c\n"?>
-        gaji_pokok: <?php echo $i.($i*3)."00000"."\n" ?>
-        gaji_sks: <?php echo ($i*3)."00000"."\n" ?>
-        gaji_sks_inggris: <?php echo ($i*4)."00000\n" ?>
+        gaji_pokok: <?php echo $i."300000"."\n" ?>
+        gaji_sks: <?php echo ($i)."30000"."\n" ?>
+        gaji_sks_inggris: <?php echo ($i)."90000\n" ?>
 <?php endfor; ?>
     

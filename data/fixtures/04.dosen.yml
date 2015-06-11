@@ -1,0 +1,10 @@
+Dosen:
+<?php for ($i=1; $i<=3000; $i++): ?>
+  dosen_<?php echo $i ?>:
+    npk: <?php echo "732".$i."\n" ?>
+    nama: Dosen <?php echo $i."\n" ?>
+    alamat: Alamat dosen <?php echo $i."\n" ?>
+    tgl_lahir: <?php if($i<=500): echo "1980-"; elseif($i<=1000): echo "1981-"; elseif($i<=1500): echo "1972-"; elseif($i<=2000): echo "1970-"; else if($i<=2500): echo "1979-"; elseif($i<=3000): echo "1977-"; endif; ?>
+    golongan_id: <?php if($i<=500): echo "1a"; elseif($i<=1000): echo "1b"; elseif($i<=1500): echo "3c"; elseif($i<=2000): echo "3a"; else if($i<=2500): echo "2b"; elseif($i<=3000): echo "2c"; endif; ?>
+<?php endfor ?>
+    

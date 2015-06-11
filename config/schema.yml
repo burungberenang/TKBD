@@ -1,129 +1,80 @@
 propel: 
   fakultas: 
     id: ~
-    nama: 
-      type: VARCHAR
-      size: 45
+    nama: varchar(45)
     created_at: ~
     updated_at: ~
   golongan: 
     id: ~
-    kode: 
-      type: VARCHAR
-      size: 45
-      required: true
-    gaji_pokok: 
-      type: DOUBLE
-    gaji_sks: 
-      type: DOUBLE
-    gaji_sks_inggris: 
-      type: DOUBLE
+    kode: { type: varchar(45), required: true }
+    gaji_pokok: { type: numeric, size: 20, scale: 2 }
+    gaji_sks: { type: numeric, size: 20, scale: 2 }
+    gaji_sks_inggris: { type: numeric, size: 20, scale: 2 }
     created_at: ~
     updated_at: ~
   hari: 
     id: ~
-    nama: 
-      type: VARCHAR
-      size: 45
+    nama: varchar(45)
   jam: 
     id: ~
-    jam: 
-      type: VARCHAR
-      size: 45
+    jam: varchar(45)
   jadwal: 
     id: ~
     Jam_id: { type: integer, foreignTable: jam, foreignReference: id, required: true, onDelete: cascade }
     Hari_id: { type: integer, foreignTable: hari, foreignReference: id, required: true, onDelete: cascade }
   jurusan: 
     id: ~
-    nama: 
-      type: VARCHAR
-      size: 45
+    nama: varchar(45)
     created_at: ~
     updated_at: ~
     Fakultas_id: { type: integer, foreignTable: fakultas, foreignReference: id, required: true, onDelete: cascade }
   matakuliah: 
     id: ~
-    kodeMk: 
-      type: VARCHAR
-      size: 45
-    nama: 
-      type: VARCHAR
-      size: 45
-    sks: 
-      type: INTEGER
+    kodeMk: varchar(45)
+    nama: varchar(45)
+    sks: integer
     created_at: ~
     updated_at: ~
     Jurusan_id: { type: integer, foreignTable: jurusan, foreignReference: id, required: true, onDelete: cascade }
   dosen: 
     id: ~
-    npk: 
-      type: VARCHAR
-      size: 20
-      required: true
-      index: unique
-    nama: 
-      type: VARCHAR
-      size: 45
-      required: true
-    alamat: 
-      type: LONGVARCHAR
-    tgl_lahir: 
-      type: DATE
+    npk: { type: varchar(20), required: true, index: unique}
+    nama: { type: varchar(45), required: true}
+    alamat: LONGvarchar
+    tgl_lahir: DATE
     created_at: ~
     updated_at: ~
     Golongan_id: { type: integer, foreignTable: golongan, foreignReference: id, required: true, onDelete: cascade }
   slipgaji: 
     id: ~
-    grand_total: 
-      type: DOUBLE
-    pajak: 
-      type: DOUBLE
+    grand_total: { type: numeric, size: 20, scale: 2 }
+    pajak:  { type: numeric, size: 20, scale: 2 }
     created_at: ~
     Dosen_id: { type: integer, foreignTable: dosen, foreignReference: id, required: true, onDelete: cascade }
   mahasiswa: 
     id: ~
-    nrp: 
-      type: VARCHAR
-      size: 10
-      required: true
-      index: unique
-    nama: 
-      type: VARCHAR
-      size: 45
-      required: true
-    alamat: 
-      type: LONGVARCHAR
-    tgl_lahir: 
-      type: DATE
+    nrp: { type: varchar(10), required: true, index: unique }
+    nama: { type: varchar(45), required: true }
+    alamat: LONGvarchar
+    tgl_lahir: DATE
     created_at: ~
     updated_at: ~
   kelasparalel: 
     id: ~
-    nama: 
-      type: VARCHAR
-      size: 45
-    status: 
-      type: 
+    nama: varchar(45)
+    status: integer
     created_at: ~
     updated_at: ~
     MataKuliah_id: { type: integer, foreignTable: matakuliah, foreignReference: id, required: true, onDelete: cascade }
   absensi: 
     id: ~
     dosen_id: { type: integer, foreignTable: dosen, foreignReference: id, required: true, onDelete: cascade }
-    materi: 
-      type: LONGVARCHAR
-    minggu_ke: 
-      type: INTEGER
-    tanggal: 
-      type: DATE
-    sks_nyata: 
-      type: INTEGER
-      required: true
-    jam_hadir_dosen: 
-      type: TIME
-    jam_keluar_dosen: 
-      type: TIME
+    materi: LONGvarchar
+    minggu_ke: integer
+    tanggal: DATE
+    sks_nyata: {type: integer, required: true }
+    jam_hadir_dosen: TIME
+    jam_keluar_dosen: TIME
     KelasParalel_id: { type: integer, foreignTable: kelasparalel, foreignReference: id, required: true, onDelete: cascade }
   kelasparalel_has_dosen: 
     KelasParalel_id: { type: integer, foreignTable: kelasparalel, foreignReference: id, required: true, onDelete: cascade }

@@ -24,3 +24,64 @@ May 07 14:26:24 symfony [info] {sfResponse} send content (23312 o)
 May 07 14:26:24 symfony [info] {sfTimerManager} Configuration 162.49 ms (9)
 May 07 14:26:24 symfony [info] {sfTimerManager} Action "default/index" 0.18 ms (1)
 May 07 14:26:24 symfony [info] {sfTimerManager} View "Success" for "default/index" 42.11 ms (1)
+Jun 11 16:27:51 symfony [info] {sfRouting} connect "/"
+Jun 11 16:27:51 symfony [info] {sfRouting} connect "/symfony/:action/*"
+Jun 11 16:27:51 symfony [info] {sfRouting} connect "/:module"
+Jun 11 16:27:51 symfony [info] {sfRouting} connect "/:module/:action/*"
+Jun 11 16:27:51 symfony [info] {sfCreole} connect(): DSN: array (   'compat_assoc_lower' => NULL,   'compat_rtrim_string' => NULL,   'database' => 'projek_tkbd',   'encoding' => NULL,   'hostspec' => 'localhost',   'password' => 'admin',   'persistent' => NULL,   'phptype' => 'pgsql',   'port' => NULL,   'protocol' => NULL,   'socket' => NULL,   'username' => 'postgres', ), FLAGS: 0
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} prepareStatement(): DELETE FROM fakultas
+Jun 11 16:27:51 symfony [info] {sfCreole} executeUpdate(): DELETE FROM fakultas
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} prepareStatement(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES (?,?,?,?)
+Jun 11 16:27:51 symfony [info] {sfCreole} executeUpdate(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES ('Teknik','2015-06-11 16:27:51 +0800','2015-06-11 16:27:51 +0800',1)
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} prepareStatement(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES (?,?,?,?)
+Jun 11 16:27:51 symfony [info] {sfCreole} executeUpdate(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES ('Ekonomi','2015-06-11 16:27:51 +0800','2015-06-11 16:27:51 +0800',2)
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} prepareStatement(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES (?,?,?,?)
+Jun 11 16:27:51 symfony [info] {sfCreole} executeUpdate(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES ('Hukum','2015-06-11 16:27:51 +0800','2015-06-11 16:27:51 +0800',3)
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} prepareStatement(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES (?,?,?,?)
+Jun 11 16:27:51 symfony [info] {sfCreole} executeUpdate(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES ('Farmasi','2015-06-11 16:27:51 +0800','2015-06-11 16:27:51 +0800',4)
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} beginning transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} prepareStatement(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES (?,?,?,?)
+Jun 11 16:27:51 symfony [info] {sfCreole} executeUpdate(): INSERT INTO fakultas (NAMA,CREATED_AT,UPDATED_AT,ID) VALUES ('Psikologi','2015-06-11 16:27:51 +0800','2015-06-11 16:27:51 +0800',5)
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:27:51 symfony [info] {sfCreole} committing transaction.
+Jun 11 16:28:28 symfony [info] {sfContext} initialization
+Jun 11 16:28:28 symfony [info] {sfController} initialization
+Jun 11 16:28:28 symfony [info] {sfRouting} match route [default_index] "/:module"
+Jun 11 16:28:28 symfony [info] {sfRequest} request parameters array (  'module' => 'fakultas',  'action' => 'index',)
+Jun 11 16:28:28 symfony [info] {sfController} dispatch request
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfRenderingFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfWebDebugFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfCommonFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfFlashFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfExecutionFilter"
+Jun 11 16:28:29 symfony [info] {sfAction} call "fakultasActions->executeIndex()"
+Jun 11 16:28:29 symfony [info] {sfAction} forward to action "fakultas/list"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfRenderingFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfWebDebugFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfCommonFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfFlashFilter"
+Jun 11 16:28:29 symfony [info] {sfFilter} executing filter "sfExecutionFilter"
+Jun 11 16:28:29 symfony [info] {sfAction} call "fakultasActions->executeList()"
+Jun 11 16:28:29 symfony [info] {sfCreole} connect(): DSN: array (   'compat_assoc_lower' => NULL,   'compat_rtrim_string' => NULL,   'database' => 'projek_tkbd',   'encoding' => NULL,   'hostspec' => 'localhost',   'password' => 'admin',   'persistent' => NULL,   'phptype' => 'pgsql',   'port' => NULL,   'protocol' => NULL,   'socket' => NULL,   'username' => 'postgres', ), FLAGS: 0
+Jun 11 16:28:29 symfony [err] {sfException}  [wrapped: pgsql extension not loaded [User Info: Array]] in C:\AppServ\www\TKBD\lib\symfony\vendor\propel\Propel.php line 489

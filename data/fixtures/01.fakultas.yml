@@ -1,0 +1,22 @@
+#Fakultas:
+#  teknik:
+#    kode: TEK
+#    nama: Teknik
+#    deskripsi: Fakultas Teknik
+#  ekonomi:
+#    kode: EKO
+#    nama: Ekonomi
+#    deskripsi: Fakultas Ekonomi
+#  hukum:
+#    kode: HUK
+#    nama: Hukum
+#    deskripsi: Fakultas Hukum
+#  farmasi:
+#    kode: FAR
+#    nama: Farmasi
+#    deskripsi: Fakultas Farmasi
+#  psikologi:
+#    kode: PSI
+#    nama: Psikologi
+#    deskripsi: Fakultas Psikologi
+#    

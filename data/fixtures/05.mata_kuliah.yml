@@ -1,0 +1,56 @@
+MataKuliah:
+<?php for ($i=1; $i<=50; $i++): ?>
+  mata_kuliah_<?php echo $i ?>:
+    kode: 64A3<?php echo $i."\n" ?>
+    nama: Mata Kuliah <?php echo $i."\n" ?>
+    sks: 3
+    deskripsi: Deskripsi dari mata kuliah <?php echo $i."\n" ?>
+    nilai_minimal: <?php echo (($i % 2 == 1) ? 'B' : 'C')."\n" ?>
+    honor_per_sks: 200000
+    jurusan_id: <?php echo (($i<=25) ? 'INF' : 'SI')."\n" ?>
+    dosen_id: <?php echo (($i<=25) ? 'dosen_1' : 'dosen_2')."\n" ?>
+<?php endfor ?>
+<?php for ($i=51; $i<=100; $i++): ?>
+  mata_kuliah_<?php echo $i ?>:
+    kode: 64A3<?php echo $i."\n" ?>
+    nama: Mata Kuliah <?php echo $i."\n" ?>
+    sks: 3
+    deskripsi: Deskripsi dari mata kuliah <?php echo $i."\n" ?>
+    nilai_minimal: <?php echo (($i % 2 == 1) ? 'B' : 'D')."\n" ?>
+    honor_per_sks: 200000
+    jurusan_id: <?php echo (($i<=75) ? 'MM' : 'MAN')."\n" ?>
+    dosen_id: <?php echo (($i<=75) ? 'dosen_2' : 'dosen_3')."\n" ?>
+<?php endfor ?>
+<?php for ($i=101; $i<=150; $i++): ?>
+  mata_kuliah_<?php echo $i ?>:
+    kode: 64A3<?php echo $i."\n" ?>
+    nama: Mata Kuliah <?php echo $i."\n" ?>
+    sks: 3
+    deskripsi: Deskripsi dari mata kuliah <?php echo $i."\n" ?>
+    nilai_minimal: <?php echo (($i % 2 == 1) ? 'B' : 'D')."\n" ?>
+    honor_per_sks: 200000
+    jurusan_id: <?php echo (($i<=125) ? 'AKU' : 'MAJ')."\n" ?>
+    dosen_id: <?php echo (($i<=125) ? 'dosen_3' : 'dosen_1')."\n" ?>
+<?php endfor ?>
+<?php for ($i=151; $i<=200; $i++): ?>
+  mata_kuliah_<?php echo $i ?>:
+    kode: 64A3<?php echo $i."\n" ?>
+    nama: Mata Kuliah <?php echo $i."\n" ?>
+    sks: 3
+    deskripsi: Deskripsi dari mata kuliah <?php echo $i."\n" ?>
+    nilai_minimal: <?php echo (($i % 2 == 1) ? 'B' : 'D')."\n" ?>
+    honor_per_sks: 200000
+    jurusan_id: <?php echo (($i<=175) ? 'IE' : 'HUK')."\n" ?>
+    dosen_id: <?php echo (($i<=175) ? 'dosen_4' : 'dosen_5')."\n" ?>
+<?php endfor ?>
+<?php for ($i=201; $i<=250; $i++): ?>
+  mata_kuliah_<?php echo $i ?>:
+    kode: 64A3<?php echo $i."\n" ?>
+    nama: Mata Kuliah <?php echo $i."\n" ?>
+    sks: 3
+    deskripsi: Deskripsi dari mata kuliah <?php echo $i."\n" ?>
+    nilai_minimal: <?php echo (($i % 2 == 1) ? 'B' : 'C')."\n" ?>
+    honor_per_sks: 200000
+    jurusan_id: <?php echo (($i<=225) ? 'FAR' : 'PSI')."\n" ?>
+    dosen_id: <?php echo (($i<=225) ? 'dosen_6' : 'dosen_7')."\n" ?>
+<?php endfor ?>

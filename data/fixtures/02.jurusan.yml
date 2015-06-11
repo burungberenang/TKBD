@@ -1,0 +1,61 @@
+#Jurusan:
+#  INF:
+#    kode: INF
+#    nama: Informatika
+#    deskripsi: Jurusan Informatika
+#    akreditasi: A
+#    fakultas_id: teknik
+#  SI:
+#    kode: SI
+#    nama: Sistem Informasi
+#    deskripsi: Jurusan Sistem Informasi
+#    akreditasi: B
+#    fakultas_id: teknik
+#  MM:
+#    kode: MM
+#    nama: Multimedia
+#    deskripsi: Jurusan Multimedia
+#    akreditasi: A
+#    fakultas_id: teknik
+#  MAN:
+#    kode: MAN
+#    nama: Manufaktur
+#    deskripsi: Jurusan Manufaktur
+#    akreditasi: B
+#    fakultas_id: teknik
+#  AKU:
+#    kode: AKU
+#    nama: Akuntansi
+#    deskripsi: Jurusan Akuntansi
+#    akreditasi: A
+#    fakultas_id: ekonomi
+#  MAJ:
+#    kode: MAJ
+#    nama: Manajemen
+#    deskripsi: Jurusan Manajemen
+#    akreditasi: A
+#    fakultas_id: ekonomi
+#  IE:
+#    kode: IE
+#    nama: Ilmu Ekonomi
+#    deskripsi: Jurusan Ilmu Ekonomi
+#    akreditasi: C
+#    fakultas_id: ekonomi
+#  HUK:
+#    kode: HUK
+#    nama: Hukum
+#    deskripsi: Jurusan Hukum
+#    akreditasi: A
+#    fakultas_id: hukum
+#  FAR:
+#    kode: FAR
+#    nama: Farmasi
+#    deskripsi: Jurusan Farmasi
+#    akreditasi: B
+#    fakultas_id: farmasi
+#  PSI:
+#    kode: PSI
+#    nama: Psikologi
+#    deskripsi: Jurusan Psikologi
+#    akreditasi: A
+#    fakultas_id: psikologi

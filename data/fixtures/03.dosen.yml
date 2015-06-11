@@ -1,0 +1,13 @@
+#Dosen:
+#<?php for ($i=1; $i<=12; $i++): ?>
+#  dosen_<?php echo $i ?>:
+#    npk: <?php echo "738".$i."\n" ?>
+#    nama: Dosen <?php echo $i."\n" ?>
+#    alamat: Alamat dosen <?php echo $i."\n" ?>
+#    kota: <?php echo ($i > 4 ? 'Malang' : 'Surabaya')."\n" ?>
+#    tlp: <?php echo "564342".$i."\n" ?>
+#    email: dosen<?php echo $i ?>@dosen.com
+#    status: <?php echo ($i <= 9 ? '1' : '2')."\n" ?>
+#    tgl_masuk: 2012-06-07
+#    gaji_pokok: 3000000
+#<?php endfor ?>

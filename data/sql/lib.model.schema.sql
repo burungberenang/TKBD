@@ -253,6 +253,7 @@ CREATE TABLE "mahasiswa"
 	"nama" VARCHAR(45)  NOT NULL,
 	"alamat" TEXT,
 	"tgl_lahir" DATE,
+	"Jurusan_id" INTEGER  NOT NULL,
 	"created_at" TIMESTAMP,
 	"updated_at" TIMESTAMP,
 	PRIMARY KEY ("id"),
@@ -263,6 +264,8 @@ COMMENT ON TABLE "mahasiswa" IS '';
 
 
 SET search_path TO public;
+ALTER TABLE "mahasiswa" ADD CONSTRAINT "mahasiswa_FK_1" FOREIGN KEY ("Jurusan_id") REFERENCES "jurusan" ("id") ON DELETE CASCADE;
+
 -----------------------------------------------------------------------------
 -- kelasparalel
 -----------------------------------------------------------------------------
@@ -310,6 +313,7 @@ CREATE TABLE "absensi"
 	"minggu_ke" INTEGER,
 	"tanggal" DATE,
 	"sks_nyata" INTEGER  NOT NULL,
+	"status" INTEGER  NOT NULL,
 	"jam_hadir_dosen" TIME,
 	"jam_keluar_dosen" TIME,
 	"KelasParalel_id" INTEGER  NOT NULL,

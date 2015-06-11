@@ -57,6 +57,7 @@ propel:
     nama: { type: varchar(45), required: true }
     alamat: LONGvarchar
     tgl_lahir: DATE
+    Jurusan_id: { type: integer, foreignTable: jurusan, foreignReference: id, required: true, onDelete: cascade }
     created_at: ~
     updated_at: ~
   kelasparalel: 
@@ -73,6 +74,8 @@ propel:
     minggu_ke: integer
     tanggal: DATE
     sks_nyata: {type: integer, required: true }
+    #0 = biasa , 1 = pengganti
+    status: { type: integer, required: true }
     jam_hadir_dosen: TIME
     jam_keluar_dosen: TIME
     KelasParalel_id: { type: integer, foreignTable: kelasparalel, foreignReference: id, required: true, onDelete: cascade }
